@@ -14,6 +14,21 @@
     <Filter Include="Assets\sprite">
       <UniqueIdentifier>{a6ce300a-b532-440d-b914-b4661d3015ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\modelData\bird">
+      <UniqueIdentifier>{3cd120a1-a948-4462-b9ed-af48c874367c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\modelData\tree">
+      <UniqueIdentifier>{29fe11d6-dc72-4f4a-bee6-8c6b17833331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\modelData\hawk">
+      <UniqueIdentifier>{6ef58abf-1845-45c0-b78b-02a8fe79855a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\modelData\snake">
+      <UniqueIdentifier>{5161d884-2e0e-41d0-b177-a67333cc3b63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\modelData\nest">
+      <UniqueIdentifier>{40c69d5d-8c48-4db3-a920-1224d2e07fba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -26,6 +41,8 @@
     </CLInclude>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="CmoFileNames.h" />
+    <ClInclude Include="GameObjectNames.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -33,13 +50,28 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <MeshContentTask Include="Assets\modelData\unityChan.fbx">
-      <Filter>Assets\modelData</Filter>
-    </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
     <ImageContentTask Include="Assets\sprite\dummy.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\torikariS.FBX">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\kariki.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\hawk\kariwasi.FBX">
+      <Filter>Assets\modelData\hawk</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\snake\karihebi.FBX">
+      <Filter>Assets\modelData\snake</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\nest\karisu.FBX">
+      <Filter>Assets\modelData\nest</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>
