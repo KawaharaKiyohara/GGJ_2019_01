@@ -30,4 +30,8 @@ public:
 	/// ‘ƒ
 	/// </summary>
 	static constexpr wchar_t* NEST = L"modelData/nest/karisu.cmo";
+	/// <summary>
+	/// ’n–Ê
+	/// </summary>
+	static constexpr wchar_t* GROUND = L"modelData/bg/ground.cmo";
 };

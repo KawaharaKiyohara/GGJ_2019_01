@@ -11,6 +11,29 @@ public:
 	~Game();
 	bool Start();
 	void Update();
+private:
+	/// <summary>
+	/// ポストエフェクトを初期化。
+	/// </summary>
+	void InitPostEffects();
+	/// <summary>
+	/// ディレクションライトを初期化。
+	/// </summary>
+	void InitDirectionLight();
+	/// <summary>
+	/// 空を初期化。
+	/// </summary>
+	void InitSky();
+	/// <summary>
+	/// 鳥を初期化。
+	/// </summary>
+	void InitBird();
+	/// <summary>
+	/// ジャマーたちをテスト用に生成しとくか。
+	/// </summary>
+	void InitTestJammers();
+private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;		//スキンモデルレンダラー。
+	CPhysicsStaticObject m_bgPhyStaticObject;
 };
 

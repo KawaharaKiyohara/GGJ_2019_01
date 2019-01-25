@@ -198,6 +198,10 @@ namespace tkEngine{
 	}
 	void CTonemap::Render(CRenderContext& rc, CPostEffect* postEffect)
 	{
+		if (m_disableFrame > 0) {
+			Reset();
+			m_disableFrame--;
+		}
 		if (!m_isEnable) {
 			return;
 		}

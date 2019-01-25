@@ -53,7 +53,7 @@ namespace {
 		initParam.graphicsConfing.shadowRenderConfig.isEnable = true;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 1024;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 1024;
-		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(20.0f);
+		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(15.0f);
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[0] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[1] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[2] = 0.002f;
@@ -86,9 +86,9 @@ namespace {
 		initParam.frameBufferHeight = 1080;
 		//âeÇÃê›íËÅB
 		initParam.graphicsConfing.shadowRenderConfig.isEnable = true;
-		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 2048;
-		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 2048;
-		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(10.0f);
+		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 4096;
+		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 4096;
+		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(15.0f);
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[0] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[1] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[2] = 0.002f;

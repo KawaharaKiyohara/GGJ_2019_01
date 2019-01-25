@@ -55,6 +55,11 @@ namespace tkEngine{
 		{
 			m_isEnable = flag;
 		}
+		//トーンマップを一定フレーム数無効にする。
+		void Disable(int frame)
+		{
+			m_disableFrame = frame;
+		}
 	public:
 		static const int MAX_SAMPLES = 16;
 	private:
@@ -80,5 +85,6 @@ namespace tkEngine{
 		CConstantBuffer	m_cbCalcLuminanceLog;
 		CConstantBuffer m_cbTonemapCommon;
 		STonemapParam	m_tonemapParam;
+		int m_disableFrame = 0;
 	};
 }

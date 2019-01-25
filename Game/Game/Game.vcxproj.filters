@@ -29,11 +29,35 @@
     <Filter Include="Assets\modelData\nest">
       <UniqueIdentifier>{40c69d5d-8c48-4db3-a920-1224d2e07fba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\modelData\bg">
+      <UniqueIdentifier>{7c8a8b77-a9c9-4559-aacb-42083b63c642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bird">
+      <UniqueIdentifier>{b7a88587-df00-46fb-b328-6531968fb262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Jammer">
+      <UniqueIdentifier>{c136b67d-024d-4171-a336-fea871cd5a36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{4b2a5f97-a925-44db-8a23-5b61e13a895c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Bird.cpp">
+      <Filter>Bird</Filter>
+    </ClCompile>
+    <ClCompile Include="Hawk.cpp">
+      <Filter>Jammer</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Jammer</Filter>
+    </ClCompile>
+    <ClCompile Include="MapGenerator.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -43,6 +67,18 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="CmoFileNames.h" />
     <ClInclude Include="GameObjectNames.h" />
+    <ClInclude Include="Bird.h">
+      <Filter>Bird</Filter>
+    </ClInclude>
+    <ClInclude Include="Hawk.h">
+      <Filter>Jammer</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Jammer</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGenerator.h">
+      <Filter>Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -72,6 +108,9 @@
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\nest\karisu.FBX">
       <Filter>Assets\modelData\nest</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bg\ground.fbx">
+      <Filter>Assets\modelData\bg</Filter>
     </MeshContentTask>
   </ItemGroup>
 </Project>
