@@ -16,8 +16,8 @@ public:
 
 	
 	CVector3 m_pos = CVector3::Zero;
-	CVector3 pos = CVector3::Zero;
-	CVector3 karipos = CVector3::Zero;
+	CVector3 syokipos = CVector3::Zero;
+	CVector3 kyori2 = CVector3::Zero;
 	CVector3 s_Speed = CVector3::Zero;
 	CVector3 kyori = CVector3::Zero;
 	CQuaternion rotation = CQuaternion::Identity;  //âÒì]ÅB
