@@ -194,5 +194,8 @@
     <Image Include="Assets\modelData\bg\bgSpec.png">
       <Filter>Assets\modelData\bg</Filter>
     </Image>
+    <Image Include="Assets\sprite\title.png">
+      <Filter>Assets\sprite</Filter>
+    </Image>
   </ItemGroup>
 </Project>
