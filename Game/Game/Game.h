@@ -40,8 +40,21 @@ private:
     /// ゲームカメラを初期化
     /// </summary>
 	void InitGameCamera();
+	/// <summary>
+	/// ゲーム開始カット演出を作成。
+	/// </summary>
+	void InitGameStartCut();
 private:
-	prefab::CSkinModelRender* m_skinModelRender = nullptr;		//スキンモデルレンダラー。
-	CPhysicsStaticObject m_bgPhyStaticObject;
+	/// <summary>
+	/// ゲームステップ。
+	/// </summary>
+	enum EnStep {
+		enStep_StartCut,		//開始カット
+		enStep_InGameGround,	//地面にいるときのインゲーム。
+		enStep_FlyCut,			//飛行カット
+		enStep_InGameSky,		//空にいるときのインゲーム。
+		enStep_GameClearCut,	//ゲームクリアカット。
+	};
+	EnStep m_step = enStep_StartCut;	//ゲームステップ。
 };
 

@@ -26,5 +26,6 @@ private:
 		std::unique_ptr<CPhysicsStaticObject> phyStaticObject;
 	};
 	std::vector< SInstancingData> m_allTreeInstancingData;			//全ての木用のインスタンシングデータ。
+	prefab::CSkinModelRender* m_groundRender = nullptr;		//スキンモデルレンダラー。
 };
 

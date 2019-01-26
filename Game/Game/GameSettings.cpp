@@ -4,6 +4,7 @@
 
 
 int GameSettings::m_level = 0;
+CVector3 GameSettings::m_startPosition = CVector3::Zero;
 
 GameSettings::GameSettings()
 {

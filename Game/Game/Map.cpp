@@ -3,16 +3,7 @@
 
 
 namespace {
-	/// <summary>
-	/// マップのサイズ。
-	/// </summary>
-	const float MAP_SIZE[GameSettings::GetNumLevel()] = {
-		10000.0f,
-		20000.0f,
-		30000.0f,
-		40000.0f,
-		50000.0f,
-	};
+	
 	/// <summary>
 	/// マップのグリッド。
 	/// </summary>
@@ -29,11 +20,20 @@ Map::Map()
 Map::~Map()
 {
 	DeleteGO(m_treeRender);
+	DeleteGO(m_groundRender);
+	for (auto& symbolTreeRender : m_symboleTreeRender) {
+		DeleteGO(symbolTreeRender);
+	}
 }
 bool Map::Start()
 {
+	//地面を作成。
+	m_groundRender = NewGO<prefab::CSkinModelRender>(0);
+	m_groundRender->Init(CmoFilePaths::GROUND);
+	m_groundRender->SetShadowReceiverFlag(true);
+
 	//ステージの難易度に応じて適当に木を生成する。
-	auto mapSize = MAP_SIZE[GameSettings::GetLevel()];
+	auto mapSize = GameSettings::GetMapSize();
 	//はやす木の数を決める。
 	int numTree_x = mapSize / MAP_GRID_SIZE;
 	int numTree_y = numTree_x;
