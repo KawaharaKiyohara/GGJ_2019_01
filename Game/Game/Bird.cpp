@@ -216,7 +216,7 @@ void Bird::Animation()
 	}
 	QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
 		CVector3 pos = feed->GetPosition() - m_position;
-		if (pos.Length() <= 70.0f) {
+		if (pos.LengthSq() <= 70.0f*70.0f) {
 			m_state = enState_Eat;
 			m_feed = feed;
 			return false;
@@ -226,6 +226,9 @@ void Bird::Animation()
 	if (m_state != enState_Eat) {
 		m_degreey = 0.0f;
 	}
+	CVector3 scale = CVector3::One;
+	scale*= float((m_adultcondions / m_feedcount))*1.5f;
+	m_scale = scale;
 }
 
 void Bird::AnimationController()
