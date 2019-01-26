@@ -89,7 +89,7 @@ namespace {
 		initParam.graphicsConfing.shadowRenderConfig.isEnable = true;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 4096;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 4096;
-		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(50.0f);
+		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(60.0f);
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[0] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[1] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[2] = 0.002f;

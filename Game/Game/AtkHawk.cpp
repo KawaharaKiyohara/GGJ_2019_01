@@ -2,10 +2,11 @@
 #include "AtkHawk.h"
 #include "Bird.h"
 #include "HawkGene.h"
-
+#include "Hawk.h"
 AtkHawk::AtkHawk()
 {
 	m_bird = FindGO<Bird>(GameObjectNames::BIRD);
+	m_Hawk = FindGO<Hawk>(GameObjectNames::HAWK);
 }
 
 
@@ -26,7 +27,7 @@ bool AtkHawk::Start()
 
 	m_skinModelRender->SetPosition(m_HawkPos);
 
-	m_oldbirdpos = m_bird->GetPosition();
+	m_oldbirdpos = m_Hawk->m_PlayerPos;
 
 	m_movespeed = m_oldbirdpos - m_HawkPos;
 	m_movespeed.Normalize();
@@ -43,7 +44,7 @@ void AtkHawk::Update()
 	{
 	case AtkHawk::enState_Descent:
 		
-			m_HawkPos += m_movespeed;
+			m_HawkPos += m_movespeed ;
 		
 		if (m_HawkPos.y < m_oldbirdpos.y) {
 			m_state = enState_Atk;
