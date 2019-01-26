@@ -22,7 +22,9 @@ public:
 	CVector3 kyori = CVector3::Zero;
 	CQuaternion rotation = CQuaternion::Identity;  //回転。
 	CCharacterController m_charaCon;		         //キャラクターコントローラー。
-
+	bool m_return = false;
+	bool m_heit = false;
+	bool m_chase = false;
 	Bird* bird = nullptr;
 	Timer* timer = nullptr;
 

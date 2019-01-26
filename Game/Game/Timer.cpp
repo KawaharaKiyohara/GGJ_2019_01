@@ -24,7 +24,15 @@ bool Timer::Start() {
 
 void Timer::Update() {
 
+	m_timer = GameTime().GetFrameDeltaTime();
+	float min = m_timer / 60.0f;
+	float sec = fmod(m_timer, 60.0f);
 	
-	m_cfontrender->SetPosition(pos);
+
+
+	swprintf(text, L"Žc‚èŽžŠÔ %.f:%02.f", min, sec);
+
+	m_cfontrender->SetPosition({ -600.0f, 300.0f });
+	//m_cfontrender->SetPosition(pos);
 
 }
