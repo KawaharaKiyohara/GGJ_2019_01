@@ -68,7 +68,7 @@ void Bird::Update()
 void Bird::Move()
 {
 	if (m_adult) {
-		m_movespeed = MainCamera().GetForward()*m_multiply*60.0f*GameTime().GetFrameDeltaTime();
+		m_movespeed = MainCamera().GetForward() * m_multiply * 60.0f * GameTime().GetFrameDeltaTime();
 	}
 	else {
 		//左スティックの入力量を取得
@@ -221,6 +221,9 @@ void Bird::Animation()
 		else {
 			m_adult = true;
 		}
+	}
+	if (m_feedcount >= m_adultcondions) {
+		m_adult = true;
 	}
 	QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
 		CVector3 pos = feed->GetPosition() - m_position;
