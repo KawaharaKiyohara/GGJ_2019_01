@@ -108,7 +108,7 @@ private:
 	bool m_eat = false;
 	bool m_eating = false;
 	bool m_adult = false;
-	int m_adultcondions = 30;
+	int m_adultcondions = 5;
 	int m_feedcount = 0;
 	float m_soundtimer = 0.0f;
 	float m_walktime = 30.0f;
