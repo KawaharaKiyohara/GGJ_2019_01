@@ -212,23 +212,29 @@ void Bird::Animation()
 		}
 	}
 	if (m_feedcount >= m_adultcondions) {
+		m_feedcount = m_adultcondions;
 		m_adult = true;
 	}
-	QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
-		CVector3 pos = feed->GetPosition() - m_position;
-		if (pos.LengthSq() <= 70.0f*70.0f) {
-			m_state = enState_Eat;
-			m_feed = feed;
-			return false;
-		}
-		return true;
-	});
+	if (!m_adult) {
+		QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
+			CVector3 pos = feed->GetPosition() - m_position;
+			if (pos.LengthSq() <= 70.0f*70.0f) {
+				m_state = enState_Eat;
+				m_feed = feed;
+				return false;
+			}
+			return true;
+		});
+	}
 	if (m_state != enState_Eat) {
 		m_degreey = 0.0f;
 	}
 	CVector3 scale = CVector3::One;
-	scale*= float((m_adultcondions / m_feedcount))*1.5f;
+	if (m_feedcount != 0) {
+		scale *= 1+(float(m_feedcount) / m_adultcondions)*1.0f;
+	}
 	m_scale = scale;
+	m_skinModelRender->SetScale(m_scale);
 }
 
 void Bird::AnimationController()
@@ -302,6 +308,10 @@ void Bird::AnimationController()
 					m_feed = nullptr;
 					m_feedcount++;
 					m_eating = true;
+					prefab::CSoundSource* ss;
+					ss = NewGO<prefab::CSoundSource>(0);
+					ss->Init(L"sound/ou.wav");
+					ss->Play(false);
 				}
 				m_degreey -= 1.8f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);
