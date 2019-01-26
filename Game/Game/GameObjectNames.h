@@ -26,4 +26,8 @@ public:
 	/// 蛇。
 	/// </summary>
 	static constexpr char* SNAKE = "蛇";
+	/// <summary>
+	/// 地形。
+	/// </summary>
+	static constexpr char* MAP = "マップ";
 };

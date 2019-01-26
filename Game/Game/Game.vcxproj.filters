@@ -55,7 +55,8 @@
     <ClCompile Include="Snake.cpp">
       <Filter>Jammer</Filter>
     </ClCompile>
-    <ClCompile Include="MapGenerator.cpp">
+    <ClCompile Include="GameSettings.cpp" />
+    <ClCompile Include="Map.cpp">
       <Filter>Map</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,7 +77,8 @@
     <ClInclude Include="Snake.h">
       <Filter>Jammer</Filter>
     </ClInclude>
-    <ClInclude Include="MapGenerator.h">
+    <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="Map.h">
       <Filter>Map</Filter>
     </ClInclude>
   </ItemGroup>
@@ -111,6 +113,21 @@
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\bg\ground.fbx">
       <Filter>Assets\modelData\bg</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeRed.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeBlue.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreePurple.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeGreen.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeYellow.FBX">
+      <Filter>Assets\modelData\tree</Filter>
     </MeshContentTask>
   </ItemGroup>
 </Project>

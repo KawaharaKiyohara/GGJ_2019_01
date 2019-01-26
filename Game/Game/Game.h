@@ -32,6 +32,10 @@ private:
 	/// ジャマーたちをテスト用に生成しとくか。
 	/// </summary>
 	void InitTestJammers();
+	/// <summary>
+	/// マップを構築する。
+	/// </summary>
+	void InitMap();
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;		//スキンモデルレンダラー。
 	CPhysicsStaticObject m_bgPhyStaticObject;
