@@ -53,6 +53,7 @@ public:
 	//ƒ_ƒ[ƒW
 	void Damage()
 	{
+		m_state = enState_Damage;
 		m_life--;
 	}
 private:
