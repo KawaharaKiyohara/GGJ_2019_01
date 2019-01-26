@@ -9,7 +9,7 @@
 #include "GameStartCut.h"
 #include "Feed.h"
 #include "Fade.h"
-
+#include "HawkGene.h"
 Game::Game()
 {
 }
@@ -103,7 +103,7 @@ void Game::InitTestJammers()
 	//コンパイラ構文から型を推論します。
 	//hawkの型はHawk*、snakeの型はSnake*です。
 	//鷹
-	auto hawk = NewGO< Hawk>(0);
+	auto hawk = NewGO<HawkGene>(0);
 
 	auto snake = NewGO<Snake>(0);
 }
