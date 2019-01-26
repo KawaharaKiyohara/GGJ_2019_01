@@ -4,7 +4,7 @@
 #include "Bird.h"
 #include "Hawk.h"
 #include "Snake.h"
-#include "HawkGene.h"
+#include "GameCamera.h"
 Game::Game()
 {
 }
@@ -43,7 +43,8 @@ bool Game::Start()
 	InitBird();
 	//ジャマーをテスト用に生成しておく。
 	InitTestJammers();
-
+	//カメラを初期化
+	InitGameCamera();
 	return true;
 }
 void Game::InitBird()
@@ -80,6 +81,12 @@ void Game::InitDirectionLight()
 	dirLig->SetColor({ 0.8f, 0.8f, 0.8f, 1.0f });
 
 }
+
+void Game::InitGameCamera()
+{
+	NewGO<GameCamera>(0, GameObjectNames::CAMERA);
+}
+
 void Game::Update()
 {
 }

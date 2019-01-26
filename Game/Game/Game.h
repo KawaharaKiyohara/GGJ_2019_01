@@ -32,6 +32,10 @@ private:
 	/// ジャマーたちをテスト用に生成しとくか。
 	/// </summary>
 	void InitTestJammers();
+	/// <summary>
+    /// ゲームカメラを初期化
+    /// </summary>
+	void InitGameCamera();
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;		//スキンモデルレンダラー。
 	CPhysicsStaticObject m_bgPhyStaticObject;
