@@ -41,6 +41,15 @@
     <Filter Include="Map">
       <UniqueIdentifier>{4b2a5f97-a925-44db-8a23-5b61e13a895c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\modelData\feed">
+      <UniqueIdentifier>{30b8092c-cd49-4e72-9c48-1ce0db375a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CutScene">
+      <UniqueIdentifier>{86a7ff0b-d530-4726-b4ea-443a402955c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CutScene\GameStartCut">
+      <UniqueIdentifier>{c2cdb06e-a346-446e-9c92-7cdb6f095736}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -55,16 +64,18 @@
     <ClCompile Include="Snake.cpp">
       <Filter>Jammer</Filter>
     </ClCompile>
-    <ClCompile Include="MapGenerator.cpp">
+    <ClCompile Include="GameSettings.cpp" />
+    <ClCompile Include="Map.cpp">
       <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="GameCamera.cpp" />
-    <ClCompile Include="HawkGene.cpp">
-      <Filter>Jammer</Filter>
+    <ClCompile Include="Feed.cpp">
+      <Filter>Bird</Filter>
     </ClCompile>
-    <ClCompile Include="AtkHawk.cpp">
-      <Filter>Jammer</Filter>
+    <ClCompile Include="GameStartCut.cpp">
+      <Filter>CutScene\GameStartCut</Filter>
     </ClCompile>
+    <ClCompile Include="Fade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -83,16 +94,18 @@
     <ClInclude Include="Snake.h">
       <Filter>Jammer</Filter>
     </ClInclude>
-    <ClInclude Include="MapGenerator.h">
+    <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="Map.h">
       <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="GameCamera.h" />
-    <ClInclude Include="HawkGene.h">
-      <Filter>Jammer</Filter>
+    <ClInclude Include="Feed.h">
+      <Filter>Bird</Filter>
     </ClInclude>
-    <ClInclude Include="AtkHawk.h">
-      <Filter>Jammer</Filter>
+    <ClInclude Include="GameStartCut.h">
+      <Filter>CutScene\GameStartCut</Filter>
     </ClInclude>
+    <ClInclude Include="Fade.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -126,5 +139,28 @@
     <MeshContentTask Include="Assets\modelData\bg\ground.fbx">
       <Filter>Assets\modelData\bg</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeRed.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeBlue.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreePurple.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeGreen.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeYellow.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\feed\kariesa.FBX">
+      <Filter>Assets\modelData\feed</Filter>
+    </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\fade.png">
+      <Filter>Assets\sprite</Filter>
+    </Image>
   </ItemGroup>
 </Project>

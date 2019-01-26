@@ -1,4 +1,5 @@
 #pragma once
+#include "tkEngine/camera/tkSpringCamera.h"
 class Bird;
 class GameCamera: public IGameObject
 {
@@ -31,6 +32,8 @@ private:
 	float m_radiany;
 	CVector3 m_target=CVector3::Zero;
 	CVector3 m_position = CVector3::Zero;
+
 	Bird* m_bird = nullptr;
+	CSpringCamera m_springcamera;
 };
 

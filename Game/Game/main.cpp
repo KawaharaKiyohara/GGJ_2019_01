@@ -3,6 +3,7 @@
  */
 #include "stdafx.h"
 #include "Game.h"
+#include "Fade.h"
 
 namespace {
 	/*!
@@ -53,7 +54,7 @@ namespace {
 		initParam.graphicsConfing.shadowRenderConfig.isEnable = true;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 1024;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 1024;
-		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(15.0f);
+		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(50.0f);
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[0] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[1] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[2] = 0.002f;
@@ -65,7 +66,7 @@ namespace {
 		initParam.graphicsConfing.bloomConfig.isEnable = true;
 		//tonemap
 		initParam.graphicsConfing.tonemapConfig.isEnable = true;
-		initParam.graphicsConfing.tonemapConfig.luminance = 0.56f;
+		initParam.graphicsConfing.tonemapConfig.luminance = 0.38f;
 
 		//SSR
 		initParam.graphicsConfing.ssrConfig.isEnable = true;
@@ -88,7 +89,7 @@ namespace {
 		initParam.graphicsConfing.shadowRenderConfig.isEnable = true;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 4096;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 4096;
-		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(15.0f);
+		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(50.0f);
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[0] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[1] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[2] = 0.002f;
@@ -100,7 +101,7 @@ namespace {
 		initParam.graphicsConfing.bloomConfig.isEnable = true;
 		//tonemap
 		initParam.graphicsConfing.tonemapConfig.isEnable = true;
-		initParam.graphicsConfing.tonemapConfig.luminance = 0.56f;
+		initParam.graphicsConfing.tonemapConfig.luminance = 0.38f;
 		//SSR
 		initParam.graphicsConfing.ssrConfig.isEnable = true;
 		//ディザ
@@ -133,8 +134,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	GraphicsEngine().GetShadowMap().SetFar(1000.0f);
 	GraphicsEngine().GetShadowMap().SetNear(50.0f);
 
+	
 	//エンジンを初期化。
 	if (Engine().Init(initParam) == true) {
+		NewGO<Fade>(16, GameObjectNames::FADE);
 		NewGO<Game>(0, nullptr);
 		//ゲームループを実行。
 		Engine().RunGameLoop();

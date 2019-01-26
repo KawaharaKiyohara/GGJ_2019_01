@@ -16,7 +16,7 @@ namespace tkEngine{
 		CShader m_vs;	//頂点シェーダー。
 		CShader m_ps;	//ピクセルシェーダー。
 		CConstantBuffer m_cb;
-		static const int VERTEX_MAX = 1000000;
+		static const int VERTEX_MAX = 10000000;
 		std::array<CVector4, VERTEX_MAX> m_vertexBuffer;
 		
 		int m_numLine = 0;

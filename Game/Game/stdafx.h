@@ -12,4 +12,4 @@ using namespace tkEngine;
 
 #include "CmoFileNames.h"
 #include "GameObjectNames.h"
-
+#include "GameSettings.h"

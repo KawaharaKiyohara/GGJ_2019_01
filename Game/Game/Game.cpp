@@ -4,7 +4,12 @@
 #include "Bird.h"
 #include "Hawk.h"
 #include "Snake.h"
+#include "Map.h"
 #include "GameCamera.h"
+#include "GameStartCut.h"
+#include "Feed.h"
+#include "Fade.h"
+
 #include "HawkGene.h"
 Game::Game()
 {
@@ -17,40 +22,68 @@ Game::~Game()
 	DeleteGOs(GameObjectNames::SKY);
 	DeleteGO(GameObjectNames::BIRD);
 	DeleteGO(GameObjectNames::HAWK);
+	DeleteGO(GameObjectNames::GAME_START_CUT);
 }
 bool Game::Start()
 {
 	//カメラを設定。
 	MainCamera().SetTarget({ 0.0f, 70.0f, 0.0f });
 	MainCamera().SetNear(10.0f);
-	MainCamera().SetFar(50000.0f);
-	MainCamera().SetPosition({ 400.0f, 300.0f, 0.0f });
+	MainCamera().SetFar(100000.0f);
+	MainCamera().SetPosition({ 10000.0f, 10000.0f, 0.0f });
 	MainCamera().Update();
-	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(CmoFilePaths::GROUND);
-	m_skinModelRender->SetShadowReceiverFlag(true);
-	m_bgPhyStaticObject.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_skinModelRender);
+	
 	//コリジョンのデバッグ表示を有効に。
-	dbg::SetDrawPhysicsCollisionEnable();
+//	dbg::SetDrawPhysicsCollisionEnable();
 
 	GraphicsEngine().GetShadowMap().SetLightDirection({ 0.707f, -0.707f, 0.0f });
+
+	//todo 難易度を仮決定。
+	//todo 最終的には、ステージ選択的な感じ？
+	GameSettings::SetLevel(0);
+
+	//ゲーム開始カットの作成。
+	InitGameStartCut();
 	//ポストエフェクトを初期化する。
 	InitPostEffects();
+	//マップを構築する。
+	InitMap();
 	//空を作成。
 	InitSky();
 	//ディレクションライトを初期化。
 	InitDirectionLight();
-	//鳥を初期化。
-	InitBird();
-	//ジャマーをテスト用に生成しておく。
-	InitTestJammers();
-	//カメラを初期化
-	InitGameCamera();
+
+	//フェードのインスタンスをキャッシュ。
+	m_fade = FindGO<Fade>(GameObjectNames::FADE);
+
 	return true;
+}
+void Game::InitGameStartCut()
+{
+	auto go = NewGO<GameStartCut>(0, GameObjectNames::GAME_START_CUT);
+	go->AddEventListener([&](IGameObject::SEventParam& eventParam) {
+		if (eventParam.eEvent == IGameObject::enEvent_Destroy) {
+			//ゲームスタートカットが終わったので、実行ステップをインゲームにする。
+			//鳥を初期化。
+			InitBird();
+			//ジャマーをテスト用に生成しておく。
+			InitTestJammers();
+			//カメラを初期化
+			InitGameCamera();
+			//餌を初期化
+			InitFeed();
+			m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 0.5f);
+			m_step = enStep_InGameGround;
+		}
+	});
+}
+void Game::InitMap()
+{
+	NewGO<Map>(0, GameObjectNames::MAP);
 }
 void Game::InitBird()
 {
-	NewGO<Bird>(0, GameObjectNames::BIRD);
+	m_bird = NewGO<Bird>(0, GameObjectNames::BIRD);
 }
 void Game::InitPostEffects()
 {
@@ -62,7 +95,7 @@ void Game::InitPostEffects()
 void Game::InitSky()
 {
 	auto sky = NewGO<prefab::CSky>(0, GameObjectNames::SKY);
-	sky->SetScale({ 5000.0f, 5000.0f, 5000.f });
+	sky->SetScale({ 50000.0f, 50000.0f, 50000.f });
 	
 }
 void Game::InitTestJammers()
@@ -89,6 +122,24 @@ void Game::InitGameCamera()
 	NewGO<GameCamera>(0, GameObjectNames::CAMERA);
 }
 
+void Game::InitFeed()
+{
+	NewGO<Feed>(0, GameObjectNames::FEED);
+}
+
 void Game::Update()
 {
+	switch (m_step) {
+	case enStep_StartCut:
+		break;
+	case enStep_InGameGround:
+		break;
+	case enStep_InGameSky:
+		if ((m_bird->GetPosition() - GameSettings::GetGoalPosition()).Length() <= 100.0f) {
+			m_step = enStep_GameClearCut;
+		}
+		break;
+	case enStep_GameClearCut:
+		break;
+	}
 }

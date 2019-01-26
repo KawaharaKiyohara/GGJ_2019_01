@@ -1,6 +1,7 @@
 #pragma once
 #include "tkEngine/physics/tkPhysicsGhostObject.h"
 class GameCamera;
+class Feed;
 class Bird : public IGameObject
 {
 public:
@@ -38,9 +39,19 @@ public:
 	{
 		return m_birdback;
 	}
+	//êHéñíÜÇ©Ç«Ç§Ç©Çï‘Ç∑
+	bool GetEat() const
+	{
+		return m_state == enState_Eat;
+	}
+	//ê¨ëÃÇ©Ç«Ç§Ç©
+	bool isAdult() const
+	{
+		return m_adult;
+	}
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;
-	CVector3 m_position = { 00.0f,100.0f,0.0f };
+	CVector3 m_position = { 00.0f,00.0f,0.0f };
 	CVector3 m_movespeed = { 0.0f,0.0f,0.0f };
 	CQuaternion m_rotation = CQuaternion::Identity;
 	CQuaternion m_rotation2 = CQuaternion::Identity;
@@ -71,10 +82,17 @@ private:
 	float m_degree = 180.0f;
 	float m_radian = 0;
 	bool m_stop = false;
-	float m_multiply = 40.0f;
+	float m_multiply = 80.0f;
 	float m_damagetimer = 0.0f;
 	float m_blinktimer = 0.0f;
+	float m_eattime = 40.0f;
+	float m_eattimer = 0.0f;
+	float m_degreey = 0.0f;
+	bool m_eat = false;
+	bool m_adult = false;
+	int m_feedcount = 0;
 	GameCamera* m_gamecamera = nullptr;
+	Feed* m_feed=nullptr;
 
 };
 

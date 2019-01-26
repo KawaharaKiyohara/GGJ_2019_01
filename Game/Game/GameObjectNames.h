@@ -7,6 +7,10 @@
 class GameObjectNames {
 public:
 	/// <summary>
+	/// ゲームスタートカット。
+	/// </summary>
+	static constexpr char* GAME_START_CUT = "ゲームスタートカット";
+	/// <summary>
 	/// ディレクションライト
 	/// </summary>
 	static constexpr char* DIRECTION_LIGHT = "ディレクションライト";
@@ -27,7 +31,20 @@ public:
 	/// </summary>
 	static constexpr char* SNAKE = "蛇";
 	/// <summary>
-	///カメラ
+
+	/// 地形。
+	/// </summary>
+	static constexpr char* MAP = "マップ";
+
+	/// カメラ
 	/// </summary>
 	static constexpr char* CAMERA = "カメラ";
+
+	/// 餌
+	/// </summary>
+	static constexpr char* FEED = "餌";
+	/// <summary>
+	/// フェード
+	/// </summary>
+	static constexpr char* FADE = "ファード";
 };

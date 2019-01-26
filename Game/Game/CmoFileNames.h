@@ -19,6 +19,14 @@ public:
 	/// </summary>
 	static constexpr wchar_t* TREE = L"modelData/tree/kariki.cmo";
 	/// <summary>
+	/// シンボルになる木(赤)のモデル。
+	/// </summary>
+	static constexpr wchar_t* SINBOL_TREE_RED = L"modelData/tree/symbolTreeRed.cmo";
+	static constexpr wchar_t* SINBOL_TREE_BLUE = L"modelData/tree/symbolTreeBlue.cmo";
+	static constexpr wchar_t* SINBOL_TREE_GREEN = L"modelData/tree/symbolTreeGreen.cmo";
+	static constexpr wchar_t* SINBOL_TREE_YELLOW = L"modelData/tree/symbolTreeYellow.cmo";
+	static constexpr wchar_t* SINBOL_TREE_PURPLE = L"modelData/tree/symbolTreePurple.cmo";
+	/// <summary>
 	/// 鷹のモデル
 	/// </summary>
 	static constexpr wchar_t* HAWK = L"modelData/hawk/kariwasi.cmo";
@@ -34,4 +42,8 @@ public:
 	/// 地面
 	/// </summary>
 	static constexpr wchar_t* GROUND = L"modelData/bg/ground.cmo";
+	/// <summary>
+	/// 餌
+	/// </summary>
+	static constexpr wchar_t* FEED = L"modelData/feed/kariesa.cmo";
 };
