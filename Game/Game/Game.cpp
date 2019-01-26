@@ -34,8 +34,9 @@ bool Game::Start()
 	
 	//コリジョンのデバッグ表示を有効に。
 //	dbg::SetDrawPhysicsCollisionEnable();
-
-	GraphicsEngine().GetShadowMap().SetLightDirection({ 0.707f, -0.707f, 0.0f });
+	CVector3 lightDir = { 1, -3, 1 };
+	lightDir.Normalize();
+	GraphicsEngine().GetShadowMap().SetLightDirection(lightDir);
 
 	//todo 難易度を仮決定。
 	//todo 最終的には、ステージ選択的な感じ？
@@ -71,6 +72,9 @@ void Game::InitGameStartCut()
 			InitGameCamera();
 			//餌を初期化
 			InitFeed();
+			postEffect::Dof().Enable();
+			postEffect::Dof().SetDofRangeParam(0, 150, 600, 1800);
+			postEffect::Dof().SetBokeLuminance(0.6f);
 			m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 0.5f);
 			m_step = enStep_InGameGround;
 		}
