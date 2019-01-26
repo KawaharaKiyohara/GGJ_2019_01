@@ -28,9 +28,9 @@ bool Snake::Start()
 	);
 	//pos = m_pos;
 	bird = FindGO<Bird>(GameObjectNames::BIRD);
-	timer = FindGO<Timer>(0);
+	//timer = FindGO<Timer>(0);
 
-	timer = NewGO<Timer>(0);
+	//timer = NewGO<Timer>(0);
 	return true;
 }
 void Snake::Move() {
