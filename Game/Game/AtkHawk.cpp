@@ -31,7 +31,7 @@ bool AtkHawk::Start()
 
 	m_movespeed = m_oldbirdpos - m_HawkPos;
 	m_movespeed.Normalize();
-	m_movespeed *= 11;
+	m_movespeed *= 30;
 
 	return true;
 
