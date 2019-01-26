@@ -32,7 +32,7 @@ bool Game::Start()
 	m_skinModelRender->SetShadowReceiverFlag(true);
 	m_bgPhyStaticObject.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_skinModelRender);
 	//コリジョンのデバッグ表示を有効に。
-	dbg::SetDrawPhysicsCollisionEnable();
+//	dbg::SetDrawPhysicsCollisionEnable();
 
 	GraphicsEngine().GetShadowMap().SetLightDirection({ 0.707f, -0.707f, 0.0f });
 
