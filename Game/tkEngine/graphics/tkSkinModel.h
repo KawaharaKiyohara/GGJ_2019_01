@@ -138,6 +138,11 @@ namespace tkEngine{
 		{
 			m_isShadowCaster = flag;
 		}
+		
+		bool GetShadowCasterFlag()
+		{
+			return m_isShadowCaster;
+		}
 		/*!
 		* @brief	シャドウレシーバーのフラグを設定。
 		*@param[in]	flag	シャドウレシーバーのフラグ。
@@ -145,6 +150,11 @@ namespace tkEngine{
 		void SetShadowReceiverFlag(bool flag)
 		{
 			m_isShadowReceiver = flag;
+		}
+
+		bool GetShadowReceiver()
+		{
+			return m_isShadowReceiver;
 		}
 		/*!
 		 *@brief	ワールド行列を取得。
