@@ -24,8 +24,17 @@ bool Hawk::Start()
 	m_PlayerPos = m_bird->GetPosition();
 	m_PlayerPos.y += 50.0f;
 	
+	
 	m_skinModelRender->SetPosition(m_PlayerPos);
+	
+	m_HawkPos = m_PlayerPos + (MainCamera().GetRight() * 500);
+	
 
+	m_muki = m_PlayerPos - m_HawkPos;
+	m_muki.y = 0.0f; 
+	m_muki.Normalize();
+	m_rot.SetRotation({ 0.0f,0.0f,1.0 }, m_muki);
+	m_skinModelRender->SetRotation(m_rot);
 	
 	return true;
 }

@@ -24,5 +24,7 @@ private:
 	Enstate m_state = enState_Descent;
 	HawkGene* m_HawkGene = nullptr;
 	Hawk* m_Hawk = nullptr;
+	CQuaternion m_rot;
+	CVector3 m_muki = CVector3::Zero;
 };
 
