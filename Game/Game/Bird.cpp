@@ -51,6 +51,9 @@ void Bird::Update()
 {
 	if (!m_stop) {
 		AnimationController();
+		CQuaternion qRot;
+		qRot.SetRotationDeg(m_birdright, m_degreey);
+		m_rotation.Multiply(qRot);
 	}
 	if (m_charaCon.IsOnGround()) {
 		//’n–Ê‚É‚Â‚¢‚½B
@@ -59,9 +62,6 @@ void Bird::Update()
 	Sound();
 	m_charaCon.SetPosition(m_position);
 	m_skinModelRender->SetPosition(m_position);
-	CQuaternion qRot;
-	qRot.SetRotationDeg(m_birdright, m_degreey);
-	m_rotation.Multiply(qRot);
 	m_skinModelRender->SetRotation(m_rotation);
 }
 
