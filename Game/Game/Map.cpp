@@ -17,6 +17,11 @@ namespace {
 	/// マップのグリッド。
 	/// </summary>
 	const float MAP_GRID_SIZE = 1000.0f;
+	/// <summary>
+	/// 木の半径。
+	/// </summary>
+	const float TREE_RADIUS = 130.0f;
+	const float TREE_HEIGHT = 500.0f;
 }
 Map::Map()
 {
@@ -33,8 +38,9 @@ bool Map::Start()
 	int numTree_x = mapSize / MAP_GRID_SIZE;
 	int numTree_y = numTree_x;
 	int numTreeInstance = numTree_x * numTree_y;
-	//木の
+	//木のインスタンシングデータ用のメモリを確保するぜ。
 	m_allTreeInstancingData.resize(numTreeInstance);
+
 	//木はインスタンシング描画だっぜ。
 	m_treeRender = NewGO<prefab::CSkinModelRender>(0);
 	m_treeRender->Init(CmoFilePaths::TREE, nullptr, 0, enFbxUpAxisZ, numTreeInstance);
@@ -60,8 +66,7 @@ bool Map::Start()
 
 	for (int x = 0; x < numTree_x; x++) {
 		for (int y = 0; y < numTree_y; y++) {
-			int t = Random().GetRandInt() % 100;
-			
+			int t = Random().GetRandInt() % 100;	
 			int index = y * numTree_x + x;
 			auto& instancingData = m_allTreeInstancingData[index];
 			if (t < 10) {
@@ -81,6 +86,10 @@ bool Map::Start()
 			instancingData.pos.z += CMath::Lerp(Random().GetRandDouble(), MAP_GRID_SIZE * -0.3f, MAP_GRID_SIZE * 0.3f);
 			instancingData.rot = CQuaternion::Identity;
 			instancingData.scale = CVector3::One;
+			instancingData.phyStaticObject = std::make_unique<CPhysicsStaticObject>();
+			auto capsulePos = instancingData.pos;
+			capsulePos.y += TREE_HEIGHT * 0.3f;
+			instancingData.phyStaticObject->CreateCapsule(capsulePos, CQuaternion::Identity, TREE_RADIUS, TREE_HEIGHT);
 		}
 	}
 	return true;
