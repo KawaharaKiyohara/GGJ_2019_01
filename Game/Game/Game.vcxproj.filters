@@ -50,6 +50,9 @@
     <Filter Include="CutScene\GameStartCut">
       <UniqueIdentifier>{c2cdb06e-a346-446e-9c92-7cdb6f095736}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Title">
+      <UniqueIdentifier>{df2c632f-a1b8-484d-9a16-2ef9ae905bdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -82,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="AtkHawk.cpp">
       <Filter>Jammer</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="AtkHawk.h">
       <Filter>Jammer</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Title</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -175,5 +184,10 @@
     <MeshContentTask Include="Assets\modelData\hawk\hawkshadow.FBX">
       <Filter>Assets\modelData\hawk</Filter>
     </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\modelData\bg\bgSpec.png">
+      <Filter>Assets\modelData\bg</Filter>
+    </Image>
   </ItemGroup>
 </Project>
