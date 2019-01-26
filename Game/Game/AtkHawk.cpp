@@ -6,7 +6,7 @@
 AtkHawk::AtkHawk()
 {
 	m_bird = FindGO<Bird>(GameObjectNames::BIRD);
-	m_Hawk = FindGO<Hawk>(GameObjectNames::HAWK);
+	m_Hawk = FindGO<Hawk>(GameObjectNames::HAWK, false);
 }
 
 

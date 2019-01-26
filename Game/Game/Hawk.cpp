@@ -20,7 +20,7 @@ bool Hawk::Start()
 	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
-	
+	m_skinModelRender->SetDrawShadowOnly();
 	m_PlayerPos = m_bird->GetPosition();
 	m_PlayerPos.y += 50.0f;
 	

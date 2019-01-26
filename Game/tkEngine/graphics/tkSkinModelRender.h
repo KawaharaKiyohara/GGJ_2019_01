@@ -306,6 +306,10 @@ namespace prefab{
 			return nullptr;
 
 		}
+		void SetDrawShadowOnly()
+		{
+			m_skinModel.SetDrawShadowOnly();
+		}
 	private:
 		void ForwardRender(CRenderContext& rc) override final;
 		/*!

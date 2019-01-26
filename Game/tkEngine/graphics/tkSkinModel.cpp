@@ -94,7 +94,7 @@ namespace tkEngine{
 			return;
 		}
 		UpdateWorldMatrix(trans, rot, scale, enUpdateAxis);
-		if (isForwardRender == false) {
+		if (isForwardRender == false && m_isDrawShadowOnly == false) {
 			GraphicsEngine().GetGBufferRender().AddSkinModel(this);
 		}
 		if (m_isShadowCaster == true) {
