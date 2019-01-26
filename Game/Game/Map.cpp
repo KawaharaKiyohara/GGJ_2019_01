@@ -58,10 +58,14 @@ void Map::InitNest()
 
 void Map::InitGround()
 {
+	m_specMap.CreateFromDDSTextureFromFile(L"modelData/bg/bgSpec.dds");
 	//’n–Ê‚ğì¬B
 	m_groundRender = NewGO<prefab::CSkinModelRender>(0);
 	m_groundRender->Init(CmoFilePaths::GROUND);
 	m_groundRender->SetShadowReceiverFlag(true);
+	m_groundRender->FindMaterial([&](CModelEffect* mat) {
+		mat->SetSpecularMap(m_specMap);
+	});
 }
 
 void Map::InitTree()

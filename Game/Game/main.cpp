@@ -2,7 +2,7 @@
  *@brief	main.cpp
  */
 #include "stdafx.h"
-#include "Game.h"
+#include "Title.h"
 #include "Fade.h"
 
 namespace {
@@ -138,7 +138,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//エンジンを初期化。
 	if (Engine().Init(initParam) == true) {
 		NewGO<Fade>(16, GameObjectNames::FADE);
-		NewGO<Game>(0, nullptr);
+		NewGO<Title>(0, nullptr);
 		//ゲームループを実行。
 		Engine().RunGameLoop();
 	}

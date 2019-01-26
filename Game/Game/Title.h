@@ -6,5 +6,8 @@ public:
 	~Title();
 	void Update() override;
 	bool Start() override;
+private:
+	prefab::CFontRender* m_text = nullptr;
 };
+
 

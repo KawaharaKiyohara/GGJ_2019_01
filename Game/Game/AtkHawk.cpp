@@ -6,7 +6,7 @@
 AtkHawk::AtkHawk()
 {
 	m_bird = FindGO<Bird>(GameObjectNames::BIRD);
-	m_Hawk = FindGO<Hawk>(GameObjectNames::HAWK);
+	m_Hawk = FindGO<Hawk>(GameObjectNames::HAWK, false);
 }
 
 
@@ -31,7 +31,7 @@ bool AtkHawk::Start()
 
 	m_movespeed = m_oldbirdpos - m_HawkPos;
 	m_movespeed.Normalize();
-	m_movespeed *= 11;
+	m_movespeed *= 30;
 
 	return true;
 
@@ -52,6 +52,7 @@ void AtkHawk::Update()
 		break;
 	case AtkHawk::enState_Atk:
 		m_bird->Death();
+		DeleteGO(m_Hawk);
 		m_state = enState_return;
 		break;
 	case AtkHawk::enState_return:

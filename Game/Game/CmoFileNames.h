@@ -30,6 +30,7 @@ public:
 	/// ‘é‚Ìƒ‚ƒfƒ‹
 	/// </summary>
 	static constexpr wchar_t* HAWK = L"modelData/hawk/kariwasi.cmo";
+	static constexpr wchar_t* HAWKSHADOW = L"modelData/hawk/hawkshadow.cmo";
 	/// <summary>
 	/// ŽÖ
 	/// </summary>
