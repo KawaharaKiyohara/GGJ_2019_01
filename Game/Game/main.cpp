@@ -3,6 +3,7 @@
  */
 #include "stdafx.h"
 #include "Game.h"
+#include "Fade.h"
 
 namespace {
 	/*!
@@ -133,8 +134,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	GraphicsEngine().GetShadowMap().SetFar(1000.0f);
 	GraphicsEngine().GetShadowMap().SetNear(50.0f);
 
+	
 	//エンジンを初期化。
 	if (Engine().Init(initParam) == true) {
+		NewGO<Fade>(16, GameObjectNames::FADE);
 		NewGO<Game>(0, nullptr);
 		//ゲームループを実行。
 		Engine().RunGameLoop();

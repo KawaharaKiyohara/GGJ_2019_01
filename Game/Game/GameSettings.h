@@ -66,7 +66,15 @@ public:
 	/// <returns></returns>
 	static CVector3 GetGoalPosition()
 	{
-		return CVector3::Zero;
+		return m_goalPosition;
+	}
+	/// <summary>
+	/// ゴールの座標を設定する。
+	/// </summary>
+	/// <param name="pos"></param>
+	static void SetGoalPosition(CVector3 pos)
+	{
+		m_goalPosition = pos;
 	}
 private:
 	static int m_level;			//難易度。

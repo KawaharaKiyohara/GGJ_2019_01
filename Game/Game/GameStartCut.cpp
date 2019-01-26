@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameStartCut.h"
-
+#include "Fade.h"
 
 GameStartCut::GameStartCut()
 {
@@ -14,7 +14,7 @@ bool GameStartCut::Start()
 {
 	m_springCamera.Init(
 		MainCamera(),
-		1800.0f,
+		2200.0f,
 		false,
 		0.0f
 	);
@@ -32,17 +32,27 @@ void GameStartCut::Update()
 	switch (m_step) {
 	case enStep_AllView:
 		
-		if (m_timer > 13.0f) {
+		if (m_timer > 2.0f) {
 			auto target = m_startPosition + CVector3::AxisX * -1.0f;
 			m_springCamera.SetPosition(m_startPosition);
 			m_springCamera.SetTarget(target);
 			m_springCamera.SetDampingRate(1.0f);
-			m_step = enStep_ZoomIn;
+			
+			m_step = enStep_ZoomIn_0;
 		}
 		break;
-	case enStep_ZoomIn:
-		//ズームイン。
+	case enStep_ZoomIn_0:
 		if (m_timer > 5.0f) {
+			//ｆａｄｅ開始
+			FindGO<Fade>(GameObjectNames::FADE)->StartFade(
+				{ 0.0f, 0.0f, 0.0f, 1.0f }, 0.5f);
+			m_step = enStep_ZoomIn_1;
+		}
+		break;
+	case enStep_ZoomIn_1:
+		//ズームイン。
+		if (m_timer > 6.0f) {
+			m_startPosition.y = 0.0f;
 			GameSettings::SetStartPosition(m_startPosition);
 			DeleteGO(this);
 		}

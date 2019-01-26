@@ -43,4 +43,8 @@ public:
 	/// 餌
 	/// </summary>
 	static constexpr char* FEED = "餌";
+	/// <summary>
+	/// フェード
+	/// </summary>
+	static constexpr char* FADE = "ファード";
 };

@@ -43,6 +43,7 @@ namespace tkEngine{
 		{
 			return t0 + (t1 - t0)*rate;
 		}
+
 	};
 }
 

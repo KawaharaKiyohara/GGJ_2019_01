@@ -37,7 +37,7 @@ bool Bird::Start()
 	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
-	m_position = GameSettings::GetGoalPosition();
+	m_position = GameSettings::GetStartPosition();
 	//キャラクターコントローラーを初期化。
 	m_charaCon.Init(
 		20.0,			//半径。 
