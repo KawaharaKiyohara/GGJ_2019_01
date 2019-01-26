@@ -56,6 +56,16 @@ public:
 		m_state = enState_Damage;
 		m_life--;
 	}
+	//即死
+	void Death()
+	{
+		m_gameover = true;
+	}
+	//ゲームオーバーかどうか
+	void isGameOver()
+	{
+		return m_gameover;
+	}
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;
 	CVector3 m_position = { 00.0f,00.0f,0.0f };
@@ -103,6 +113,7 @@ private:
 	float m_walktime = 30.0f;
 	float m_eatingtime = 20.0f;
 	int m_life = 5;
+	bool m_gameover = false;
 	GameCamera* m_gamecamera = nullptr;
 	Feed* m_feed=nullptr;
 
