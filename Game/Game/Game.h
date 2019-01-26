@@ -33,6 +33,10 @@ private:
 	/// </summary>
 	void InitTestJammers();
 	/// <summary>
+	/// マップを構築する。
+	/// </summary>
+	void InitMap();
+
     /// ゲームカメラを初期化
     /// </summary>
 	void InitGameCamera();

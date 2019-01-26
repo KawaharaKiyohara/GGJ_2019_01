@@ -53,7 +53,7 @@ namespace {
 		initParam.graphicsConfing.shadowRenderConfig.isEnable = true;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 1024;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 1024;
-		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(15.0f);
+		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(50.0f);
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[0] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[1] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[2] = 0.002f;
@@ -65,7 +65,7 @@ namespace {
 		initParam.graphicsConfing.bloomConfig.isEnable = true;
 		//tonemap
 		initParam.graphicsConfing.tonemapConfig.isEnable = true;
-		initParam.graphicsConfing.tonemapConfig.luminance = 0.56f;
+		initParam.graphicsConfing.tonemapConfig.luminance = 0.38f;
 
 		//SSR
 		initParam.graphicsConfing.ssrConfig.isEnable = true;
@@ -88,7 +88,7 @@ namespace {
 		initParam.graphicsConfing.shadowRenderConfig.isEnable = true;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapWidth = 4096;
 		initParam.graphicsConfing.shadowRenderConfig.shadowMapHeight = 4096;
-		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(15.0f);
+		initParam.graphicsConfing.shadowRenderConfig.lightHeight = UnitM(50.0f);
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[0] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[1] = 0.001f;
 		initParam.graphicsConfing.shadowRenderConfig.depthOffset[2] = 0.002f;
@@ -100,7 +100,7 @@ namespace {
 		initParam.graphicsConfing.bloomConfig.isEnable = true;
 		//tonemap
 		initParam.graphicsConfing.tonemapConfig.isEnable = true;
-		initParam.graphicsConfing.tonemapConfig.luminance = 0.56f;
+		initParam.graphicsConfing.tonemapConfig.luminance = 0.38f;
 		//SSR
 		initParam.graphicsConfing.ssrConfig.isEnable = true;
 		//ÉfÉBÉU

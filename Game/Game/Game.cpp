@@ -4,7 +4,9 @@
 #include "Bird.h"
 #include "Hawk.h"
 #include "Snake.h"
+#include "Map.h"
 #include "GameCamera.h"
+
 Game::Game()
 {
 }
@@ -22,8 +24,8 @@ bool Game::Start()
 	//カメラを設定。
 	MainCamera().SetTarget({ 0.0f, 70.0f, 0.0f });
 	MainCamera().SetNear(10.0f);
-	MainCamera().SetFar(50000.0f);
-	MainCamera().SetPosition({ 400.0f, 300.0f, 0.0f });
+	MainCamera().SetFar(100000.0f);
+	MainCamera().SetPosition({ 10000.0f, 10000.0f, 0.0f });
 	MainCamera().Update();
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(CmoFilePaths::GROUND);
@@ -33,8 +35,15 @@ bool Game::Start()
 	dbg::SetDrawPhysicsCollisionEnable();
 
 	GraphicsEngine().GetShadowMap().SetLightDirection({ 0.707f, -0.707f, 0.0f });
+
+	//todo 難易度を仮決定。
+	//todo 最終的には、ステージ選択的な感じ？
+	GameSettings::SetLevel(0);
+
 	//ポストエフェクトを初期化する。
 	InitPostEffects();
+	//マップを構築する。
+	InitMap();
 	//空を作成。
 	InitSky();
 	//ディレクションライトを初期化。
@@ -46,6 +55,10 @@ bool Game::Start()
 	//カメラを初期化
 	InitGameCamera();
 	return true;
+}
+void Game::InitMap()
+{
+	NewGO<Map>(0, GameObjectNames::MAP);
 }
 void Game::InitBird()
 {
@@ -61,7 +74,7 @@ void Game::InitPostEffects()
 void Game::InitSky()
 {
 	auto sky = NewGO<prefab::CSky>(0, GameObjectNames::SKY);
-	sky->SetScale({ 5000.0f, 5000.0f, 5000.f });
+	sky->SetScale({ 50000.0f, 50000.0f, 50000.f });
 	
 }
 void Game::InitTestJammers()
@@ -73,7 +86,6 @@ void Game::InitTestJammers()
 	auto hawk = NewGO< Hawk>(0);
 
 	auto snake = NewGO<Snake>(0);
-
 }
 void Game::InitDirectionLight()
 {

@@ -1766,9 +1766,10 @@
     <ClCompile Include="Feed.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="Hawk.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MapGenerator.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -1798,8 +1799,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameObjectNames.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Hawk.h" />
-    <ClInclude Include="MapGenerator.h" />
+    <ClInclude Include="Map.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="stdafx.h" />
@@ -1816,6 +1818,11 @@
     <MeshContentTask Include="Assets\modelData\nest\karisu.FBX" />
     <MeshContentTask Include="Assets\modelData\snake\karihebi.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\kariki.FBX" />
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeBlue.FBX" />
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeGreen.FBX" />
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreePurple.FBX" />
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeRed.FBX" />
+    <MeshContentTask Include="Assets\modelData\tree\symbolTreeYellow.FBX" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

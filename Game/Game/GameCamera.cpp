@@ -17,7 +17,7 @@ bool GameCamera::Start()
 	//カメラのニアクリップとファークリップを設定する。
 	//ニアクリップとファークリップの間がカメラの映す範囲になる
 	MainCamera().SetNear(1.0f);     //ニアクリップ　カメラから近いほうの面
-	MainCamera().SetFar(45000.0f);  //ファークリップ　カメラから遠いほうの面
+	MainCamera().SetFar(100000.0f);  //ファークリップ　カメラから遠いほうの面
 	return true;
 }
 
