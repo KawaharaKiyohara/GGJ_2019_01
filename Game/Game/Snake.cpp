@@ -41,7 +41,7 @@ void Snake::Move() {
 	kyori.y = 0.0f;
 	kyori = kyori * 5;
 	//pos += kyori2;0
-	s_Speed = kyori * 40;
+	s_Speed = kyori * 30;
 	
 	kyori2 = syokipos - m_pos;
 	float len2 = kyori2.Length();
@@ -51,7 +51,7 @@ void Snake::Move() {
 		
 		m_pos = m_charaCon.Execute(s_Speed,GameTime().GetFrameDeltaTime());
 	}
-	else if (len2 > 400.0f) {
+	else if (len2 > 40.0f) {
 		kyori2.Normalize();
 		kyori2.y = 0.0f;
 		kyori2 = kyori2 * 5;
