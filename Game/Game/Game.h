@@ -32,9 +32,9 @@ private:
 	/// </summary>
 	void InitBird();
 	/// <summary>
-	/// ジャマーたちをテスト用に生成しとくか。
+	/// ジャマーたちを生成しとくか。
 	/// </summary>
-	void InitTestJammers();
+	void InitJammers();
 	/// <summary>
 	/// マップを構築する。
 	/// </summary>

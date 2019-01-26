@@ -36,17 +36,18 @@ bool Snake::Start()
 void Snake::Move() {
 	//モンスターがプレイヤーに近づく
 	kyori = bird->GetPosition() - m_pos;
+	float len = kyori.Length();
 	kyori.Normalize();
 	kyori.y = 0.0f;
 	kyori = kyori * 5;
 	//pos += kyori2;0
-	s_Speed += kyori;
+	s_Speed = kyori * 40;
 	
-	if (kyori.Length() < 2000.0f) {
+	if (len < 500.0f) {
 		
 		m_pos = m_charaCon.Execute(s_Speed,GameTime().GetFrameDeltaTime());
 	}
-	else if (kyori.Length() > 20.0f) {
+	else if (len > 20.0f) {
 
 	}
 	m_skinModelRender->SetPosition(m_pos);

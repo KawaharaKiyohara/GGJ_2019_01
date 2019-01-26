@@ -99,7 +99,7 @@ private:
 	float m_degree = 180.0f;
 	float m_radian = 0;
 	bool m_stop = false;
-	float m_multiply = 120.0f;
+	float m_multiply = 220.0f;
 	float m_damagetimer = 0.0f;
 	float m_blinktimer = 0.0f;
 	float m_eattime = 40.0f;
