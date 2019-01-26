@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "Hawk.h"
-
+#include "Bird.h"
 
 Hawk::Hawk()
 {
+	m_bird = FindGO<Bird>(GameObjectNames::BIRD);
 }
 
 
@@ -20,9 +21,10 @@ bool Hawk::Start()
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
 	
-	m_startpos = { -400.0f,350.0f,0.0f };
-
-	m_skinModelRender->SetPosition(m_startpos);
+	m_PlayerPos = m_bird->GetPosition();
+	m_ShadowPos += m_PlayerPos;
+	
+	m_skinModelRender->SetPosition(m_ShadowPos);
 	return true;
 }
 void Hawk::Update()

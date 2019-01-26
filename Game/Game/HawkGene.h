@@ -1,5 +1,6 @@
 #pragma once
 class Hawk;
+class AtkHawk;
 class HawkGene : public IGameObject
 {
 public:
@@ -11,7 +12,7 @@ private:
 	//影のほう
 	Hawk* m_Hawk1 = nullptr;
 	//本体
-	Hawk* m_Hawk2 = nullptr;
+	AtkHawk* m_Hawk2 = nullptr;
 	//現れるまでのカウント
 	int m_AppearCount = 0;
 	//影が出た後に本体が襲い掛かるまでのカウント
