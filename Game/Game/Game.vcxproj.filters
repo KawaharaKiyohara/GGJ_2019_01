@@ -158,4 +158,9 @@
       <Filter>Assets\modelData\feed</Filter>
     </MeshContentTask>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\fade.png">
+      <Filter>Assets\sprite</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

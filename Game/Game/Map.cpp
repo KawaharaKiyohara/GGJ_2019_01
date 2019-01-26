@@ -24,14 +24,47 @@ Map::~Map()
 	for (auto& symbolTreeRender : m_symboleTreeRender) {
 		DeleteGO(symbolTreeRender);
 	}
+	DeleteGO(m_nestRender);
 }
 bool Map::Start()
+{
+	//地面を初期化する、。
+	InitGround();
+	//木を初期化する。
+	InitTree();
+	//巣を作成。
+	InitNest();
+	return true;
+}
+void Map::InitNest()
+{
+	m_nestRender = NewGO<prefab::CSkinModelRender>(0);
+	m_nestRender->Init(CmoFilePaths::NEST);
+	m_nestRender->SetShadowCasterFlag(true);
+	m_nestRender->SetShadowReceiverFlag(true);
+	//巣の座標をランダムで決める。
+	int index = Random().GetRandInt() % m_allTreeInstancingData.size();
+	auto& instancingData = m_allTreeInstancingData[index];
+	auto pos = instancingData.pos;
+	pos.y += 2500.0f;
+	pos.z += 300.0f;
+	m_nestRender->SetPosition(pos);
+	CVector3 emissionColor = { 0.5764705882352941f, 0.32421875f, 0.16015625f };
+	emissionColor *= 20.0f;
+	m_nestRender->SetEmissionColor(emissionColor);
+	m_nestRender->SetScale({ 3.0f, 3.0f, 3.0f });
+	GameSettings::SetGoalPosition(pos);
+}
+void Map::InitGround()
 {
 	//地面を作成。
 	m_groundRender = NewGO<prefab::CSkinModelRender>(0);
 	m_groundRender->Init(CmoFilePaths::GROUND);
 	m_groundRender->SetShadowReceiverFlag(true);
+}
 
+void Map::InitTree()
+{
 	//ステージの難易度に応じて適当に木を生成する。
 	auto mapSize = GameSettings::GetMapSize();
 	//はやす木の数を決める。
@@ -55,18 +88,18 @@ bool Map::Start()
 
 	};
 	int symbolNo = 0;
-	for (auto& symbolTreeRender : m_symboleTreeRender){
+	for (auto& symbolTreeRender : m_symboleTreeRender) {
 		symbolTreeRender = NewGO<prefab::CSkinModelRender>(0);
 		symbolTreeRender->Init(symbolTreeFilePaths[symbolNo], nullptr, 0, enFbxUpAxisZ, numTreeInstance);
 		symbolTreeRender->SetShadowCasterFlag(true);
 		symbolTreeRender->SetShadowReceiverFlag(true);
 		symbolNo++;
 	}
-	
+
 
 	for (int x = 0; x < numTree_x; x++) {
 		for (int y = 0; y < numTree_y; y++) {
-			int t = Random().GetRandInt() % 100;	
+			int t = Random().GetRandInt() % 100;
 			int index = y * numTree_x + x;
 			auto& instancingData = m_allTreeInstancingData[index];
 			if (t < 10) {
@@ -76,7 +109,7 @@ bool Map::Start()
 			}
 			else {
 				//通常木
-				instancingData.skinModelRender = m_treeRender;				
+				instancingData.skinModelRender = m_treeRender;
 			}
 			instancingData.pos.x = (x % numTree_x) * MAP_GRID_SIZE - mapSize * 0.5f;
 			instancingData.pos.y = 0.0f;
@@ -92,7 +125,6 @@ bool Map::Start()
 			instancingData.phyStaticObject->CreateCapsule(capsulePos, CQuaternion::Identity, TREE_RADIUS, TREE_HEIGHT);
 		}
 	}
-	return true;
 }
 void Map::Update()
 {

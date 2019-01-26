@@ -18,7 +18,8 @@ private:
 	/// </summary>
 	enum EnStep {
 		enStep_AllView,		//全体を俯瞰中。
-		enStep_ZoomIn,		//スタート地点にズームイン。
+		enStep_ZoomIn_0,	//スタート地点にズームイン。
+		enStep_ZoomIn_1,	//スタート地点にズームイン。
 	};
 	CVector3 m_startPosition = CVector3::Zero;	//開始地点。
 	CSpringCamera m_springCamera;	//ばねカメラ。

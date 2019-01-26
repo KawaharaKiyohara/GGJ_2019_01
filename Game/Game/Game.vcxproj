@@ -1829,6 +1829,9 @@
     <MeshContentTask Include="Assets\modelData\tree\symbolTreeRed.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\symbolTreeYellow.FBX" />
   </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\fade.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />

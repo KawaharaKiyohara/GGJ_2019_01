@@ -8,7 +8,7 @@
 #include "GameCamera.h"
 #include "GameStartCut.h"
 #include "Feed.h"
-
+#include "Fade.h"
 
 Game::Game()
 {
@@ -52,6 +52,9 @@ bool Game::Start()
 	//ディレクションライトを初期化。
 	InitDirectionLight();
 
+	//フェードのインスタンスをキャッシュ。
+	m_fade = FindGO<Fade>(GameObjectNames::FADE);
+
 	return true;
 }
 void Game::InitGameStartCut()
@@ -68,6 +71,7 @@ void Game::InitGameStartCut()
 			InitGameCamera();
 			//餌を初期化
 			InitFeed();
+			m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 0.5f);
 			m_step = enStep_InGameGround;
 		}
 	});
@@ -125,7 +129,6 @@ void Game::Update()
 {
 	switch (m_step) {
 	case enStep_StartCut:
-		
 		break;
 	case enStep_InGameGround:
 		break;
