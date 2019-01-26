@@ -33,9 +33,45 @@ public:
 	{
 		return 5;
 	}
+	/// <summary>
+	/// マップのサイズを取得。
+	/// </summary>
+	/// <returns></returns>
+	static float GetMapSize() 
+	{
+		const float MAP_SIZE[GameSettings::GetNumLevel()] = {
+			10000.0f,
+			20000.0f,
+			30000.0f,
+			40000.0f,
+			50000.0f,
+		};
+		return MAP_SIZE[GetLevel()];
+	}
+	static void SetStartPosition(CVector3 pos)
+	{
+		m_startPosition = pos;
+	}
+	/// <summary>
+	/// ゲーム開始座標取得。
+	/// </summary>
+	/// <returns></returns>
+	static CVector3 GetStartPosition()
+	{
+		return m_startPosition;
+	}
+	/// <summary>
+	/// ゴール座標。
+	/// </summary>
+	/// <returns></returns>
+	static CVector3 GetGoalPosition()
+	{
+		return CVector3::Zero;
+	}
 private:
 	static int m_level;			//難易度。
-	
+	static CVector3 m_startPosition;	//ゲーム開始座標。
+	static CVector3 m_goalPosition;		//ゴール座標。
 };
 
 

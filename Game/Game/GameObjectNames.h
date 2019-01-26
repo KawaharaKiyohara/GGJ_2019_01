@@ -7,6 +7,10 @@
 class GameObjectNames {
 public:
 	/// <summary>
+	/// ゲームスタートカット。
+	/// </summary>
+	static constexpr char* GAME_START_CUT = "ゲームスタートカット";
+	/// <summary>
 	/// ディレクションライト
 	/// </summary>
 	static constexpr char* DIRECTION_LIGHT = "ディレクションライト";

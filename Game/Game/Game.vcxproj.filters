@@ -44,6 +44,12 @@
     <Filter Include="Assets\modelData\feed">
       <UniqueIdentifier>{30b8092c-cd49-4e72-9c48-1ce0db375a13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CutScene">
+      <UniqueIdentifier>{86a7ff0b-d530-4726-b4ea-443a402955c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CutScene\GameStartCut">
+      <UniqueIdentifier>{c2cdb06e-a346-446e-9c92-7cdb6f095736}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -66,6 +72,10 @@
     <ClCompile Include="Feed.cpp">
       <Filter>Bird</Filter>
     </ClCompile>
+    <ClCompile Include="GameStartCut.cpp">
+      <Filter>CutScene\GameStartCut</Filter>
+    </ClCompile>
+    <ClCompile Include="Fade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -92,6 +102,10 @@
     <ClInclude Include="Feed.h">
       <Filter>Bird</Filter>
     </ClInclude>
+    <ClInclude Include="GameStartCut.h">
+      <Filter>CutScene\GameStartCut</Filter>
+    </ClInclude>
+    <ClInclude Include="Fade.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">

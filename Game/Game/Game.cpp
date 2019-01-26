@@ -6,7 +6,10 @@
 #include "Snake.h"
 #include "Map.h"
 #include "GameCamera.h"
+#include "GameStartCut.h"
 #include "Feed.h"
+
+
 Game::Game()
 {
 }
@@ -18,6 +21,7 @@ Game::~Game()
 	DeleteGOs(GameObjectNames::SKY);
 	DeleteGO(GameObjectNames::BIRD);
 	DeleteGO(GameObjectNames::HAWK);
+	DeleteGO(GameObjectNames::GAME_START_CUT);
 }
 bool Game::Start()
 {
@@ -27,10 +31,7 @@ bool Game::Start()
 	MainCamera().SetFar(100000.0f);
 	MainCamera().SetPosition({ 10000.0f, 10000.0f, 0.0f });
 	MainCamera().Update();
-	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(CmoFilePaths::GROUND);
-	m_skinModelRender->SetShadowReceiverFlag(true);
-	m_bgPhyStaticObject.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_skinModelRender);
+	
 	//コリジョンのデバッグ表示を有効に。
 //	dbg::SetDrawPhysicsCollisionEnable();
 
@@ -40,6 +41,8 @@ bool Game::Start()
 	//todo 最終的には、ステージ選択的な感じ？
 	GameSettings::SetLevel(0);
 
+	//ゲーム開始カットの作成。
+	InitGameStartCut();
 	//ポストエフェクトを初期化する。
 	InitPostEffects();
 	//マップを構築する。
@@ -48,15 +51,26 @@ bool Game::Start()
 	InitSky();
 	//ディレクションライトを初期化。
 	InitDirectionLight();
-	//鳥を初期化。
-	InitBird();
-	//ジャマーをテスト用に生成しておく。
-	InitTestJammers();
-	//カメラを初期化
-	InitGameCamera();
-	//餌を初期化
-	InitFeed();
+
 	return true;
+}
+void Game::InitGameStartCut()
+{
+	auto go = NewGO<GameStartCut>(0, GameObjectNames::GAME_START_CUT);
+	go->AddEventListener([&](IGameObject::SEventParam& eventParam) {
+		if (eventParam.eEvent == IGameObject::enEvent_Destroy) {
+			//ゲームスタートカットが終わったので、実行ステップをインゲームにする。
+			//鳥を初期化。
+			InitBird();
+			//ジャマーをテスト用に生成しておく。
+			InitTestJammers();
+			//カメラを初期化
+			InitGameCamera();
+			//餌を初期化
+			InitFeed();
+			m_step = enStep_InGameGround;
+		}
+	});
 }
 void Game::InitMap()
 {
@@ -109,4 +123,16 @@ void Game::InitFeed()
 
 void Game::Update()
 {
+	switch (m_step) {
+	case enStep_StartCut:
+		
+		break;
+	case enStep_InGameGround:
+		break;
+	case enStep_InGameSky:
+		//クリア判定。
+		break;
+	case enStep_GameClearCut:
+		break;
+	}
 }
