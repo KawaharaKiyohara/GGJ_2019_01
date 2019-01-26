@@ -141,10 +141,14 @@ void Game::Update()
 	case enStep_StartCut:
 		break;
 	case enStep_InGameGround:
+		if (m_bird->isAdult()) {
+			m_step = enStep_InGameSky;
+		}
 		break;
 	case enStep_InGameSky:
-		if ((m_bird->GetPosition() - GameSettings::GetGoalPosition()).Length() <= 100.0f) {
+		if (( m_bird->GetPosition() - GameSettings::GetGoalPosition()).Length()<= 200.0f) {
 			m_step = enStep_GameClearCut;
+			m_bird->SetStop();
 		}
 		break;
 	case enStep_GameClearCut:

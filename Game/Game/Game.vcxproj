@@ -1762,6 +1762,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AtkHawk.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="Feed.cpp" />
@@ -1770,6 +1771,7 @@
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="GameStartCut.cpp" />
     <ClCompile Include="Hawk.cpp" />
+    <ClCompile Include="HawkGene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Snake.cpp" />
@@ -1796,6 +1798,7 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AtkHawk.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="CmoFileNames.h" />
     <ClInclude Include="Fade.h" />
@@ -1806,6 +1809,7 @@
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameStartCut.h" />
     <ClInclude Include="Hawk.h" />
+    <ClInclude Include="HawkGene.h" />
     <ClInclude Include="Map.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="Snake.h" />
