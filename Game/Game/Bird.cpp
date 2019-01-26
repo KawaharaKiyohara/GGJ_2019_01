@@ -4,6 +4,8 @@
 #define _USE_MATH_DEFINES //M_PI 円周率呼び出し
 #include <math.h> 		
 #include "Feed.h"
+#include "GameSettings.h"
+
 Bird::Bird()
 {
 }
@@ -35,6 +37,7 @@ bool Bird::Start()
 	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
+	m_position = GameSettings::GetStartPosition();
 	//キャラクターコントローラーを初期化。
 	m_charaCon.Init(
 		20.0,			//半径。 
@@ -43,6 +46,7 @@ bool Bird::Start()
 	);
 	return true;
 }
+
 void Bird::Update()
 {
 	AnimationController();
@@ -60,52 +64,71 @@ void Bird::Update()
 
 void Bird::Move()
 {
-	//左スティックの入力量を取得
-	CVector3 stickL;
-	//ダメージを受けているとき、ゲームオーバーの時、ゲームクリアの時は右スティックの入力を無効にする
-	if (m_state == enState_GameOver || m_state == enState_Eat) {
-		stickL.x = 0.0f;
-		stickL.y = 0.0f;
+	if (m_adult) {
+		m_movespeed = MainCamera().GetForward()*m_multiply;
 	}
 	else {
-		stickL.y = Pad(0).GetLStickYF();
-		stickL.x = -Pad(0).GetLStickXF();	//アナログスティックの入力量を取得。
+		//左スティックの入力量を取得
+		CVector3 stickL;
+		//ダメージを受けているとき、ゲームオーバーの時、ゲームクリアの時は右スティックの入力を無効にする
+		if (m_state == enState_GameOver || m_state == enState_Eat) {
+			stickL.x = 0.0f;
+			stickL.y = 0.0f;
+		}
+		else {
+			stickL.y = Pad(0).GetLStickYF();
+			stickL.x = -Pad(0).GetLStickXF();	//アナログスティックの入力量を取得。
+		}
+		//左スティック
+		//スティックの左右入力の処理
+		m_movespeed.z = 0.0f;
+		m_movespeed.x = 0.0f;
+		m_movespeed.z = +sin(m_radian)*stickL.x * m_multiply;
+		m_movespeed.x = -cos(m_radian)*stickL.x * m_multiply;
+		//スティックの上下入力の処理
+		m_movespeed.z += cos(m_radian)*stickL.y * m_multiply;
+		m_movespeed.x += sin(m_radian)*stickL.y * m_multiply;
+		//重力
+		//m_movespeed.y -= 800.0f *GameTime().GetFrameDeltaTime();
+		//キャラクターコントローラーを使用して、座標を更新。
 	}
-	//左スティック
-	//スティックの左右入力の処理
-	m_movespeed.z = 0.0f;
-	m_movespeed.x = 0.0f;
-	m_movespeed.z = +sin(m_radian)*stickL.x * m_multiply;
-	m_movespeed.x = -cos(m_radian)*stickL.x * m_multiply;
-	//スティックの上下入力の処理
-	m_movespeed.z += cos(m_radian)*stickL.y * m_multiply;
-	m_movespeed.x += sin(m_radian)*stickL.y * m_multiply;
-	//重力
-	//m_movespeed.y -= 800.0f *GameTime().GetFrameDeltaTime();
-	//キャラクターコントローラーを使用して、座標を更新。
 	m_position = m_charaCon.Execute(m_movespeed, GameTime().GetFrameDeltaTime());
 }
 
 void Bird::Turn()
 {
-	m_gamecamera = FindGO<GameCamera>(GameObjectNames::CAMERA);
-	if (m_gamecamera == nullptr) {
-		return;
+	if (m_adult) {
+		//左スティックの入力量を取得
+		CVector3 stickL;
+		stickL.y = Pad(0).GetLStickYF();
+		stickL.x = -Pad(0).GetLStickXF();	//アナログスティックの入力量を取得。
+			//自機の角度の差分
+		float sdegree = 0.0f;
+		sdegree = -stickL.x * 2.0f;
+		//回転処理
+		m_degree += sdegree;
+		m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
 	}
-	CVector3 rotation = { 0.0f,0.0f,0.0f };
-	//自機の角度の差分
-	float sdegree = 0.0f;
-	m_radian = M_PI / 180 * m_degree;
-	//右スティック
-	CVector2 stickR;
-	stickR.x = -Pad(0).GetRStickXF();	//アナログスティックのxの入力量を取得。
-	stickR.y = Pad(0).GetRStickYF();
-	//向き
-	//右スティック
-	sdegree = -stickR.x * 2.0f;
-	//回転処理
-	m_degree += sdegree;
-	m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
+	else {
+		m_gamecamera = FindGO<GameCamera>(GameObjectNames::CAMERA);
+		if (m_gamecamera == nullptr) {
+			return;
+		}
+		CVector3 rotation = { 0.0f,0.0f,0.0f };
+		//自機の角度の差分
+		float sdegree = 0.0f;
+		m_radian = M_PI / 180 * m_degree;
+		//右スティック
+		CVector2 stickR;
+		stickR.x = -Pad(0).GetRStickXF();	//アナログスティックのxの入力量を取得。
+		stickR.y = Pad(0).GetRStickYF();
+		//向き
+		//右スティック
+		sdegree = -stickR.x * 2.0f;
+		//回転処理
+		m_degree += sdegree;
+		m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
+	}
 	CVector3 moveSpeedXZ = { 0.0f,0.0f,1.0f };
 	m_rotation.Multiply(moveSpeedXZ);
 	m_player_heikou = moveSpeedXZ;
@@ -236,6 +259,7 @@ void Bird::AnimationController()
 				if (m_feed != nullptr) {
 					DeleteGO(m_feed);
 					m_feed = nullptr;
+					m_feedcount++;
 				}
 				m_degreey += 1.0f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);
@@ -256,3 +280,4 @@ void Bird::AnimationController()
 		break;
 	}
 }
+
