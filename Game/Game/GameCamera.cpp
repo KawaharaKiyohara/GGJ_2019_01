@@ -44,8 +44,8 @@ void GameCamera::TPS()
 		stickR.z = 0.0f;
 		//右スティックの入力
 		//右スティック
-		m_sdegreexz = -stickR.x * 2.0f;
-		m_sdegreey = -stickR.y*2.0f;
+		m_sdegreexz = -stickR.x * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
+		m_sdegreey = -stickR.y * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
 	}
 	else {
 		CVector3 stickL;
@@ -54,8 +54,8 @@ void GameCamera::TPS()
 		stickL.z = 0.0f;
 		//右スティックの入力
 		//右スティック
-		m_sdegreexz = -stickL.x * 2.0f;
-		m_sdegreey = -stickL.y*2.0f;
+		m_sdegreexz = -stickL.x * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
+		m_sdegreey = -stickL.y*2.0f*30.0f*GameTime().GetFrameDeltaTime();
 	}
 	//回転度加算
 	m_degreexz += m_sdegreexz;

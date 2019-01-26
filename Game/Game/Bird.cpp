@@ -65,7 +65,7 @@ void Bird::Update()
 void Bird::Move()
 {
 	if (m_adult) {
-		m_movespeed = MainCamera().GetForward()*m_multiply;
+		m_movespeed = MainCamera().GetForward()*m_multiply*60.0f*GameTime().GetFrameDeltaTime();
 	}
 	else {
 		//左スティックの入力量を取得
@@ -88,6 +88,7 @@ void Bird::Move()
 		//スティックの上下入力の処理
 		m_movespeed.z += cos(m_radian)*stickL.y * m_multiply;
 		m_movespeed.x += sin(m_radian)*stickL.y * m_multiply;
+		m_movespeed.y = 0.0f;
 		//重力
 		//m_movespeed.y -= 800.0f *GameTime().GetFrameDeltaTime();
 		//キャラクターコントローラーを使用して、座標を更新。
@@ -104,7 +105,7 @@ void Bird::Turn()
 		stickL.x = -Pad(0).GetLStickXF();	//アナログスティックの入力量を取得。
 			//自機の角度の差分
 		float sdegree = 0.0f;
-		sdegree = -stickL.x * 2.0f;
+		sdegree = -stickL.x * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
 		//回転処理
 		m_degree += sdegree;
 		m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
@@ -124,7 +125,7 @@ void Bird::Turn()
 		stickR.y = Pad(0).GetRStickYF();
 		//向き
 		//右スティック
-		sdegree = -stickR.x * 2.0f;
+		sdegree = -stickR.x * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
 		//回転処理
 		m_degree += sdegree;
 		m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
@@ -175,6 +176,14 @@ void Bird::Animation()
 	/*if (Pad(0).IsTrigger(enButtonY)) {
 		m_state = enState_Eat;
 	}*/
+	if (Pad(0).IsTrigger(enButtonY)) {
+		if (m_adult) {
+			m_adult = false;
+		}
+		else {
+			m_adult = true;
+		}
+	}
 	QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
 		CVector3 pos = feed->GetPosition() - m_position;
 		if (pos.Length() <= 70.0f) {
@@ -252,7 +261,7 @@ void Bird::AnimationController()
 		if (m_eattime >= m_eattimer) {
 			CQuaternion qRot;
 			if (m_eattimer * 2 >= m_eattime) {
-				m_degreey -= 1.0f;
+				m_degreey -= 1.8f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);
 			}
 			else {
@@ -261,7 +270,7 @@ void Bird::AnimationController()
 					m_feed = nullptr;
 					m_feedcount++;
 				}
-				m_degreey += 1.0f;
+				m_degreey += 1.8f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);
 			}
 			m_eattimer += 60.0f* GameTime().GetFrameDeltaTime();
