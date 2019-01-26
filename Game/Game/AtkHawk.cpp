@@ -50,7 +50,7 @@ void AtkHawk::Update()
 		}
 		break;
 	case AtkHawk::enState_Atk:
-
+		m_bird->Death();
 		m_state = enState_return;
 		break;
 	case AtkHawk::enState_return:
