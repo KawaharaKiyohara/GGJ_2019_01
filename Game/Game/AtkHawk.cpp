@@ -30,9 +30,15 @@ bool AtkHawk::Start()
 	m_oldbirdpos = m_Hawk->m_PlayerPos;
 
 	m_movespeed = m_oldbirdpos - m_HawkPos;
+	m_muki = m_movespeed;
 	m_movespeed.Normalize();
+	
 	m_movespeed *= 30;
 
+	m_muki.y = 0.0f;
+ 	m_muki.Normalize();
+	m_rot.SetRotation({ 0.0f,0.0f,1.0 }, m_muki);
+	m_skinModelRender->SetRotation(m_rot);
 	return true;
 
 }
