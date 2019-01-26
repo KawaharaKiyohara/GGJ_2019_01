@@ -1814,6 +1814,7 @@
     <MeshContentTask Include="Assets\modelData\bg\ground.fbx" />
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX" />
     <MeshContentTask Include="Assets\modelData\bird\torikariS.FBX" />
+    <MeshContentTask Include="Assets\modelData\feed\kariesa.FBX" />
     <MeshContentTask Include="Assets\modelData\hawk\kariwasi.FBX" />
     <MeshContentTask Include="Assets\modelData\nest\karisu.FBX" />
     <MeshContentTask Include="Assets\modelData\snake\karihebi.FBX" />
