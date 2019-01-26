@@ -5,6 +5,8 @@
 #include "tkEngine/character/tkCharacterController.h"
 
 class Fade;
+class Bird;
+
 class Game : public IGameObject
 {
 public:
@@ -62,5 +64,6 @@ private:
 	};
 	Fade* m_fade = nullptr;				//ｆａｄｅ。
 	EnStep m_step = enStep_StartCut;	//ゲームステップ。
+	Bird* m_bird;						//プレイヤー
 };
 

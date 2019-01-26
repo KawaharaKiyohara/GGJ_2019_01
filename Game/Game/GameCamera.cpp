@@ -37,14 +37,26 @@ void GameCamera::Update()
 
 void GameCamera::TPS()
 {
-	CVector3 stickR;
-	stickR.x = -Pad(0).GetRStickXF();	//アナログスティックのxの入力量を取得。
-	stickR.y = Pad(0).GetRStickYF();	//アナログスティックのxの入力量を取得。
-	stickR.z = 0.0f;
-	//右スティックの入力
-	//右スティック
-	m_sdegreexz = -stickR.x * 2.0f;
-	m_sdegreey = -stickR.y*2.0f;
+	if (!m_bird->isAdult()) {
+		CVector3 stickR;
+		stickR.x = -Pad(0).GetRStickXF();	//アナログスティックのxの入力量を取得。
+		stickR.y = Pad(0).GetRStickYF();	//アナログスティックのxの入力量を取得。
+		stickR.z = 0.0f;
+		//右スティックの入力
+		//右スティック
+		m_sdegreexz = -stickR.x * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
+		m_sdegreey = -stickR.y * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
+	}
+	else {
+		CVector3 stickL;
+		stickL.x = -Pad(0).GetLStickXF();	//アナログスティックのxの入力量を取得。
+		stickL.y = Pad(0).GetLStickYF();	//アナログスティックのxの入力量を取得。
+		stickL.z = 0.0f;
+		//右スティックの入力
+		//右スティック
+		m_sdegreexz = -stickL.x * 2.0f*30.0f*GameTime().GetFrameDeltaTime();
+		m_sdegreey = -stickL.y*2.0f*30.0f*GameTime().GetFrameDeltaTime();
+	}
 	//回転度加算
 	m_degreexz += m_sdegreexz;
 	m_degreey += m_sdegreey;

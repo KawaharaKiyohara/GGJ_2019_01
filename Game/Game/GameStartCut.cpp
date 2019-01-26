@@ -52,6 +52,7 @@ void GameStartCut::Update()
 	case enStep_ZoomIn_1:
 		//ズームイン。
 		if (m_timer > 6.0f) {
+			m_startPosition.y = 0.0f;
 			GameSettings::SetStartPosition(m_startPosition);
 			DeleteGO(this);
 		}

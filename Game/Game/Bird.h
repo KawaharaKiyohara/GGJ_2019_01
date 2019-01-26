@@ -44,6 +44,11 @@ public:
 	{
 		return m_state == enState_Eat;
 	}
+	//ê¨ëÃÇ©Ç«Ç§Ç©
+	bool isAdult() const
+	{
+		return m_adult;
+	}
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;
 	CVector3 m_position = { 00.0f,00.0f,0.0f };
@@ -84,6 +89,8 @@ private:
 	float m_eattimer = 0.0f;
 	float m_degreey = 0.0f;
 	bool m_eat = false;
+	bool m_adult = false;
+	int m_feedcount = 0;
 	GameCamera* m_gamecamera = nullptr;
 	Feed* m_feed=nullptr;
 
