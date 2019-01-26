@@ -4,7 +4,7 @@
 #include "Bird.h"
 #include "Hawk.h"
 #include "Snake.h"
-
+#include "HawkGene.h"
 Game::Game()
 {
 }
@@ -72,7 +72,6 @@ void Game::InitTestJammers()
 	auto hawk = NewGO< Hawk>(0);
 
 	auto snake = NewGO<Snake>(0);
-
 }
 void Game::InitDirectionLight()
 {

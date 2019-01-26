@@ -1,12 +1,9 @@
 #pragma once
-/// <summary>
-/// ‘é
-/// </summary>
-class Hawk : public IGameObject
+class AtkHawk : public IGameObject
 {
 public:
-	Hawk();
-	~Hawk();
+	AtkHawk();
+	~AtkHawk();
 	bool Start() override;
 	void Update() override;
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;

@@ -1762,9 +1762,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AtkHawk.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Hawk.cpp" />
+    <ClCompile Include="HawkGene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="Snake.cpp" />
@@ -1790,11 +1792,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AtkHawk.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="CmoFileNames.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjectNames.h" />
     <ClInclude Include="Hawk.h" />
+    <ClInclude Include="HawkGene.h" />
     <ClInclude Include="MapGenerator.h" />
     <CLInclude Include="resource.h" />
     <ClInclude Include="Snake.h" />
