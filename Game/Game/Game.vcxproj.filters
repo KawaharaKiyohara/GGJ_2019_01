@@ -172,5 +172,8 @@
     <MeshContentTask Include="Assets\modelData\feed\kariesa.FBX">
       <Filter>Assets\modelData\feed</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\hawk\hawkshadow.FBX">
+      <Filter>Assets\modelData\hawk</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>
