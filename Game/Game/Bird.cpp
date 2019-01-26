@@ -173,23 +173,12 @@ void Bird::Turn()
 
 void Bird::Sound()
 {
-	/*if (m_eating) {
+	if (m_eating) {
 		prefab::CSoundSource* ss;
 		ss = NewGO<prefab::CSoundSource>(0);
 		ss->Init(L"sound/eat.wav");
 		ss->Play(false);
 		m_eating = false;
-	}*/
-	if (m_state == enState_Eat) {
-		if (m_soundtimer >= m_eatingtime) {
-			prefab::CSoundSource* ss;
-			ss = NewGO<prefab::CSoundSource>(0);
-			ss->Init(L"sound/eat.wav");
-			ss->Play(false);
-			m_eating = false;
-			m_soundtimer = 0.0f;
-		}
-		m_soundtimer += 30.0f*GameTime().GetFrameDeltaTime();
 	}
 	else if (m_state == enState_Walk) {
 		if (m_soundtimer >= m_walktime) {
