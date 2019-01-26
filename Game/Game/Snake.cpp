@@ -26,7 +26,7 @@ bool Snake::Start()
 		100.0f,			//çÇÇ≥ÅB
 		m_pos		//èâä˙à íuÅB
 	);
-	//pos = m_pos;
+	syokipos = m_pos;
 	bird = FindGO<Bird>(GameObjectNames::BIRD);
 	//timer = FindGO<Timer>(0);
 
@@ -43,12 +43,19 @@ void Snake::Move() {
 	//pos += kyori2;0
 	s_Speed = kyori * 40;
 	
+	kyori2 = syokipos - m_pos;
+	float len2 = kyori2.Length();
+
+
 	if (len < 500.0f) {
 		
 		m_pos = m_charaCon.Execute(s_Speed,GameTime().GetFrameDeltaTime());
 	}
-	else if (len > 20.0f) {
-
+	else if (len2 > 400.0f) {
+		kyori2.Normalize();
+		kyori2.y = 0.0f;
+		kyori2 = kyori2 * 5;
+		s_Speed = kyori2 * 800;
 	}
 	m_skinModelRender->SetPosition(m_pos);
 }

@@ -22,9 +22,9 @@ bool Hawk::Start()
 	m_skinModelRender->SetShadowReceiverFlag(true);
 	m_skinModelRender->SetDrawShadowOnly();
 	m_PlayerPos = m_bird->GetPosition();
-	m_ShadowPos += m_PlayerPos;
+	m_PlayerPos.y += 50.0f;
 	
-	m_skinModelRender->SetPosition(m_ShadowPos);
+	m_skinModelRender->SetPosition(m_PlayerPos);
 	return true;
 }
 void Hawk::Update()
