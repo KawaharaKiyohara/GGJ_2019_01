@@ -110,6 +110,9 @@ private:
 	bool m_adult = false;
 	int m_adultcondions = 5;
 	int m_feedcount = 0;
+	bool m_large = false;
+	float m_largetimer = 0.0f;
+	float m_largetime = 15.0f;
 	float m_soundtimer = 0.0f;
 	float m_walktime = 30.0f;
 	float m_eatingtime = 20.0f;

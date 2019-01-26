@@ -9,11 +9,11 @@ public:
 	/// <summary>
 	/// 子供の鳥のcmoファイルのパス。
 	/// </summary>
-	static constexpr wchar_t* CHILD_BIRD = L"modelData/bird/torikariS.cmo";
+	static constexpr wchar_t* CHILD_BIRD = L"modelData/bird/bordC.cmo";
 	/// <summary>
 	/// 大人の鳥のcmoファイルのパス。
 	/// </summary>
-	static constexpr wchar_t* BIRD = L"modelData/bird/torikariB.cmo";
+	static constexpr wchar_t* BIRD = L"modelData/bird/bordA.cmo";
 	/// <summary>
 	/// 大量生産の木のモデル
 	/// </summary>
