@@ -115,6 +115,11 @@ namespace prefab{
 		{
 			m_skinModel.SetShadowCasterFlag(flag);
 		}
+
+		bool GetShadowCaster()
+		{
+			return m_skinModel.GetShadowCasterFlag();
+		}
 		/*!
 		* @brief	シャドウレシーバーのフラグを設定。
 		* @details
