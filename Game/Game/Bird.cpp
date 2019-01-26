@@ -68,7 +68,7 @@ void Bird::Update()
 void Bird::Move()
 {
 	if (m_adult) {
-		m_movespeed = MainCamera().GetForward() * m_multiply * 60.0f * GameTime().GetFrameDeltaTime();
+		m_movespeed = MainCamera().GetForward() * m_multiply * 80.0f * GameTime().GetFrameDeltaTime();
 	}
 	else {
 		//左スティックの入力量を取得
@@ -216,7 +216,7 @@ void Bird::Animation()
 	}
 	QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
 		CVector3 pos = feed->GetPosition() - m_position;
-		if (pos.Length() <= 70.0f) {
+		if (pos.LengthSq() <= 70.0f * 70.0f) {
 			m_state = enState_Eat;
 			m_feed = feed;
 			return false;

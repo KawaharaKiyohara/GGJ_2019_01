@@ -1832,6 +1832,7 @@
     <MeshContentTask Include="Assets\modelData\nest\karisu.FBX" />
     <MeshContentTask Include="Assets\modelData\snake\karihebi.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\kariki.FBX" />
+    <MeshContentTask Include="Assets\modelData\tree\ki.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\symbolTreeBlue.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\symbolTreeGreen.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\symbolTreePurple.FBX" />

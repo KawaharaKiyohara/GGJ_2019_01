@@ -17,7 +17,7 @@ public:
 	/// <summary>
 	/// 大量生産の木のモデル
 	/// </summary>
-	static constexpr wchar_t* TREE = L"modelData/tree/kariki.cmo";
+	static constexpr wchar_t* TREE = L"modelData/tree/ki.cmo";
 	/// <summary>
 	/// シンボルになる木(赤)のモデル。
 	/// </summary>

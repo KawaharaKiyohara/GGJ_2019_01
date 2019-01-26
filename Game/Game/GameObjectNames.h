@@ -27,6 +27,10 @@ public:
 	/// </summary>
 	static constexpr char* HAWK = "‘é";
 	/// <summary>
+	/// ‘é¶¬‹@
+	/// </summary>
+	static constexpr char* HAWK_GENE = "‘é¶¬‹@";
+	/// <summary>
 	/// ÖB
 	/// </summary>
 	static constexpr char* SNAKE = "Ö";

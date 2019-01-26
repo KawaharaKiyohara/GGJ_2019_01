@@ -7,7 +7,7 @@ namespace {
 	/// <summary>
 	/// マップのグリッド。
 	/// </summary>
-	const float MAP_GRID_SIZE = 1000.0f;
+	const float MAP_GRID_SIZE = 1400.0f;
 	/// <summary>
 	/// 木の半径。
 	/// </summary>
@@ -107,7 +107,7 @@ void Map::InitTree()
 			int t = Random().GetRandInt() % 100;
 			int index = y * numTree_x + x;
 			auto& instancingData = m_allTreeInstancingData[index];
-			if (t < 10) {
+			if (t < 20) {
 				//5%の確率でシンボル木を作成する。
 				int symbolNo = Random().GetRandInt() % NUM_SYMBOL_TREE;
 				instancingData.skinModelRender = m_symboleTreeRender[symbolNo];

@@ -139,7 +139,9 @@
     <ImageContentTask Include="Assets\sprite\dummy.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\fade.png" />
+    <ImageContentTask Include="Assets\sprite\fade.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX">
@@ -183,6 +185,9 @@
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\hawk\hawkshadow.FBX">
       <Filter>Assets\modelData\hawk</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\ki.FBX">
+      <Filter>Assets\modelData\tree</Filter>
     </MeshContentTask>
   </ItemGroup>
   <ItemGroup>

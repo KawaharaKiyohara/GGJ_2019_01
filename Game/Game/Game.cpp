@@ -20,8 +20,8 @@ Game::~Game()
 	DeleteGOs(GameObjectNames::DIRECTION_LIGHT);
 	DeleteGOs(GameObjectNames::SKY);
 	DeleteGO(GameObjectNames::BIRD);
-	DeleteGO(GameObjectNames::HAWK);
-	DeleteGO(GameObjectNames::GAME_START_CUT);
+	DeleteGO(GameObjectNames::HAWK_GENE);
+	DeleteGO(GameObjectNames::CAMERA);
 }
 bool Game::Start()
 {
@@ -38,12 +38,7 @@ bool Game::Start()
 	lightDir.Normalize();
 	GraphicsEngine().GetShadowMap().SetLightDirection(lightDir);
 
-	//todo 難易度を仮決定。
-	//todo 最終的には、ステージ選択的な感じ？
-	GameSettings::SetLevel(0);
 
-	//ゲーム開始カットの作成。
-	InitGameStartCut();
 	//ポストエフェクトを初期化する。
 	InitPostEffects();
 	//マップを構築する。
@@ -55,7 +50,7 @@ bool Game::Start()
 
 	//フェードのインスタンスをキャッシュ。
 	m_fade = FindGO<Fade>(GameObjectNames::FADE);
-
+	m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 1.0f);
 	return true;
 }
 void Game::InitGameStartCut()
@@ -108,7 +103,7 @@ void Game::InitJammers()
 	//コンパイラ構文から型を推論します。
 	//hawkの型はHawk*、snakeの型はSnake*です。
 	//鷹
-	auto hawk = NewGO<HawkGene>(0);
+	auto hawk = NewGO<HawkGene>(0, GameObjectNames::HAWK_GENE);
 
 	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
 
@@ -153,6 +148,12 @@ void Game::InitFeed()
 void Game::Update()
 {
 	switch (m_step) {
+	case enStep_WaitFadeIn:
+		if (!m_fade->IsFade()) {
+			InitGameStartCut();
+			m_step = enStep_StartCut;
+		}
+		break;
 	case enStep_StartCut:
 		break;
 	case enStep_InGameGround:
@@ -167,6 +168,18 @@ void Game::Update()
 		}
 		break;
 	case enStep_GameClearCut:
+		//todo カリカリカリとりあえずｆａｄｅアウトして次。
+		m_fade->StartFade({0.0f, 0.0f, 0.0f, 1.0f}, 1.0f);
+		m_step = enStep_GameClearWaitFade;
+		break;
+	case enStep_GameClearWaitFade:
+		if (!m_fade->IsFade()) {
+			//ｆａｄｅが終わった
+			int level = GameSettings::GetLevel() + 1;
+			GameSettings::SetLevel(level);
+			DeleteGO(this);
+			NewGO<Game>(0);
+		}
 		break;
 	}
 }
