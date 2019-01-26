@@ -255,6 +255,13 @@ namespace tkEngine{
 		{
 			return m_shadowCaster;
 		}
+		/// <summary>
+		/// 影を落とすだけのモデルにする。
+		/// </summary>
+		void SetDrawShadowOnly()
+		{
+			m_isDrawShadowOnly = true;
+		}
 	private:
 		/*!
 		*@brief バウンディングボックスの初期化。
@@ -290,5 +297,6 @@ namespace tkEngine{
 		OnDrawFookFunction m_preDrawFookFunction = nullptr;		//描画の直前に呼ばれるフック関数。
 		OnDrawFookFunction m_postDrawFookFunction = nullptr;	//描画が終わった後で呼ばれるフック関数。
 		CVector3 m_emissionColor = CVector3::Zero;				//自己発光カラー。
+		bool m_isDrawShadowOnly = false;
 	};
 }

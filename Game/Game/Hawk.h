@@ -1,5 +1,6 @@
 #pragma once
 class Bird;
+class AtkHawk;
 /// <summary>
 /// ‘é
 /// </summary>
@@ -16,5 +17,7 @@ private:
 	
 	CVector3 m_ShadowPos = {-400.0f, 350.0f, 0.0f};
 	Bird* m_bird = nullptr;
+	AtkHawk* m_AtkHawk = nullptr;
+	int kierucount = 0;
 };
 

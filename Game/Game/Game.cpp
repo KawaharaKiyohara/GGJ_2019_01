@@ -75,6 +75,7 @@ void Game::InitGameStartCut()
 			postEffect::Dof().Enable();
 			postEffect::Dof().SetDofRangeParam(0, 150, 600, 1800);
 			postEffect::Dof().SetBokeLuminance(0.6f);
+			postEffect::Dof().SetHexaBokeRadius(3.0f);
 			m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 0.5f);
 			m_step = enStep_InGameGround;
 		}
