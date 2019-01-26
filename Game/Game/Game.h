@@ -40,10 +40,14 @@ private:
     /// ゲームカメラを初期化
     /// </summary>
 	void InitGameCamera();
+
 	/// <summary>
 	/// ゲーム開始カット演出を作成。
 	/// </summary>
 	void InitGameStartCut();
+	/// 餌を初期化
+    /// </summary>
+	void InitFeed();
 private:
 	/// <summary>
 	/// ゲームステップ。

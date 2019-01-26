@@ -7,6 +7,8 @@
 #include "Map.h"
 #include "GameCamera.h"
 #include "GameStartCut.h"
+#include "Feed.h"
+
 
 Game::Game()
 {
@@ -49,7 +51,7 @@ bool Game::Start()
 	InitSky();
 	//ディレクションライトを初期化。
 	InitDirectionLight();
-	
+
 	return true;
 }
 void Game::InitGameStartCut()
@@ -64,6 +66,8 @@ void Game::InitGameStartCut()
 			InitTestJammers();
 			//カメラを初期化
 			InitGameCamera();
+			//餌を初期化
+			InitFeed();
 			m_step = enStep_InGameGround;
 		}
 	});
@@ -110,6 +114,11 @@ void Game::InitDirectionLight()
 void Game::InitGameCamera()
 {
 	NewGO<GameCamera>(0, GameObjectNames::CAMERA);
+}
+
+void Game::InitFeed()
+{
+	NewGO<Feed>(0, GameObjectNames::FEED);
 }
 
 void Game::Update()

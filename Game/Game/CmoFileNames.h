@@ -42,5 +42,8 @@ public:
 	/// ’n–Ê
 	/// </summary>
 	static constexpr wchar_t* GROUND = L"modelData/bg/ground.cmo";
-	
+	/// <summary>
+	/// ‰a
+	/// </summary>
+	static constexpr wchar_t* FEED = L"modelData/feed/kariesa.cmo";
 };
