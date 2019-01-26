@@ -62,7 +62,7 @@ public:
 		m_gameover = true;
 	}
 	//ゲームオーバーかどうか
-	void isGameOver()
+	bool isGameOver()
 	{
 		return m_gameover;
 	}
