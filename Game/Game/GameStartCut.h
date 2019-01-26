@@ -25,5 +25,6 @@ private:
 	CSpringCamera m_springCamera;	//ばねカメラ。
 	float m_timer = 0.0f;			//タイマー(単位：秒)
 	EnStep m_step = enStep_AllView;	//全体を俯瞰中。
+	prefab::CSoundSource* m_bgm = nullptr;	//BGM
 };
 

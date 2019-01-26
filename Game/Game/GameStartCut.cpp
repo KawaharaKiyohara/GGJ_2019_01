@@ -8,6 +8,7 @@ GameStartCut::GameStartCut()
 
 GameStartCut::~GameStartCut()
 {
+	DeleteGO(m_bgm);
 }
 
 bool GameStartCut::Start()
@@ -23,6 +24,9 @@ bool GameStartCut::Start()
 	m_startPosition.x = CMath::Lerp(Random().GetRandDouble(), -halfMapSize, halfMapSize);
 	m_startPosition.y = 200.0f;
 	m_startPosition.z = CMath::Lerp(Random().GetRandDouble(), -halfMapSize, halfMapSize);
+	m_bgm = NewGO<prefab::CSoundSource>(0);
+	m_bgm->Init(L"sound/GameStartCutBGM.wav");
+	m_bgm->Play(true);
 	return true;
 }
 
@@ -42,6 +46,8 @@ void GameStartCut::Update()
 		}
 		break;
 	case enStep_ZoomIn_0:
+		m_bgm->SetVolume(1.0f - min(1.0f, m_timer / 5.0f));
+
 		if (m_timer > 5.0f) {
 			//ÇÜÇÅÇÑÇÖäJén
 			FindGO<Fade>(GameObjectNames::FADE)->StartFade(
