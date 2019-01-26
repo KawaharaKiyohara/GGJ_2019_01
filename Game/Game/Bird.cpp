@@ -3,7 +3,7 @@
 #include "GameCamera.h"
 #define _USE_MATH_DEFINES //M_PI 円周率呼び出し
 #include <math.h> 		
-
+#include "Feed.h"
 Bird::Bird()
 {
 }
@@ -63,7 +63,7 @@ void Bird::Move()
 	//左スティックの入力量を取得
 	CVector3 stickL;
 	//ダメージを受けているとき、ゲームオーバーの時、ゲームクリアの時は右スティックの入力を無効にする
-	if (m_state == enState_Damage || m_state == enState_GameOver || m_state == enState_Eat) {
+	if (m_state == enState_GameOver || m_state == enState_Eat) {
 		stickL.x = 0.0f;
 		stickL.y = 0.0f;
 	}
@@ -149,9 +149,18 @@ void Bird::Animation()
 	if (Pad(0).IsTrigger(enButtonX)) {
 		m_state = enState_Damage;
 	}
-	if (Pad(0).IsTrigger(enButtonY)) {
+	/*if (Pad(0).IsTrigger(enButtonY)) {
 		m_state = enState_Eat;
-	}
+	}*/
+	QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
+		CVector3 pos = feed->GetPosition() - m_position;
+		if (pos.Length() <= 70.0f) {
+			m_state = enState_Eat;
+			m_feed = feed;
+			return false;
+		}
+		return true;
+	});
 }
 
 void Bird::AnimationController()
@@ -224,12 +233,17 @@ void Bird::AnimationController()
 				qRot.SetRotationDeg(m_birdright, m_degreey);
 			}
 			else {
+				if (m_feed != nullptr) {
+					DeleteGO(m_feed);
+					m_feed = nullptr;
+				}
 				m_degreey += 1.0f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);
 			}
 			m_eattimer += 60.0f* GameTime().GetFrameDeltaTime();
 		}
 		else {
+			m_eat = false;
 			m_eattimer = 0.0f;
 			if (m_movespeed.LengthSq() > 40.0f * 40.0f) {
 				m_state = enState_Walk;

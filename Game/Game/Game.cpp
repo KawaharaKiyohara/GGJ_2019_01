@@ -6,7 +6,7 @@
 #include "Snake.h"
 #include "Map.h"
 #include "GameCamera.h"
-
+#include "Feed.h"
 Game::Game()
 {
 }
@@ -54,6 +54,8 @@ bool Game::Start()
 	InitTestJammers();
 	//ƒJƒƒ‰‚ğ‰Šú‰»
 	InitGameCamera();
+	//‰a‚ğ‰Šú‰»
+	InitFeed();
 	return true;
 }
 void Game::InitMap()
@@ -98,6 +100,11 @@ void Game::InitDirectionLight()
 void Game::InitGameCamera()
 {
 	NewGO<GameCamera>(0, GameObjectNames::CAMERA);
+}
+
+void Game::InitFeed()
+{
+	NewGO<Feed>(0, GameObjectNames::FEED);
 }
 
 void Game::Update()

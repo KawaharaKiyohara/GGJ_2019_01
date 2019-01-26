@@ -32,8 +32,11 @@ public:
 	/// </summary>
 	static constexpr char* MAP = "マップ";
 
-	///カメラ
+	/// カメラ
 	/// </summary>
 	static constexpr char* CAMERA = "カメラ";
 
+	/// 餌
+	/// </summary>
+	static constexpr char* FEED = "餌";
 };

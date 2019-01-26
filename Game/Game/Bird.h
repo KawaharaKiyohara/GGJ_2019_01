@@ -1,6 +1,7 @@
 #pragma once
 #include "tkEngine/physics/tkPhysicsGhostObject.h"
 class GameCamera;
+class Feed;
 class Bird : public IGameObject
 {
 public:
@@ -76,13 +77,15 @@ private:
 	float m_degree = 180.0f;
 	float m_radian = 0;
 	bool m_stop = false;
-	float m_multiply = 60.0f;
+	float m_multiply = 80.0f;
 	float m_damagetimer = 0.0f;
 	float m_blinktimer = 0.0f;
-	float m_eattime = 60.0f;
+	float m_eattime = 40.0f;
 	float m_eattimer = 0.0f;
 	float m_degreey = 0.0f;
+	bool m_eat = false;
 	GameCamera* m_gamecamera = nullptr;
+	Feed* m_feed=nullptr;
 
 };
 

@@ -40,6 +40,10 @@ private:
     /// ゲームカメラを初期化
     /// </summary>
 	void InitGameCamera();
+
+	/// 餌を初期化
+    /// </summary>
+	void InitFeed();
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;		//スキンモデルレンダラー。
 	CPhysicsStaticObject m_bgPhyStaticObject;
