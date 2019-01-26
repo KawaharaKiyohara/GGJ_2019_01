@@ -223,6 +223,9 @@ void Bird::Animation()
 		}
 		return true;
 	});
+	if (m_state != enState_Eat) {
+		m_degreey = 0.0f;
+	}
 }
 
 void Bird::AnimationController()
