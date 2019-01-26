@@ -50,6 +50,7 @@ void AtkHawk::Update()
 		}
 		break;
 	case AtkHawk::enState_Atk:
+
 		m_state = enState_return;
 		break;
 	case AtkHawk::enState_return:
