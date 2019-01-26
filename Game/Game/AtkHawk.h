@@ -1,6 +1,7 @@
 #pragma once
 class Bird;
 class HawkGene;
+class Hawk;
 class AtkHawk : public IGameObject
 {
 public:
@@ -22,5 +23,6 @@ private:
 	};
 	Enstate m_state = enState_Descent;
 	HawkGene* m_HawkGene = nullptr;
+	Hawk* m_Hawk = nullptr;
 };
 
