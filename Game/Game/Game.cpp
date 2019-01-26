@@ -5,6 +5,7 @@
 #include "Hawk.h"
 #include "Snake.h"
 #include "Map.h"
+#include "GameCamera.h"
 
 Game::Game()
 {
@@ -51,7 +52,8 @@ bool Game::Start()
 	InitBird();
 	//ジャマーをテスト用に生成しておく。
 	InitTestJammers();
-
+	//カメラを初期化
+	InitGameCamera();
 	return true;
 }
 void Game::InitMap()
@@ -84,7 +86,6 @@ void Game::InitTestJammers()
 	auto hawk = NewGO< Hawk>(0);
 
 	auto snake = NewGO<Snake>(0);
-
 }
 void Game::InitDirectionLight()
 {
@@ -93,6 +94,12 @@ void Game::InitDirectionLight()
 	dirLig->SetColor({ 0.8f, 0.8f, 0.8f, 1.0f });
 
 }
+
+void Game::InitGameCamera()
+{
+	NewGO<GameCamera>(0, GameObjectNames::CAMERA);
+}
+
 void Game::Update()
 {
 }

@@ -36,6 +36,10 @@ private:
 	/// マップを構築する。
 	/// </summary>
 	void InitMap();
+
+    /// ゲームカメラを初期化
+    /// </summary>
+	void InitGameCamera();
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;		//スキンモデルレンダラー。
 	CPhysicsStaticObject m_bgPhyStaticObject;
