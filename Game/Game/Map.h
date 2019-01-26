@@ -22,6 +22,10 @@ private:
 	/// 巣を初期化する。
 	/// </summary>
 	void InitNest();
+	/// <summary>
+	/// 餌を初期化する。
+	/// </summary>
+	void InitFeed();
 private:
 	static constexpr int	NUM_SYMBOL_TREE = 5; //シンボルツリーの数。
 	prefab::CSkinModelRender* m_treeRender = nullptr; //普通の木のレンダラー。

@@ -55,6 +55,7 @@ void Map::InitNest()
 	m_nestRender->SetScale({ 3.0f, 3.0f, 3.0f });
 	GameSettings::SetGoalPosition(pos);
 }
+
 void Map::InitGround()
 {
 	//’n–Ê‚ğì¬B

@@ -10,7 +10,6 @@
 #include "Feed.h"
 #include "Fade.h"
 
-#include "HawkGene.h"
 Game::Game()
 {
 }
@@ -104,10 +103,9 @@ void Game::InitTestJammers()
 	//コンパイラ構文から型を推論します。
 	//hawkの型はHawk*、snakeの型はSnake*です。
 	//鷹
-	//auto hawk = NewGO< Hawk>(0);
+	auto hawk = NewGO< Hawk>(0);
 
-	//auto snake = NewGO<Snake>(0);
-	auto hawkgene = NewGO<HawkGene>(0);
+	auto snake = NewGO<Snake>(0);
 }
 void Game::InitDirectionLight()
 {
@@ -124,7 +122,17 @@ void Game::InitGameCamera()
 
 void Game::InitFeed()
 {
-	NewGO<Feed>(0, GameObjectNames::FEED);
+	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
+	//マップサイズに比例して餌の数を決める。
+	int numFeed = mapHalfSize * 0.2f;
+	for (int i = 0; i < numFeed; i++) {
+		auto feed = NewGO<Feed>(0, GameObjectNames::FEED);
+		auto pos = CVector3::Zero;
+		pos.x = CMath::Lerp(Random().GetRandDouble(), mapHalfSize, -mapHalfSize);
+		pos.y = 0.0f;
+		pos.z = CMath::Lerp(Random().GetRandDouble(), mapHalfSize, -mapHalfSize);
+		feed->SetPosition(pos);
+	}
 }
 
 void Game::Update()
