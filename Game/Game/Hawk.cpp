@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Hawk.h"
 #include "Bird.h"
-
+#include "AtkHawk.h"
 Hawk::Hawk()
 {
 	m_bird = FindGO<Bird>(GameObjectNames::BIRD);
@@ -25,8 +25,17 @@ bool Hawk::Start()
 	m_PlayerPos.y += 50.0f;
 	
 	m_skinModelRender->SetPosition(m_PlayerPos);
+
+	
 	return true;
 }
 void Hawk::Update()
 {
+	kierucount++;
+	
+	if (kierucount == 50) {
+		m_AtkHawk = NewGO<AtkHawk>(0);
+	}
+
+	
 }
