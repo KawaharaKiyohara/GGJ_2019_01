@@ -41,6 +41,9 @@
     <Filter Include="Map">
       <UniqueIdentifier>{4b2a5f97-a925-44db-8a23-5b61e13a895c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\modelData\feed">
+      <UniqueIdentifier>{30b8092c-cd49-4e72-9c48-1ce0db375a13}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -60,6 +63,9 @@
       <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="Feed.cpp">
+      <Filter>Bird</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -83,6 +89,9 @@
       <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="Feed.h">
+      <Filter>Bird</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -130,6 +139,9 @@
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\tree\symbolTreeYellow.FBX">
       <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\feed\kariesa.FBX">
+      <Filter>Assets\modelData\feed</Filter>
     </MeshContentTask>
   </ItemGroup>
 </Project>

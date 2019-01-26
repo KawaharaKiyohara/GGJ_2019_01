@@ -38,9 +38,14 @@ public:
 	{
 		return m_birdback;
 	}
+	//êHéñíÜÇ©Ç«Ç§Ç©Çï‘Ç∑
+	bool GetEat() const
+	{
+		return m_state == enState_Eat;
+	}
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;
-	CVector3 m_position = { 00.0f,100.0f,0.0f };
+	CVector3 m_position = { 00.0f,00.0f,0.0f };
 	CVector3 m_movespeed = { 0.0f,0.0f,0.0f };
 	CQuaternion m_rotation = CQuaternion::Identity;
 	CQuaternion m_rotation2 = CQuaternion::Identity;
@@ -71,9 +76,12 @@ private:
 	float m_degree = 180.0f;
 	float m_radian = 0;
 	bool m_stop = false;
-	float m_multiply = 40.0f;
+	float m_multiply = 60.0f;
 	float m_damagetimer = 0.0f;
 	float m_blinktimer = 0.0f;
+	float m_eattime = 60.0f;
+	float m_eattimer = 0.0f;
+	float m_degreey = 0.0f;
 	GameCamera* m_gamecamera = nullptr;
 
 };

@@ -1763,6 +1763,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="Feed.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameSettings.cpp" />
@@ -1794,6 +1795,7 @@
   <ItemGroup>
     <ClInclude Include="Bird.h" />
     <ClInclude Include="CmoFileNames.h" />
+    <ClInclude Include="Feed.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameObjectNames.h" />
@@ -1812,6 +1814,7 @@
     <MeshContentTask Include="Assets\modelData\bg\ground.fbx" />
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX" />
     <MeshContentTask Include="Assets\modelData\bird\torikariS.FBX" />
+    <MeshContentTask Include="Assets\modelData\feed\kariesa.FBX" />
     <MeshContentTask Include="Assets\modelData\hawk\kariwasi.FBX" />
     <MeshContentTask Include="Assets\modelData\nest\karisu.FBX" />
     <MeshContentTask Include="Assets\modelData\snake\karihebi.FBX" />
