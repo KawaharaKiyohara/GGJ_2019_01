@@ -66,7 +66,7 @@ void Game::InitGameStartCut()
 			//鳥を初期化。
 			InitBird();
 			//ジャマーをテスト用に生成しておく。
-			InitTestJammers();
+			InitJammers();
 			//カメラを初期化
 			InitGameCamera();
 			//餌を初期化
@@ -97,7 +97,7 @@ void Game::InitSky()
 	sky->SetScale({ 50000.0f, 50000.0f, 50000.f });
 	
 }
-void Game::InitTestJammers()
+void Game::InitJammers()
 {
 	//autoはC++11で追加された型推論という機能です。
 	//コンパイラ構文から型を推論します。
@@ -105,7 +105,17 @@ void Game::InitTestJammers()
 	//鷹
 	auto hawk = NewGO< Hawk>(0);
 
-	auto snake = NewGO<Snake>(0);
+	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
+
+	int numSnake = mapHalfSize * 0.01f;
+	for (int i = 0; i < numSnake; i++) {
+		auto snake = NewGO<Snake>(0);
+		snake->m_pos = CVector3::Zero;
+		snake->m_pos.x = CMath::Lerp(Random().GetRandDouble(), mapHalfSize, -mapHalfSize);
+		snake->m_pos.y = 0.0f;
+		snake->m_pos.z = CMath::Lerp(Random().GetRandDouble(), mapHalfSize, -mapHalfSize);
+	}
+	
 }
 void Game::InitDirectionLight()
 {
@@ -124,7 +134,7 @@ void Game::InitFeed()
 {
 	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
 	//マップサイズに比例して餌の数を決める。
-	int numFeed = mapHalfSize * 0.2f;
+	int numFeed = mapHalfSize * 0.01f;
 	for (int i = 0; i < numFeed; i++) {
 		auto feed = NewGO<Feed>(0, GameObjectNames::FEED);
 		auto pos = CVector3::Zero;
