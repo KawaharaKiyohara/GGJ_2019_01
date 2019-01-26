@@ -58,6 +58,7 @@
     <ClCompile Include="MapGenerator.cpp">
       <Filter>Map</Filter>
     </ClCompile>
+    <ClCompile Include="GameCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -79,6 +80,7 @@
     <ClInclude Include="MapGenerator.h">
       <Filter>Map</Filter>
     </ClInclude>
+    <ClInclude Include="GameCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">

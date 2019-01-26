@@ -1764,6 +1764,7 @@
   <ItemGroup>
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Hawk.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
@@ -1793,6 +1794,7 @@
     <ClInclude Include="Bird.h" />
     <ClInclude Include="CmoFileNames.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameObjectNames.h" />
     <ClInclude Include="Hawk.h" />
     <ClInclude Include="MapGenerator.h" />

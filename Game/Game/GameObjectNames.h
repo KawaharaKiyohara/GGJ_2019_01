@@ -26,4 +26,8 @@ public:
 	/// ÖB
 	/// </summary>
 	static constexpr char* SNAKE = "Ö";
+	/// <summary>
+	///ƒJƒƒ‰
+	/// </summary>
+	static constexpr char* CAMERA = "ƒJƒƒ‰";
 };
