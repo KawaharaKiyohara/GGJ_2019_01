@@ -3,7 +3,7 @@
 #include "tkEngine/graphics/effect/tkEffect.h"
 #include "tkEngine/physics/tkPhysicsGhostObject.h"
 #include "tkEngine/character/tkCharacterController.h"
-
+class Bird;
 class Game : public IGameObject
 {
 public:
@@ -60,5 +60,6 @@ private:
 		enStep_GameClearCut,	//ゲームクリアカット。
 	};
 	EnStep m_step = enStep_StartCut;	//ゲームステップ。
+	Bird* m_bird;						//プレイヤー
 };
 

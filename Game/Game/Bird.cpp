@@ -4,6 +4,8 @@
 #define _USE_MATH_DEFINES //M_PI 円周率呼び出し
 #include <math.h> 		
 #include "Feed.h"
+#include "GameSettings.h"
+
 Bird::Bird()
 {
 }
@@ -35,6 +37,7 @@ bool Bird::Start()
 	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
+	m_position = GameSettings::GetGoalPosition();
 	//キャラクターコントローラーを初期化。
 	m_charaCon.Init(
 		20.0,			//半径。 
@@ -256,6 +259,7 @@ void Bird::AnimationController()
 				if (m_feed != nullptr) {
 					DeleteGO(m_feed);
 					m_feed = nullptr;
+					m_feedcount++;
 				}
 				m_degreey += 1.0f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);

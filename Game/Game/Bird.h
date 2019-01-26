@@ -89,7 +89,8 @@ private:
 	float m_eattimer = 0.0f;
 	float m_degreey = 0.0f;
 	bool m_eat = false;
-	bool m_adult = m_adult;
+	bool m_adult = false;
+	int m_feedcount = 0;
 	GameCamera* m_gamecamera = nullptr;
 	Feed* m_feed=nullptr;
 

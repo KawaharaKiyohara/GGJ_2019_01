@@ -78,7 +78,7 @@ void Game::InitMap()
 }
 void Game::InitBird()
 {
-	NewGO<Bird>(0, GameObjectNames::BIRD);
+	m_bird = NewGO<Bird>(0, GameObjectNames::BIRD);
 }
 void Game::InitPostEffects()
 {
@@ -130,7 +130,9 @@ void Game::Update()
 	case enStep_InGameGround:
 		break;
 	case enStep_InGameSky:
-		//ƒNƒŠƒA”»’èB
+		if ((m_bird->GetPosition() - GameSettings::GetGoalPosition()).Length() <= 100.0f) {
+			m_step = enStep_GameClearCut;
+		}
 		break;
 	case enStep_GameClearCut:
 		break;
