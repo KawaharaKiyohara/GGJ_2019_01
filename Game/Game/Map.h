@@ -9,6 +9,7 @@ public:
 	~Map();
 	bool Start() override;
 	void Update() override;
+
 private:
 	static constexpr int	NUM_SYMBOL_TREE = 5; //シンボルツリーの数。
 	prefab::CSkinModelRender* m_treeRender = nullptr; //普通の木のレンダラー。
@@ -22,7 +23,8 @@ private:
 		CQuaternion rot;
 		CVector3 scale;
 		prefab::CSkinModelRender* skinModelRender = nullptr;
+		std::unique_ptr<CPhysicsStaticObject> phyStaticObject;
 	};
-	std::vector< SInstancingData> m_allTreeInstancingData;	//全ての木用のインスタンシングデータ。
+	std::vector< SInstancingData> m_allTreeInstancingData;			//全ての木用のインスタンシングデータ。
 };
 
