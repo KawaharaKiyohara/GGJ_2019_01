@@ -14,6 +14,7 @@ public:
 	void AnimationController();
 	void Move();
 	void Animation();
+	void Sound();
 	//プレイヤーの座標を設定
 	void SetPosition(const CVector3& pos)
 	{
@@ -25,7 +26,7 @@ public:
 		return m_position;
 	}
 	//プレイヤーを停止させる
-	void Stop()
+	void SetStop()
 	{
 		m_stop = true;
 	}
@@ -48,6 +49,11 @@ public:
 	bool isAdult() const
 	{
 		return m_adult;
+	}
+	//ダメージ
+	void Damage()
+	{
+		m_life--;
 	}
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;
@@ -82,15 +88,20 @@ private:
 	float m_degree = 180.0f;
 	float m_radian = 0;
 	bool m_stop = false;
-	float m_multiply = 80.0f;
+	float m_multiply = 120.0f;
 	float m_damagetimer = 0.0f;
 	float m_blinktimer = 0.0f;
 	float m_eattime = 40.0f;
 	float m_eattimer = 0.0f;
 	float m_degreey = 0.0f;
 	bool m_eat = false;
+	bool m_eating = false;
 	bool m_adult = false;
 	int m_feedcount = 0;
+	float m_soundtimer = 0.0f;
+	float m_walktime = 30.0f;
+	float m_eatingtime = 20.0f;
+	int m_life = 5;
 	GameCamera* m_gamecamera = nullptr;
 	Feed* m_feed=nullptr;
 

@@ -49,11 +49,14 @@ bool Bird::Start()
 
 void Bird::Update()
 {
-	AnimationController();
+	if (!m_stop) {
+		AnimationController();
+	}
 	if (m_charaCon.IsOnGround()) {
 		//’n–Ê‚É‚Â‚¢‚½B
 		m_movespeed.y = 0.0f;
 	}
+	Sound();
 	m_charaCon.SetPosition(m_position);
 	m_skinModelRender->SetPosition(m_position);
 	CQuaternion qRot;
@@ -168,14 +171,49 @@ void Bird::Turn()
 	m_skinModelRender->SetRotation(m_rotation);*/
 }
 
+void Bird::Sound()
+{
+	/*if (m_eating) {
+		prefab::CSoundSource* ss;
+		ss = NewGO<prefab::CSoundSource>(0);
+		ss->Init(L"sound/eat.wav");
+		ss->Play(false);
+		m_eating = false;
+	}*/
+	if (m_state == enState_Eat) {
+		if (m_soundtimer >= m_eatingtime) {
+			prefab::CSoundSource* ss;
+			ss = NewGO<prefab::CSoundSource>(0);
+			ss->Init(L"sound/eat.wav");
+			ss->Play(false);
+			m_eating = false;
+			m_soundtimer = 0.0f;
+		}
+		m_soundtimer += 30.0f*GameTime().GetFrameDeltaTime();
+	}
+	else if (m_state == enState_Walk) {
+		if (m_soundtimer >= m_walktime) {
+			prefab::CSoundSource* ss;
+			ss = NewGO<prefab::CSoundSource>(0);
+			ss->Init(L"sound/cry.wav");
+			ss->Play(false);
+			m_soundtimer = 0.0f;
+		}
+		m_soundtimer += 30.0f*GameTime().GetFrameDeltaTime();
+	}
+	else {
+		m_soundtimer = 0.0f;
+	}
+}
+
 void Bird::Animation()
 {
 	if (Pad(0).IsTrigger(enButtonX)) {
 		m_state = enState_Damage;
 	}
-	/*if (Pad(0).IsTrigger(enButtonY)) {
+	if (Pad(0).IsTrigger(enButtonA)) {
 		m_state = enState_Eat;
-	}*/
+	}
 	if (Pad(0).IsTrigger(enButtonY)) {
 		if (m_adult) {
 			m_adult = false;
@@ -261,15 +299,16 @@ void Bird::AnimationController()
 		if (m_eattime >= m_eattimer) {
 			CQuaternion qRot;
 			if (m_eattimer * 2 >= m_eattime) {
-				m_degreey -= 1.8f;
-				qRot.SetRotationDeg(m_birdright, m_degreey);
-			}
-			else {
 				if (m_feed != nullptr) {
 					DeleteGO(m_feed);
 					m_feed = nullptr;
 					m_feedcount++;
+					m_eating = true;
 				}
+				m_degreey -= 1.8f;
+				qRot.SetRotationDeg(m_birdright, m_degreey);
+			}
+			else {
 				m_degreey += 1.8f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);
 			}
