@@ -59,6 +59,9 @@
       <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="Feed.cpp">
+      <Filter>Bird</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -81,6 +84,9 @@
       <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="Feed.h">
+      <Filter>Bird</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">

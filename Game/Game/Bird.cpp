@@ -52,6 +52,10 @@ void Bird::Update()
 	}
 	m_charaCon.SetPosition(m_position);
 	m_skinModelRender->SetPosition(m_position);
+	CQuaternion qRot;
+	qRot.SetRotationDeg(m_birdright, m_degreey);
+	m_rotation.Multiply(qRot);
+	m_skinModelRender->SetRotation(m_rotation);
 }
 
 void Bird::Move()
@@ -102,7 +106,6 @@ void Bird::Turn()
 	//‰ñ“]ˆ—
 	m_degree += sdegree;
 	m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
-	m_skinModelRender->SetRotation(m_rotation);
 	CVector3 moveSpeedXZ = { 0.0f,0.0f,1.0f };
 	m_rotation.Multiply(moveSpeedXZ);
 	m_player_heikou = moveSpeedXZ;
@@ -145,6 +148,9 @@ void Bird::Animation()
 {
 	if (Pad(0).IsTrigger(enButtonX)) {
 		m_state = enState_Damage;
+	}
+	if (Pad(0).IsTrigger(enButtonY)) {
+		m_state = enState_Eat;
 	}
 }
 
@@ -211,8 +217,27 @@ void Bird::AnimationController()
 		Turn();
 		break;
 	case enState_Eat:
-
-		Move();
+		if (m_eattime >= m_eattimer) {
+			CQuaternion qRot;
+			if (m_eattimer * 2 >= m_eattime) {
+				m_degreey -= 1.0f;
+				qRot.SetRotationDeg(m_birdright, m_degreey);
+			}
+			else {
+				m_degreey += 1.0f;
+				qRot.SetRotationDeg(m_birdright, m_degreey);
+			}
+			m_eattimer += 60.0f* GameTime().GetFrameDeltaTime();
+		}
+		else {
+			m_eattimer = 0.0f;
+			if (m_movespeed.LengthSq() > 40.0f * 40.0f) {
+				m_state = enState_Walk;
+			}
+			else if (m_movespeed.LengthSq() < 40.0f * 40.0f) {
+				m_state = enState_Idle;
+			}
+		}
 		Turn();
 		break;
 	}
