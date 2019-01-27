@@ -62,11 +62,14 @@ void AtkHawk::Update()
 			m_state = enState_Atk;
 		}
 		break;
-	case AtkHawk::enState_Atk:
-		m_bird->Death();
+	case AtkHawk::enState_Atk: {
+		auto diff = m_bird->GetPosition() - m_HawkPos;
+		if (diff.LengthSq() < 70.0f * 70.0f) {
+			m_bird->Death();
+		}
 		DeleteGO(m_Hawk);
 		m_state = enState_return;
-		break;
+	}break;
 	case AtkHawk::enState_return:
 		if (m_skinModelRender->GetShadowCaster() == false) {
 			m_skinModelRender->SetShadowCasterFlag(true);

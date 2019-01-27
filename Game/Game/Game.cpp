@@ -17,13 +17,20 @@ Game::Game()
 
 Game::~Game()
 {
+}
+void Game::OnDestroy()
+{
 	DeleteGOs(GameObjectNames::DIRECTION_LIGHT);
 	DeleteGOs(GameObjectNames::SKY);
 	DeleteGO(GameObjectNames::BIRD);
 	DeleteGO(GameObjectNames::HAWK_GENE);
 	DeleteGO(GameObjectNames::CAMERA);
+	DeleteGOs(GameObjectNames::SNAKE);
+	DeleteGOs(GameObjectNames::FEED);
 	DeleteGO(m_groundBGM);
 	DeleteGO(m_skyBgm);
+	DeleteGO(m_snakeRender);
+	DeleteGO(m_feedRender);
 }
 bool Game::Start()
 {
@@ -40,7 +47,7 @@ bool Game::Start()
 	lightDir.Normalize();
 	GraphicsEngine().GetShadowMap().SetLightDirection(lightDir);
 
-
+	
 	//ポストエフェクトを初期化する。
 	InitPostEffects();
 	//マップを構築する。
@@ -126,8 +133,13 @@ void Game::InitJammers()
 	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
 
 	int numSnake = mapHalfSize * SNAKE_GEN_RATE;
+	
+	//蛇のレンダラの初期化。
+	m_snakeRender = NewGO<prefab::CSkinModelRender>(0);
+	m_snakeRender->Init(CmoFilePaths::SNAKE, nullptr, 0, enFbxUpAxisZ, numSnake);
+
 	for (int i = 0; i < numSnake; i++) {
-		auto snake = NewGO<Snake>(0);
+		auto snake = NewGO<Snake>(0, GameObjectNames::SNAKE);
 		snake->m_pos = CVector3::Zero;
 		snake->m_pos.x = CMath::Lerp(Random().GetRandDouble(), mapHalfSize, -mapHalfSize);
 		snake->m_pos.y = 0.0f;
@@ -153,6 +165,10 @@ void Game::InitFeed()
 	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
 	//マップサイズに比例して餌の数を決める。
 	int numFeed = mapHalfSize * FEED_GEN_RATE;
+	m_feedRender = NewGO<prefab::CSkinModelRender>(0);
+	m_feedRender->Init(CmoFilePaths::FEED, nullptr, 0, enFbxUpAxisZ, numFeed);
+	m_feedRender->SetShadowCasterFlag(true);
+	m_feedRender->SetShadowReceiverFlag(true);
 	for (int i = 0; i < numFeed; i++) {
 		auto feed = NewGO<Feed>(0, GameObjectNames::FEED);
 		auto pos = CVector3::Zero;
