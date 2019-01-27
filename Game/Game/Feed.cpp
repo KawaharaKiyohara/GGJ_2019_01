@@ -18,6 +18,8 @@ bool Feed::Start()
 	m_skinModelRender->Init(CmoFilePaths::FEED);
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetScale(m_scale);
+	m_skinModelRender->SetShadowCasterFlag(true);
+	m_skinModelRender->SetShadowReceiverFlag(true);
 
 	return true;
 }
