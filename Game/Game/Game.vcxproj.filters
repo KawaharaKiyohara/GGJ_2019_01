@@ -216,4 +216,9 @@
       <Filter>Assets\modelData\bg</Filter>
     </MeshContentTask>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\modelData\bg\Grass_Normals.tga">
+      <Filter>Assets\modelData\bg</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

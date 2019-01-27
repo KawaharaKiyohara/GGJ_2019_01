@@ -35,6 +35,7 @@ bool Map::Start()
 	//‘ƒ‚ğì¬B
 	InitNest();
 
+	m_normMap.CreateFromDDSTextureFromFile(L"modelData/bg/Grass_Normals.dds");
 	auto game = FindGO<Game>(GameObjectNames::GAME);
 	game->AddEventListener([&](SEventParam& eventParam) {
 		if (eventParam.eEvent == (EnEvent)Game::enGameEvent_StartInGameGround) {
@@ -45,7 +46,9 @@ bool Map::Start()
 			m_groundRender->SetShadowCasterFlag(true);
 			m_groundRender->SetShadowReceiverFlag(true);
 			m_groundPhyObj.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_groundRender);
-
+			m_groundRender->FindMaterial([&](CModelEffect* mat) {
+				mat->SetNormalMap(m_normMap);
+			});
 			m_treeRender->SetShadowCasterFlag(false);
 			m_treeRender->SetShadowReceiverFlag(false);
 			for (auto& symbolTreeRender : m_symboleTreeRender) {
