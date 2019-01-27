@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "Map.h"
-
+#include "Game.h"
 
 namespace {
 	
 	/// <summary>
 	/// マップのグリッド。
 	/// </summary>
-	const float MAP_GRID_SIZE = 1000.0f;
+	const float MAP_GRID_SIZE = 1400.0f;
 	/// <summary>
 	/// 木の半径。
 	/// </summary>
@@ -34,6 +34,19 @@ bool Map::Start()
 	InitTree();
 	//巣を作成。
 	InitNest();
+
+	auto game = FindGO<Game>(GameObjectNames::GAME);
+	game->AddEventListener([&](SEventParam& eventParam) {
+		if (eventParam.eEvent == (EnEvent)Game::enGameEvent_StartInGameGround) {
+			//インゲーム開始。
+			m_treeRender->SetShadowCasterFlag(false);
+			m_treeRender->SetShadowReceiverFlag(false);
+			for (auto& symbolTreeRender : m_symboleTreeRender) {
+				symbolTreeRender->SetShadowCasterFlag(false);
+				symbolTreeRender->SetShadowReceiverFlag(false);
+			}
+		}
+	});
 	return true;
 }
 void Map::InitNest()
@@ -63,9 +76,9 @@ void Map::InitGround()
 	m_groundRender = NewGO<prefab::CSkinModelRender>(0);
 	m_groundRender->Init(CmoFilePaths::GROUND);
 	m_groundRender->SetShadowReceiverFlag(true);
-	m_groundRender->FindMaterial([&](CModelEffect* mat) {
+	/*m_groundRender->FindMaterial([&](CModelEffect* mat) {
 		mat->SetSpecularMap(m_specMap);
-	});
+	})*/;
 }
 
 void Map::InitTree()
@@ -107,7 +120,7 @@ void Map::InitTree()
 			int t = Random().GetRandInt() % 100;
 			int index = y * numTree_x + x;
 			auto& instancingData = m_allTreeInstancingData[index];
-			if (t < 10) {
+			if (t < 20) {
 				//5%の確率でシンボル木を作成する。
 				int symbolNo = Random().GetRandInt() % NUM_SYMBOL_TREE;
 				instancingData.skinModelRender = m_symboleTreeRender[symbolNo];

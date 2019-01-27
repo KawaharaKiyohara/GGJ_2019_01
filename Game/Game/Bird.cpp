@@ -33,7 +33,7 @@ bool Bird::Start()
 {
 	//SetAnimation();
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(CmoFilePaths::BIRD);
+	m_skinModelRender->Init(CmoFilePaths::CHILD_BIRD);
 	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
@@ -68,7 +68,7 @@ void Bird::Update()
 void Bird::Move()
 {
 	if (m_adult) {
-		m_movespeed = MainCamera().GetForward() * m_multiply * 60.0f * GameTime().GetFrameDeltaTime();
+		m_movespeed = MainCamera().GetForward() * m_multiply * 80.0f * GameTime().GetFrameDeltaTime();
 	}
 	else {
 		//左スティックの入力量を取得
@@ -193,6 +193,17 @@ void Bird::Sound()
 	else {
 		m_soundtimer = 0.0f;
 	}
+	if (m_large) {
+		if (m_largetimer >= m_largetime) {
+			prefab::CSoundSource* ss;
+			ss = NewGO<prefab::CSoundSource>(0);
+			ss->Init(L"sound/ou.wav");
+			ss->Play(false);
+			m_large = false;
+			m_largetimer = 0.0f;
+		}
+		m_largetimer += 30.0f*GameTime().GetFrameDeltaTime();
+	}
 }
 
 void Bird::Animation()
@@ -212,20 +223,31 @@ void Bird::Animation()
 		}
 	}
 	if (m_feedcount >= m_adultcondions) {
+		m_feedcount = m_adultcondions;
 		m_adult = true;
 	}
-	QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
-		CVector3 pos = feed->GetPosition() - m_position;
-		if (pos.Length() <= 70.0f) {
-			m_state = enState_Eat;
-			m_feed = feed;
-			return false;
-		}
-		return true;
-	});
+
+	if (!m_adult) {
+		QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
+			CVector3 pos = feed->GetPosition() - m_position;
+			if (pos.LengthSq() <= 70.0f*70.0f) {
+				m_state = enState_Eat;
+				m_feed = feed;
+				return false;
+			}
+			return true;
+		});
+	}
+
 	if (m_state != enState_Eat) {
 		m_degreey = 0.0f;
 	}
+	CVector3 scale = CVector3::One;
+	if (m_feedcount != 0) {
+		scale *= 1+(float(m_feedcount) / m_adultcondions)*1.0f;
+	}
+	m_scale = scale;
+	m_skinModelRender->SetScale(m_scale);
 }
 
 void Bird::AnimationController()
@@ -299,6 +321,7 @@ void Bird::AnimationController()
 					m_feed = nullptr;
 					m_feedcount++;
 					m_eating = true;
+					m_large = true;
 				}
 				m_degreey -= 1.8f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);

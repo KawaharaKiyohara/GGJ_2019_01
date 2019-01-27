@@ -51,19 +51,29 @@ private:
 	/// 餌を初期化
     /// </summary>
 	void InitFeed();
+public:
+	enum EnGameEvent {
+		enGameEvent_StartInGameGround,	//地面にいるときのインゲームが開始された。
+	};
 private:
+	
 	/// <summary>
 	/// ゲームステップ。
 	/// </summary>
 	enum EnStep {
+		enStep_WaitFadeIn,			//フェードイン町。
 		enStep_StartCut,			//開始カット
 		enStep_InGameGround,		//地面にいるときのインゲーム。
 		enStep_FlyCut,				//飛行カット
 		enStep_InGameSky,			//空にいるときのインゲーム。
 		enStep_GameClearCut,		//ゲームクリアカット。
+		enStep_GameClearWaitFade,	//ゲームクリアのｆａｄｅ待ち。
 	};
 	Fade* m_fade = nullptr;				//ｆａｄｅ。
-	EnStep m_step = enStep_StartCut;	//ゲームステップ。
+	EnStep m_step = enStep_WaitFadeIn;	//ゲームステップ。
 	Bird* m_bird;						//プレイヤー
+	prefab::CSoundSource* m_groundBGM = nullptr;	//地面にいるときのBGM
+	prefab::CSoundSource* m_skyBgm = nullptr;		//空にいるときのBGM
+	float m_timer = 0.0f;
 };
 

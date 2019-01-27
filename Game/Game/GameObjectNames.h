@@ -7,6 +7,10 @@
 class GameObjectNames {
 public:
 	/// <summary>
+	/// ゲーム
+	/// </summary>
+	static constexpr char* GAME = "ゲーム";
+	/// <summary>
 	/// ゲームスタートカット。
 	/// </summary>
 	static constexpr char* GAME_START_CUT = "ゲームスタートカット";
@@ -26,6 +30,10 @@ public:
 	/// 鷹
 	/// </summary>
 	static constexpr char* HAWK = "鷹";
+	/// <summary>
+	/// 鷹生成機
+	/// </summary>
+	static constexpr char* HAWK_GENE = "鷹生成機";
 	/// <summary>
 	/// 蛇。
 	/// </summary>

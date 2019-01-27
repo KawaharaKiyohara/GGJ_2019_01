@@ -1824,14 +1824,20 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bg\ground.fbx" />
+    <MeshContentTask Include="Assets\modelData\bird\toriA.fbx" />
+    <MeshContentTask Include="Assets\modelData\bird\toriAidle.FBX" />
+    <MeshContentTask Include="Assets\modelData\bird\toriC.fbx" />
+    <MeshContentTask Include="Assets\modelData\bird\toriCidle.FBX" />
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX" />
     <MeshContentTask Include="Assets\modelData\bird\torikariS.FBX" />
+    <MeshContentTask Include="Assets\modelData\feed\apple.FBX" />
     <MeshContentTask Include="Assets\modelData\feed\kariesa.FBX" />
     <MeshContentTask Include="Assets\modelData\hawk\hawkshadow.FBX" />
     <MeshContentTask Include="Assets\modelData\hawk\kariwasi.FBX" />
     <MeshContentTask Include="Assets\modelData\nest\karisu.FBX" />
     <MeshContentTask Include="Assets\modelData\snake\karihebi.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\kariki.FBX" />
+    <MeshContentTask Include="Assets\modelData\tree\ki.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\symbolTreeBlue.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\symbolTreeGreen.FBX" />
     <MeshContentTask Include="Assets\modelData\tree\symbolTreePurple.FBX" />
@@ -1843,6 +1849,9 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\modelData\bg\bgSpec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\title.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
