@@ -5,7 +5,8 @@
 #include <math.h> 		
 #include "Feed.h"
 #include "GameSettings.h"
-
+#include "Game.h"
+#include "Fade.h"
 Bird::Bird()
 {
 }
@@ -47,8 +48,61 @@ bool Bird::Start()
 	return true;
 }
 
+void Bird::GameOver()
+{
+	if (m_degreegameover>=-90.0f) {
+		m_degreegameover -= 60.0f*GameTime().GetFrameDeltaTime()*2.0f;
+		m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
+		CQuaternion qRot;
+		qRot.SetRotationDeg(m_player_heikou, m_degreegameover);
+		m_rotation.Multiply(qRot);
+		m_skinModelRender->SetRotation(m_rotation);
+		return;
+	}
+	if (m_stageFontRender == nullptr) {
+		m_stageFontRender = NewGO<prefab::CFontRender>(0);
+		m_stageNoFont = std::make_unique<DirectX::SpriteFont>(
+			GraphicsEngine().GetD3DDevice(),
+			L"font/hato_pop.spritefont"
+			);
+		m_stageFontRender->SetFont(m_stageNoFont.get());
+		m_stageFontRender->SetPosition(CVector2::Zero);
+		m_stageFontRender->SetPivot({ 0.5f, 0.5f });
+		wchar_t stageName[256];
+		swprintf(stageName, L"GAME OVER");
+		m_stageFontRender->SetText(stageName);
+		m_stageFontRender->SetColor({ 1.0f, 1.0f, 0.0f });
+		m_stageFontRender->SetShadowParam(true, 2.0f, CVector4::Black);
+		m_fade = FindGO<Fade>(GameObjectNames::FADE);
+	}
+	else {
+		if (m_isWaitFadeout) {
+			if (!m_fade->IsFade()) {
+				NewGO<Game>(0, GameObjectNames::GAME);
+				DeleteGO(FindGO<Game>(GameObjectNames::GAME));
+			}
+		}
+		else {
+			if (m_waittimer>=m_waittime) {
+				m_isWaitFadeout = true;
+				m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 1.0f }, 0.5f);
+				DeleteGO(m_stageFontRender);
+			}
+		}
+		m_waittimer += 60.0f*GameTime().GetFrameDeltaTime();
+	}
+	m_skinModelRender->SetRotation(m_rotation);
+}
+
 void Bird::Update()
 {
+	if (m_life <= 0) {
+		m_gameover = true;
+	}
+	if (m_gameover) {
+		GameOver();
+		return;
+	}
 	if (!m_stop) {
 		AnimationController();
 		CQuaternion qRot;
@@ -180,13 +234,18 @@ void Bird::Sound()
 		ss->Play(false);
 		m_eating = false;
 	}
-	else if (m_state == enState_Walk && !m_adult) {
+	else if (m_state == enState_Walk) {
 		if (m_soundtimer >= m_walktime) {
+			if(!m_adult) {
 			prefab::CSoundSource* ss;
 			ss = NewGO<prefab::CSoundSource>(0);
 			ss->Init(L"sound/cry.wav");
 			ss->Play(false);
 			m_soundtimer = 0.0f;
+			}
+			else {
+
+			}
 		}
 		m_soundtimer += 30.0f*GameTime().GetFrameDeltaTime();
 	}
@@ -222,11 +281,16 @@ void Bird::Animation()
 			m_adult = true;
 		}
 	}
-	if (m_feedcount >= m_adultcondions) {
-		m_feedcount = m_adultcondions;
+	if (m_feedcount == m_adultcondions) {
 		m_adult = true;
-	}
+		/*DeleteGO(m_skinModelRender);
+		m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
+		m_skinModelRender->Init(CmoFilePaths::BIRD);*/
 
+	}
+	else if (m_feedcount > m_adultcondions) {
+		m_feedcount = m_adultcondions;
+	}
 	if (!m_adult) {
 		QueryGOs<Feed>(GameObjectNames::FEED, [&](Feed* feed) {
 			CVector3 pos = feed->GetPosition() - m_position;
