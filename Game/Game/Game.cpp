@@ -228,6 +228,7 @@ void Game::Update()
 		
 		if (( m_bird->GetPosition() - GameSettings::GetGoalPosition()).Length()<= 200.0f) {
 			m_step = enStep_GameClearCut;
+			DeleteGO(GameObjectNames::HAWK_GENE);
 			InitGameClearCut();
 			m_bird->SetStop();
 		}
