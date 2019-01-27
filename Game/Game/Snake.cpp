@@ -36,11 +36,7 @@ bool Snake::Start()
 void Snake::Move() {
 	//モンスターがプレイヤーに近づく
 	kyori = bird->GetPosition() - m_pos;
-<<<<<<< HEAD
 	len = kyori.Length();
-=======
-	float len = kyori.LengthSq();
->>>>>>> 4779197d2c267c8df9f1dbd0190ed30f903eb0d2
 	kyori.Normalize();
 	kyori.y = 0.0f;
 	kyori = kyori * 5;
@@ -48,9 +44,8 @@ void Snake::Move() {
 	s_Speed = kyori * 35;
 	
 	kyori2 = syokipos - m_pos;
-	float len2 = kyori2.LengthSq();
+	float len2 = kyori2.Length();
 
-<<<<<<< HEAD
 	if (!m_attack) {
 		s_Speed = CVector3::Zero;
 		m_timer += 30.0f*GameTime().GetFrameDeltaTime();
@@ -66,14 +61,6 @@ void Snake::Move() {
 		m_return = true;
 	}
 	if (m_return) {
-=======
-
-	if (len < 500.0f * 500.0f) {
-		
-		m_pos = m_charaCon.Execute(s_Speed,GameTime().GetFrameDeltaTime());
-	}
-	else if (len2 > 400.0f * 400.0f) {
->>>>>>> 4779197d2c267c8df9f1dbd0190ed30f903eb0d2
 		kyori2.Normalize();
 		kyori2.y = 0.0f;
 		kyori2 = kyori2 * 5;
