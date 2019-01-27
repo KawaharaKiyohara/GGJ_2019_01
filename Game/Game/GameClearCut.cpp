@@ -58,7 +58,10 @@ bool GameClearCut::Start()
 	forward.x = rotMat.m[0][0];
 	forward.y = rotMat.m[0][1];
 	forward.z = rotMat.m[0][2];
-	m_ClearPosition = forward * 5;
+
+	forward *= -1;
+	m_ClearPosition = forward + m_bird->GetPosition();
+
 	return true;
 }
 
