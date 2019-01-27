@@ -10,6 +10,8 @@
 #include "Feed.h"
 #include "Fade.h"
 #include "HawkGene.h"
+#include "GameClearCut.h"
+
 Game::Game()
 {
 }
@@ -73,6 +75,16 @@ void Game::InitGameStartCut()
 			postEffect::Dof().SetHexaBokeRadius(3.0f);
 			m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 0.5f);
 			m_step = enStep_InGameGround;
+		}
+	});
+}
+void Game::InitGameClearCut()
+{
+	auto go = NewGO<GameClearCut>(0,GameObjectNames::GAME_CLEAR_CUT);
+	go->AddEventListener([&](IGameObject::SEventParam& eventParam) {
+		if (eventParam.eEvent == IGameObject::enEvent_Destroy) {
+			m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 1.0f }, 1.0f);
+			m_step = enStep_GameClearWaitFade;
 		}
 	});
 }
@@ -164,13 +176,17 @@ void Game::Update()
 	case enStep_InGameSky:
 		if (( m_bird->GetPosition() - GameSettings::GetGoalPosition()).Length()<= 200.0f) {
 			m_step = enStep_GameClearCut;
+			InitGameClearCut();
 			m_bird->SetStop();
 		}
 		break;
 	case enStep_GameClearCut:
-		//todo カリカリカリとりあえずｆａｄｅアウトして次。
-		m_fade->StartFade({0.0f, 0.0f, 0.0f, 1.0f}, 1.0f);
-		m_step = enStep_GameClearWaitFade;
+		
+			
+			//todo カリカリカリとりあえずｆａｄｅアウトして次。
+			
+		
+		
 		break;
 	case enStep_GameClearWaitFade:
 		if (!m_fade->IsFade()) {

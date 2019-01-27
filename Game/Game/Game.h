@@ -48,6 +48,12 @@ private:
 	/// ゲーム開始カット演出を作成。
 	/// </summary>
 	void InitGameStartCut();
+
+	/// <summary>
+	/// ゲームクリアカット演出を作成。
+	/// </summary>
+	void InitGameClearCut();
+
 	/// 餌を初期化
     /// </summary>
 	void InitFeed();

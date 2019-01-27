@@ -53,6 +53,9 @@
     <Filter Include="Title">
       <UniqueIdentifier>{df2c632f-a1b8-484d-9a16-2ef9ae905bdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CutScene\GameClearCut">
+      <UniqueIdentifier>{76dc43ef-2694-4db9-a2ba-7da56e4ea5b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -88,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="Title.cpp">
       <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearCut.cpp">
+      <Filter>CutScene\GameClearCut</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +135,9 @@
     <ClInclude Include="Title.h">
       <Filter>Title</Filter>
     </ClInclude>
+    <ClInclude Include="GameClearCut.h">
+      <Filter>CutScene\GameClearCut</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -142,6 +151,7 @@
     <ImageContentTask Include="Assets\sprite\fade.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="Assets\modelData\bg\bgSpec.png" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX">
@@ -189,10 +199,5 @@
     <MeshContentTask Include="Assets\modelData\tree\ki.FBX">
       <Filter>Assets\modelData\tree</Filter>
     </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\modelData\bg\bgSpec.png">
-      <Filter>Assets\modelData\bg</Filter>
-    </Image>
   </ItemGroup>
 </Project>
