@@ -36,7 +36,7 @@ void Snake::Move() {
 	kyori.y = 0.0f;
 	kyori = kyori * 5;
 	//pos += kyori2;
-	s_Speed = kyori * 35;
+	s_Speed = kyori * 30;
 	
 	kyori2 = syokipos - m_pos;
 	float len2 = kyori2.Length();
