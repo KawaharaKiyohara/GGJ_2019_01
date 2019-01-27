@@ -24,6 +24,8 @@ Game::~Game()
 	DeleteGO(GameObjectNames::BIRD);
 	DeleteGO(GameObjectNames::HAWK_GENE);
 	DeleteGO(GameObjectNames::CAMERA);
+	DeleteGO(m_groundBGM);
+	DeleteGO(m_skyBgm);
 }
 bool Game::Start()
 {
@@ -53,6 +55,10 @@ bool Game::Start()
 	//フェードのインスタンスをキャッシュ。
 	m_fade = FindGO<Fade>(GameObjectNames::FADE);
 	m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 1.0f);
+
+	auto& shadowMap = GraphicsEngine().GetShadowMap();
+	shadowMap.SetLightHeight(GameSettings::GetShadowMapLightHeightInStartCut());
+	
 	return true;
 }
 void Game::InitGameStartCut()
@@ -74,6 +80,18 @@ void Game::InitGameStartCut()
 			postEffect::Dof().SetBokeLuminance(0.6f);
 			postEffect::Dof().SetHexaBokeRadius(3.0f);
 			m_fade->StartFade({ 0.0f, 0.0f, 0.0f, 0.0f }, 0.5f);
+			SEventParam param;
+			param.eEvent = (EnEvent)enGameEvent_StartInGameGround;
+			param.gameObject = this;
+			//
+			for (auto& listener : m_eventListeners) {
+				listener(param);
+			}
+			auto& shadowMap = GraphicsEngine().GetShadowMap();
+			shadowMap.SetLightHeight(GameSettings::GetShadowMapLightHeightInGame());
+			m_groundBGM = NewGO<prefab::CSoundSource>(0);
+			m_groundBGM->Init(L"sound/groundBgmInGame.wav");
+			m_groundBGM->Play(true);
 			m_step = enStep_InGameGround;
 		}
 	});
@@ -170,10 +188,27 @@ void Game::Update()
 		break;
 	case enStep_InGameGround:
 		if (m_bird->isAdult()) {
+			m_timer = 0.0f;
+			m_skyBgm = NewGO < prefab::CSoundSource>(0);
+			m_skyBgm->Init(L"sound/skyBgmInGame.wav");
+			m_skyBgm->Play(true);
 			m_step = enStep_InGameSky;
 		}
 		break;
 	case enStep_InGameSky:
+		if (m_groundBGM != nullptr) {
+			m_timer += GameTime().GetFrameDeltaTime();
+			if (m_timer >= 0.5f) {
+				DeleteGO(m_groundBGM);
+				m_groundBGM = nullptr;
+				m_skyBgm->SetVolume(1.0f);
+			}
+			else {
+				m_groundBGM->SetVolume(1.0f - (m_timer / 0.5f));
+				m_skyBgm->SetVolume((m_timer / 0.5f));
+			}
+		}
+		
 		if (( m_bird->GetPosition() - GameSettings::GetGoalPosition()).Length()<= 200.0f) {
 			m_step = enStep_GameClearCut;
 			InitGameClearCut();
@@ -192,9 +227,10 @@ void Game::Update()
 		if (!m_fade->IsFade()) {
 			//ｆａｄｅが終わった
 			int level = GameSettings::GetLevel() + 1;
-			GameSettings::SetLevel(level);
+			//todo クラッシュはまずいのでとりあえずループ
+			GameSettings::SetLevel(level % GameSettings::GetNumLevel());
 			DeleteGO(this);
-			NewGO<Game>(0);
+			NewGO<Game>(0, GameObjectNames::GAME);
 		}
 		break;
 	}

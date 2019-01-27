@@ -1826,8 +1826,12 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bg\ground.fbx" />
+    <MeshContentTask Include="Assets\modelData\bird\NfryBird.fbx" />
+    <MeshContentTask Include="Assets\modelData\bird\toriA.fbx" />
+    <MeshContentTask Include="Assets\modelData\bird\toriC.fbx" />
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX" />
     <MeshContentTask Include="Assets\modelData\bird\torikariS.FBX" />
+    <MeshContentTask Include="Assets\modelData\feed\apple.FBX" />
     <MeshContentTask Include="Assets\modelData\feed\kariesa.FBX" />
     <MeshContentTask Include="Assets\modelData\hawk\hawkshadow.FBX" />
     <MeshContentTask Include="Assets\modelData\hawk\kariwasi.FBX" />
@@ -1846,6 +1850,9 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\modelData\bg\bgSpec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\title.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,6 @@
 #pragma once
+
+class Fade;
 class Title : public IGameObject
 {
 public:
@@ -7,7 +9,15 @@ public:
 	void Update() override;
 	bool Start() override;
 private:
-	prefab::CFontRender* m_text = nullptr;
+	enum EnStep {
+		enStep_Disp,
+		enStep_WaitFade
+	};
+	Fade* m_fade = nullptr;
+	EnStep m_enStep = enStep_Disp;
+	prefab::CSpriteRender* m_spr = nullptr;
+	prefab::CSoundSource* m_bgm = nullptr;
+	float m_timer = 0.0f;
 };
 
 

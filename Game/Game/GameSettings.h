@@ -40,6 +40,7 @@ public:
 	static float GetMapSize() 
 	{
 		const float MAP_SIZE[GameSettings::GetNumLevel()] = {
+			//ここを書き換えたら最終ステージの設定になる
 			10000.0f,
 			12500.0f,
 			15000.0f,
@@ -75,6 +76,22 @@ public:
 	static void SetGoalPosition(CVector3 pos)
 	{
 		m_goalPosition = pos;
+	}
+	/// <summary>
+	/// シャドウマップのライトのインゲーム中の高さを取得。
+	/// </summary>
+	/// <returns></returns>
+	static float GetShadowMapLightHeightInGame()
+	{
+		return UnitM(15.0f);
+	}
+	/// <summary>
+	/// スタートカットの時のシャドウマップのライトの高さを取得。
+	/// </summary>
+	/// <returns></returns>
+	static float GetShadowMapLightHeightInStartCut()
+	{
+		return UnitM(60.0f);
 	}
 private:
 	static int m_level;			//難易度。

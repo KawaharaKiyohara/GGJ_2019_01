@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Map.h"
-
+#include "Game.h"
 
 namespace {
 	
@@ -34,6 +34,19 @@ bool Map::Start()
 	InitTree();
 	//巣を作成。
 	InitNest();
+
+	auto game = FindGO<Game>(GameObjectNames::GAME);
+	game->AddEventListener([&](SEventParam& eventParam) {
+		if (eventParam.eEvent == (EnEvent)Game::enGameEvent_StartInGameGround) {
+			//インゲーム開始。
+			m_treeRender->SetShadowCasterFlag(false);
+			m_treeRender->SetShadowReceiverFlag(false);
+			for (auto& symbolTreeRender : m_symboleTreeRender) {
+				symbolTreeRender->SetShadowCasterFlag(false);
+				symbolTreeRender->SetShadowReceiverFlag(false);
+			}
+		}
+	});
 	return true;
 }
 void Map::InitNest()
@@ -63,9 +76,11 @@ void Map::InitGround()
 	m_groundRender = NewGO<prefab::CSkinModelRender>(0);
 	m_groundRender->Init(CmoFilePaths::GROUND);
 	m_groundRender->SetShadowReceiverFlag(true);
-	m_groundRender->FindMaterial([&](CModelEffect* mat) {
+	m_groundPhyObj.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_groundRender);
+	
+	/*m_groundRender->FindMaterial([&](CModelEffect* mat) {
 		mat->SetSpecularMap(m_specMap);
-	});
+	})*/;
 }
 
 void Map::InitTree()
