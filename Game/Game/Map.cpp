@@ -39,6 +39,13 @@ bool Map::Start()
 	game->AddEventListener([&](SEventParam& eventParam) {
 		if (eventParam.eEvent == (EnEvent)Game::enGameEvent_StartInGameGround) {
 			//インゲーム開始。
+			DeleteGO(m_groundRender);
+			m_groundRender = NewGO<prefab::CSkinModelRender>(0);
+			m_groundRender->Init(L"modelData/bg/ground2.cmo");
+			m_groundRender->SetShadowCasterFlag(true);
+			m_groundRender->SetShadowReceiverFlag(true);
+			m_groundPhyObj.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_groundRender);
+
 			m_treeRender->SetShadowCasterFlag(false);
 			m_treeRender->SetShadowReceiverFlag(false);
 			for (auto& symbolTreeRender : m_symboleTreeRender) {
@@ -71,12 +78,10 @@ void Map::InitNest()
 
 void Map::InitGround()
 {
-	m_specMap.CreateFromDDSTextureFromFile(L"modelData/bg/bgSpec.dds");
 	//地面を作成。
 	m_groundRender = NewGO<prefab::CSkinModelRender>(0);
 	m_groundRender->Init(CmoFilePaths::GROUND);
 	m_groundRender->SetShadowReceiverFlag(true);
-	m_groundPhyObj.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_groundRender);
 	
 	/*m_groundRender->FindMaterial([&](CModelEffect* mat) {
 		mat->SetSpecularMap(m_specMap);

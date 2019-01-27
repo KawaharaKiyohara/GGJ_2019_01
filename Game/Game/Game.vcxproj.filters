@@ -212,5 +212,8 @@
     <MeshContentTask Include="Assets\modelData\bird\NfryBird.fbx">
       <Filter>Assets\modelData\bird</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bg\ground2.fbx">
+      <Filter>Assets\modelData\bg</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>

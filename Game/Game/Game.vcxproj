@@ -1826,6 +1826,7 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bg\ground.fbx" />
+    <MeshContentTask Include="Assets\modelData\bg\ground2.fbx" />
     <MeshContentTask Include="Assets\modelData\bird\NfryBird.fbx" />
     <MeshContentTask Include="Assets\modelData\bird\toriA.fbx" />
     <MeshContentTask Include="Assets\modelData\bird\toriC.fbx" />

@@ -29,6 +29,7 @@ void Game::OnDestroy()
 	DeleteGO(GameObjectNames::CAMERA);
 	DeleteGOs(GameObjectNames::SNAKE);
 	DeleteGOs(GameObjectNames::FEED);
+	DeleteGO(GameObjectNames::MAP);
 	DeleteGO(m_groundBGM);
 	DeleteGO(m_skyBgm);
 	DeleteGO(m_snakeRender);
@@ -131,7 +132,7 @@ void Game::InitPostEffects()
 void Game::InitSky()
 {
 	auto sky = NewGO<prefab::CSky>(0, GameObjectNames::SKY);
-	sky->SetScale({ 50000.0f, 50000.0f, 50000.f });
+	sky->SetScale({ 100000.0f, 100000.0f, 100000.f });
 	
 }
 void Game::InitJammers()
