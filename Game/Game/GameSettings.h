@@ -41,9 +41,9 @@ public:
 	{
 		const float MAP_SIZE[GameSettings::GetNumLevel()] = {
 			10000.0f,
-			20000.0f,
-			30000.0f,
-			40000.0f,
+			12500.0f,
+			15000.0f,
+			17500.0f,
 			50000.0f,
 		};
 		return MAP_SIZE[GetLevel()];
