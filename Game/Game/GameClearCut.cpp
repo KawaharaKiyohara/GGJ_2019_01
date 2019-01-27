@@ -36,6 +36,29 @@ bool GameClearCut::Start()
 	m_ClearFontRender->SetShadowParam(true, 2.0f, CVector4::Black);
 	m_ClearPosition = m_bird->GetPosition() + maepurasu;
 	m_step = enStep_SpringCamera;
+
+
+	m_rotation = m_bird->GetRotation();
+	//回転クォータニオンから行列を作る。
+	CMatrix rotMat;
+	rotMat.MakeRotationFromQuaternion(m_rotation);
+	//前ベクトルを行列から引っ張ってくる。
+	CVector3 forward;
+	//Zが前の時
+	/*forward.x = rotMat.m[2][0];
+	forward.y = rotMat.m[2][1];
+	forward.z = rotMat.m[2][2];*/
+
+	//これがＹが前の時
+	/*forward.x = rotMat.m[1][0];
+	forward.y = rotMat.m[1][1];
+	forward.z = rotMat.m[1][2];*/
+
+	//これがXが前の時
+	forward.x = rotMat.m[0][0];
+	forward.y = rotMat.m[0][1];
+	forward.z = rotMat.m[0][2];
+	m_ClearPosition = forward * 5;
 	return true;
 }
 

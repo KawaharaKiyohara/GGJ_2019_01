@@ -27,6 +27,10 @@ public:
 	{
 		return m_position;
 	}
+	CQuaternion GetRotation() const
+	{
+		return m_rotation;
+	}
 	//ƒvƒŒƒCƒ„[‚ğ’â~‚³‚¹‚é
 	void SetStop()
 	{
