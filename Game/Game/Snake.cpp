@@ -18,7 +18,7 @@ bool Snake::Start()
 
 	m_charaCon.Init(
 		20.0,			//半径。 
-		100.0f,			//高さ。
+		20.0f,			//高さ。
 		m_pos		//初期位置。
 	);
 	syokipos = m_pos;
