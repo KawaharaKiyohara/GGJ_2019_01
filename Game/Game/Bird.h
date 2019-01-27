@@ -64,6 +64,9 @@ public:
 	//即死
 	void Death()
 	{
+		if (m_adult) {
+			return;
+		}
 		m_gameover = true;
 	}
 	//ゲームオーバーかどうか
