@@ -55,7 +55,7 @@ public:
 	//ƒ_ƒ[ƒW
 	void Damage()
 	{
-		if (m_state == enState_Damage) {
+		if (m_state == enState_Damage || m_adult) {
 			return;
 		}
 		m_state = enState_Damage;
