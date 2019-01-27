@@ -16,6 +16,8 @@ private:
 	Fade* m_fade = nullptr;
 	EnStep m_enStep = enStep_Disp;
 	prefab::CSpriteRender* m_spr = nullptr;
+	prefab::CSoundSource* m_bgm = nullptr;
+	float m_timer = 0.0f;
 };
 
 
