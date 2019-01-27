@@ -26,5 +26,6 @@ private:
 	CVector3 m_ClearPosition = CVector3::Zero;
 	CVector3 maepurasu = { 10.0f, 0.0f, 0.0f };
 	float m_timer = 0.0f;
+	CQuaternion m_rotation;
 };
 
