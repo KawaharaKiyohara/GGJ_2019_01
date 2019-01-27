@@ -1,20 +1,20 @@
 #pragma once
 
 //蛇の生成率。値を大きくすると蛇が増える。デフォルト0.01
-static const float SNAKE_GEN_RATE = 0.01f;
+static const float SNAKE_GEN_RATE = 0.013f;
 
 //餌の生成率。値を大きすると餌が増える。デフォルト0.01
-static const float FEED_GEN_RATE = 0.01f;
+static const float FEED_GEN_RATE = 0.016f;
 
 //鳥が成長するために必要な餌の数。
-static const float GROWUP_FEED_COUNT = 5;
+static const float GROWUP_FEED_COUNT = 6;
 
 //鳥の移動速度(地面にいるとき)
-static const float BIRD_MOVE_SPEED = 220.0f;
+static const float BIRD_MOVE_SPEED = 200.0f;
 
 //鳥の移動速度(飛んでいるとき)
 //80.0fの方を変更するとよいです。
-static const float BIRD_FLY_MOVE_SPEED = 220.0f * 80.0f;
+static const float BIRD_FLY_MOVE_SPEED = 220.0f * 180.0f;
 
 /// <summary>
 /// ゲームの設定クラス。
