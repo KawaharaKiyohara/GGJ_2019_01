@@ -50,6 +50,14 @@ bool Bird::Start()
 
 void Bird::GameOver()
 {
+	if (!m_gameoversound) {
+		prefab::CSoundSource* ss;
+		ss = NewGO<prefab::CSoundSource>(0);
+		ss->Init(L"sound/down.wav");
+		ss->Play(false);
+		m_soundtimer = 0.0f;
+		m_gameoversound = true;
+	}
 	if (m_degreegameover>=-90.0f) {
 		m_degreegameover -= 60.0f*GameTime().GetFrameDeltaTime()*2.0f;
 		m_rotation.SetRotationDeg(CVector3::AxisY, m_degree);
