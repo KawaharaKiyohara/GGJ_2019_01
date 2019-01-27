@@ -76,6 +76,8 @@ void Map::InitGround()
 	m_groundRender = NewGO<prefab::CSkinModelRender>(0);
 	m_groundRender->Init(CmoFilePaths::GROUND);
 	m_groundRender->SetShadowReceiverFlag(true);
+	m_groundPhyObj.CreateMesh(CVector3::Zero, CQuaternion::Identity, CVector3::One, m_groundRender);
+	
 	/*m_groundRender->FindMaterial([&](CModelEffect* mat) {
 		mat->SetSpecularMap(m_specMap);
 	})*/;

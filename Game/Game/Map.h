@@ -43,6 +43,7 @@ private:
 	};
 	std::vector< SInstancingData> m_allTreeInstancingData;			//全ての木用のインスタンシングデータ。
 	prefab::CSkinModelRender* m_groundRender = nullptr;		//スキンモデルレンダラー。
+	CPhysicsStaticObject m_groundPhyObj;
 	prefab::CSkinModelRender* m_nestRender = nullptr;		//巣・
 	CShaderResourceView m_specMap;
 };
