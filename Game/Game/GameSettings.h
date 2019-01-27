@@ -1,7 +1,7 @@
 #pragma once
 
 //蛇の生成率。値を大きくすると蛇が増える。デフォルト0.01
-static const float SNAKE_GEN_RATE = 0.013f;
+static const float SNAKE_GEN_RATE = 0.012f;
 
 //餌の生成率。値を大きすると餌が増える。デフォルト0.01
 static const float FEED_GEN_RATE = 0.016f;
