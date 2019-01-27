@@ -9,7 +9,7 @@ public:
 	/// <summary>
 	/// 子供の鳥のcmoファイルのパス。
 	/// </summary>
-	static constexpr wchar_t* CHILD_BIRD = L"modelData/bird/torikariS.cmo";
+	static constexpr wchar_t* CHILD_BIRD = L"modelData/bird/hiyoko.cmo";
 
 	/// <summary>               
 	/// 大人の鳥のcmoファイルのパス。
@@ -22,11 +22,11 @@ public:
 	/// <summary>
 	/// シンボルになる木(赤)のモデル。
 	/// </summary>
-	static constexpr wchar_t* SINBOL_TREE_RED = L"modelData/tree/symbolTreeRed.cmo";
-	static constexpr wchar_t* SINBOL_TREE_BLUE = L"modelData/tree/symbolTreeBlue.cmo";
-	static constexpr wchar_t* SINBOL_TREE_GREEN = L"modelData/tree/symbolTreeGreen.cmo";
-	static constexpr wchar_t* SINBOL_TREE_YELLOW = L"modelData/tree/symbolTreeYellow.cmo";
-	static constexpr wchar_t* SINBOL_TREE_PURPLE = L"modelData/tree/symbolTreePurple.cmo";
+	static constexpr wchar_t* SINBOL_TREE_RED = L"modelData/tree/kinoko.cmo";
+	static constexpr wchar_t* SINBOL_TREE_BLUE = L"modelData/tree/kurisutaru.cmo";
+	static constexpr wchar_t* SINBOL_TREE_GREEN = L"modelData/tree/kurisutaru2.cmo";
+	static constexpr wchar_t* SINBOL_TREE_YELLOW = L"modelData/tree/kiki.cmo";
+	static constexpr wchar_t* SINBOL_TREE_PURPLE = L"modelData/tree/dokukinoko.cmo";
 	/// <summary>
 	/// 鷹のモデル
 	/// </summary>

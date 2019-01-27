@@ -203,5 +203,28 @@
     <MeshContentTask Include="Assets\modelData\bird\NfryBird.fbx">
       <Filter>Assets\modelData\bird</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\hiyoko.FBX">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\kinoko.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\kiki.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\dokukinoko.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\kurisutaru.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\tree\kurisutaru2.FBX">
+      <Filter>Assets\modelData\tree</Filter>
+    </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\modelData\tree\kurisuaru2.png">
+      <Filter>Assets\modelData\tree</Filter>
+    </Image>
   </ItemGroup>
 </Project>

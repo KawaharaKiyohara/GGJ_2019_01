@@ -126,10 +126,13 @@ void Map::InitTree()
 				//5%の確率でシンボル木を作成する。
 				int symbolNo = Random().GetRandInt() % NUM_SYMBOL_TREE;
 				instancingData.skinModelRender = m_symboleTreeRender[symbolNo];
+				instancingData.scale = CVector3::One;
+				instancingData.scale.y *= 1.1;
 			}
 			else {
 				//通常木
 				instancingData.skinModelRender = m_treeRender;
+				instancingData.scale = CVector3::One;
 			}
 			instancingData.pos.x = (x % numTree_x) * MAP_GRID_SIZE - mapSize * 0.5f;
 			instancingData.pos.y = 0.0f;
@@ -138,7 +141,7 @@ void Map::InitTree()
 			instancingData.pos.x += CMath::Lerp(Random().GetRandDouble(), MAP_GRID_SIZE * -0.3f, MAP_GRID_SIZE * 0.3f);
 			instancingData.pos.z += CMath::Lerp(Random().GetRandDouble(), MAP_GRID_SIZE * -0.3f, MAP_GRID_SIZE * 0.3f);
 			instancingData.rot = CQuaternion::Identity;
-			instancingData.scale = CVector3::One;
+			
 			instancingData.phyStaticObject = std::make_unique<CPhysicsStaticObject>();
 			auto capsulePos = instancingData.pos;
 			capsulePos.y += TREE_HEIGHT * 0.3f;
