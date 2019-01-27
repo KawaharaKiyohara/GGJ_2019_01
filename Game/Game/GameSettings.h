@@ -76,6 +76,22 @@ public:
 	{
 		m_goalPosition = pos;
 	}
+	/// <summary>
+	/// シャドウマップのライトのインゲーム中の高さを取得。
+	/// </summary>
+	/// <returns></returns>
+	static float GetShadowMapLightHeightInGame()
+	{
+		return UnitM(15.0f);
+	}
+	/// <summary>
+	/// スタートカットの時のシャドウマップのライトの高さを取得。
+	/// </summary>
+	/// <returns></returns>
+	static float GetShadowMapLightHeightInStartCut()
+	{
+		return UnitM(60.0f);
+	}
 private:
 	static int m_level;			//難易度。
 	static CVector3 m_startPosition;	//ゲーム開始座標。

@@ -51,7 +51,12 @@ private:
 	/// 餌を初期化
     /// </summary>
 	void InitFeed();
+public:
+	enum EnGameEvent {
+		enGameEvent_StartInGameGround,	//地面にいるときのインゲームが開始された。
+	};
 private:
+	
 	/// <summary>
 	/// ゲームステップ。
 	/// </summary>
@@ -67,5 +72,8 @@ private:
 	Fade* m_fade = nullptr;				//ｆａｄｅ。
 	EnStep m_step = enStep_WaitFadeIn;	//ゲームステップ。
 	Bird* m_bird;						//プレイヤー
+	prefab::CSoundSource* m_groundBGM = nullptr;	//地面にいるときのBGM
+	prefab::CSoundSource* m_skyBgm = nullptr;		//空にいるときのBGM
+	float m_timer = 0.0f;
 };
 
