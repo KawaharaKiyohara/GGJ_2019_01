@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Snake.h"
 #include "Timer.h"
+#include "Game.h"
 
 Snake::Snake()
 {
@@ -9,18 +10,12 @@ Snake::Snake()
 
 Snake::~Snake()
 {
-	DeleteGO(m_skinModelRender);
 }
 
 bool Snake::Start()
 {
-	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(CmoFilePaths::SNAKE);
-	m_skinModelRender->SetPosition(m_pos);
-	m_skinModelRender->SetRotation(rotation);
-	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
-	m_skinModelRender->SetShadowCasterFlag(true);
-	m_skinModelRender->SetShadowReceiverFlag(true);
+	m_game = FindGO < Game>(GameObjectNames::GAME);
+
 	m_charaCon.Init(
 		20.0,			//半径。 
 		100.0f,			//高さ。
@@ -100,7 +95,6 @@ void Snake::Move() {
 		m_pos = m_charaCon.Execute(s_Speed, GameTime().GetFrameDeltaTime());
 	}
 
-	m_skinModelRender->SetPosition(m_pos);
 }
 
 void Snake::Attack() {
@@ -114,11 +108,12 @@ void Snake::Rotation() {
 		) {
 		rotation.SetRotation(CVector3::AxisY, atan2(m_rot.x, m_rot.z));
 	}
-	m_skinModelRender->SetRotation(rotation);
 }
 void Snake::Update()
 {
 	Move();
 	
 	Rotation();
+
+	m_game->UpdateSnakeInstancingData(m_pos, rotation, { 0.8f, 0.8f, 0.5f });
 }

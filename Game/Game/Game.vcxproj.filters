@@ -53,6 +53,9 @@
     <Filter Include="Title">
       <UniqueIdentifier>{df2c632f-a1b8-484d-9a16-2ef9ae905bdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CutScene\GameClearCut">
+      <UniqueIdentifier>{76dc43ef-2694-4db9-a2ba-7da56e4ea5b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -88,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="Title.cpp">
       <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearCut.cpp">
+      <Filter>CutScene\GameClearCut</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +134,9 @@
     </ClInclude>
     <ClInclude Include="Title.h">
       <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearCut.h">
+      <Filter>CutScene\GameClearCut</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

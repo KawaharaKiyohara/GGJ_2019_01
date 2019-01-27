@@ -12,8 +12,21 @@ class Game : public IGameObject
 public:
 	Game();
 	~Game();
+	void OnDestroy();
 	bool Start();
 	void Update();
+	void UpdateSnakeInstancingData(CVector3 trans, CQuaternion rot, CVector3 scale	)
+	{
+		m_snakeRender->UpdateInstancingData(trans, rot, scale);
+	}
+	void UpdateFeedInstancingData(CVector3 trans, CQuaternion rot, CVector3 scale)
+	{
+		m_feedRender->UpdateInstancingData(trans, rot, scale);
+	}
+	void SetFeedEmissionColor(CVector3 emissionColor)
+	{
+		m_feedRender->SetEmissionColor(emissionColor);
+	}
 private:
 	/// <summary>
 	/// ポストエフェクトを初期化。
@@ -48,6 +61,12 @@ private:
 	/// ゲーム開始カット演出を作成。
 	/// </summary>
 	void InitGameStartCut();
+
+	/// <summary>
+	/// ゲームクリアカット演出を作成。
+	/// </summary>
+	void InitGameClearCut();
+
 	/// 餌を初期化
     /// </summary>
 	void InitFeed();
@@ -74,6 +93,8 @@ private:
 	Bird* m_bird;						//プレイヤー
 	prefab::CSoundSource* m_groundBGM = nullptr;	//地面にいるときのBGM
 	prefab::CSoundSource* m_skyBgm = nullptr;		//空にいるときのBGM
+	prefab::CSkinModelRender* m_snakeRender = nullptr;	//蛇のレンダリング。
+	prefab::CSkinModelRender* m_feedRender = nullptr;	//餌のレンダリング。
 	float m_timer = 0.0f;
 };
 

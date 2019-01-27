@@ -2,6 +2,7 @@
 #include "Bird.h"
 #include "tkEngine/character/tkCharacterController.h"
 #include "Timer.h"
+class Game;
 class Timer;
 class Snake : public IGameObject
 {
@@ -13,8 +14,6 @@ public:
 	void Move();
 	void Attack();
 	void Rotation();
-	prefab::CSkinModelRender* m_skinModelRender = nullptr;
-
 	
 	CVector3 m_pos = CVector3::Zero;
 	CVector3 syokipos = CVector3::Zero;
@@ -36,7 +35,7 @@ public:
 	bool m_attack = true;
 	Bird* bird = nullptr;
 	Timer* timer = nullptr;
-
+	Game* m_game = nullptr;
 
 
 };
