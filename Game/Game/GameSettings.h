@@ -40,6 +40,7 @@ public:
 	static float GetMapSize() 
 	{
 		const float MAP_SIZE[GameSettings::GetNumLevel()] = {
+			//ここを書き換えたら最終ステージの設定になる
 			10000.0f,
 			12500.0f,
 			15000.0f,
