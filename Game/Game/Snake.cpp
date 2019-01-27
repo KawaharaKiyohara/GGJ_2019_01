@@ -21,6 +21,7 @@ bool Snake::Start()
 	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
+	m_skinModelRender->SetScale({ 0.8f, 0.8f, 0.5f });
 	m_charaCon.Init(
 		20.0,			//半径。 
 		100.0f,			//高さ。

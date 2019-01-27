@@ -125,7 +125,7 @@ void Game::InitJammers()
 
 	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
 
-	int numSnake = mapHalfSize * 0.01f;
+	int numSnake = mapHalfSize * SNAKE_GEN_RATE;
 	for (int i = 0; i < numSnake; i++) {
 		auto snake = NewGO<Snake>(0);
 		snake->m_pos = CVector3::Zero;
@@ -152,7 +152,7 @@ void Game::InitFeed()
 {
 	float mapHalfSize = GameSettings::GetMapSize() * 0.5f;
 	//マップサイズに比例して餌の数を決める。
-	int numFeed = mapHalfSize * 0.01f;
+	int numFeed = mapHalfSize * FEED_GEN_RATE;
 	for (int i = 0; i < numFeed; i++) {
 		auto feed = NewGO<Feed>(0, GameObjectNames::FEED);
 		auto pos = CVector3::Zero;
