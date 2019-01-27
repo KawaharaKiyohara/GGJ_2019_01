@@ -56,17 +56,20 @@ void AtkHawk::Update()
 		if (m_HawkPos.y < m_oldbirdpos.y) {
 			prefab::CSoundSource* ss;
 			ss = NewGO<prefab::CSoundSource>(0);
-			ss->Init(L"sound/sword-gesture2.wav");
+			ss->Init(L"sound/hawk.wav");
 			ss->Play(false);
 			
 			m_state = enState_Atk;
 		}
 		break;
-	case AtkHawk::enState_Atk:
-		//m_bird->Death();
+	case AtkHawk::enState_Atk: {
+		auto diff = m_bird->GetPosition() - m_HawkPos;
+		if (diff.LengthSq() < 70.0f * 70.0f) {
+			m_bird->Death();
+		}
 		DeleteGO(m_Hawk);
 		m_state = enState_return;
-		break;
+	}break;
 	case AtkHawk::enState_return:
 		if (m_skinModelRender->GetShadowCaster() == false) {
 			m_skinModelRender->SetShadowCasterFlag(true);
