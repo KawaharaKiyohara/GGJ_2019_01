@@ -133,5 +133,6 @@ private:
 	std::unique_ptr<DirectX::SpriteFont > m_stageNoFont;
 	bool m_isWaitFadeout = false;
 	Fade* m_fade = nullptr;
+	bool m_gameoversound = false;
 };
 
