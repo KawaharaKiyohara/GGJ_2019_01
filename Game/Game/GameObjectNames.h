@@ -14,6 +14,8 @@ public:
 	/// ゲームスタートカット。
 	/// </summary>
 	static constexpr char* GAME_START_CUT = "ゲームスタートカット";
+
+	static constexpr char* GAME_CLEAR_CUT = "ゲームクリアカット";
 	/// <summary>
 	/// ディレクションライト
 	/// </summary>
