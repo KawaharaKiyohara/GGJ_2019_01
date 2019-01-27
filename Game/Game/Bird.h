@@ -53,6 +53,9 @@ public:
 	//ƒ_ƒ[ƒW
 	void Damage()
 	{
+		if (m_state == enState_Damage) {
+			return;
+		}
 		m_state = enState_Damage;
 		m_life--;
 	}

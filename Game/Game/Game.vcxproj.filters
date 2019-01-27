@@ -185,13 +185,19 @@
     <MeshContentTask Include="Assets\modelData\hawk\hawkshadow.FBX">
       <Filter>Assets\modelData\hawk</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\bird\frybirdA.fbx">
+    <MeshContentTask Include="Assets\modelData\bird\toriAidle.FBX">
       <Filter>Assets\modelData\bird</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\bird\bordC.fbx">
+    <MeshContentTask Include="Assets\modelData\bird\toriCidle.FBX">
       <Filter>Assets\modelData\bird</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\bird\boidA.FBX">
+    <MeshContentTask Include="Assets\modelData\feed\apple.FBX">
+      <Filter>Assets\modelData\feed</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\toriA.fbx">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\toriC.fbx">
       <Filter>Assets\modelData\bird</Filter>
     </MeshContentTask>
   </ItemGroup>

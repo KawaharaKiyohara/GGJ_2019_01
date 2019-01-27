@@ -9,11 +9,11 @@ public:
 	/// <summary>
 	/// 子供の鳥のcmoファイルのパス。
 	/// </summary>
-	static constexpr wchar_t* CHILD_BIRD = L"modelData/bird/bordC.cmo";
+	static constexpr wchar_t* CHILD_BIRD = L"modelData/bird/toriC.cmo";
 	/// <summary>
 	/// 大人の鳥のcmoファイルのパス。
 	/// </summary>
-	static constexpr wchar_t* BIRD = L"modelData/bird/bordA.cmo";
+	static constexpr wchar_t* BIRD = L"modelData/bird/toriA.cmo";
 	/// <summary>
 	/// 大量生産の木のモデル
 	/// </summary>
@@ -46,5 +46,5 @@ public:
 	/// <summary>
 	/// 餌
 	/// </summary>
-	static constexpr wchar_t* FEED = L"modelData/feed/kariesa.cmo";
+	static constexpr wchar_t* FEED = L"modelData/feed/apple.cmo";
 };
