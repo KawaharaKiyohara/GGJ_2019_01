@@ -33,7 +33,7 @@ bool Bird::Start()
 {
 	//SetAnimation();
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(CmoFilePaths::BIRD);
+	m_skinModelRender->Init(CmoFilePaths::CHILD_BIRD);
 	//シャドウキャスターとシャドウレシーバーのフラグを立てる。
 	m_skinModelRender->SetShadowCasterFlag(true);
 	m_skinModelRender->SetShadowReceiverFlag(true);
@@ -193,6 +193,17 @@ void Bird::Sound()
 	else {
 		m_soundtimer = 0.0f;
 	}
+	if (m_large) {
+		if (m_largetimer >= m_largetime) {
+			prefab::CSoundSource* ss;
+			ss = NewGO<prefab::CSoundSource>(0);
+			ss->Init(L"sound/ou.wav");
+			ss->Play(false);
+			m_large = false;
+			m_largetimer = 0.0f;
+		}
+		m_largetimer += 30.0f*GameTime().GetFrameDeltaTime();
+	}
 }
 
 void Bird::Animation()
@@ -310,10 +321,7 @@ void Bird::AnimationController()
 					m_feed = nullptr;
 					m_feedcount++;
 					m_eating = true;
-					prefab::CSoundSource* ss;
-					ss = NewGO<prefab::CSoundSource>(0);
-					ss->Init(L"sound/ou.wav");
-					ss->Play(false);
+					m_large = true;
 				}
 				m_degreey -= 1.8f;
 				qRot.SetRotationDeg(m_birdright, m_degreey);
