@@ -142,6 +142,8 @@
     <ImageContentTask Include="Assets\sprite\fade.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="Assets\modelData\bg\bgSpec.png" />
+    <ImageContentTask Include="Assets\sprite\title.png" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX">
@@ -189,13 +191,17 @@
     <MeshContentTask Include="Assets\modelData\tree\ki.FBX">
       <Filter>Assets\modelData\tree</Filter>
     </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\modelData\bg\bgSpec.png">
-      <Filter>Assets\modelData\bg</Filter>
-    </Image>
-    <Image Include="Assets\sprite\title.png">
-      <Filter>Assets\sprite</Filter>
-    </Image>
+    <MeshContentTask Include="Assets\modelData\feed\apple.FBX">
+      <Filter>Assets\modelData\feed</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\toriA.fbx">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\toriC.fbx">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\NfryBird.fbx">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>
