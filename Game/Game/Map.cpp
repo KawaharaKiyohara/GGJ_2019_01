@@ -65,7 +65,7 @@ void Map::InitNest()
 	CVector3 emissionColor = { 0.5764705882352941f, 0.32421875f, 0.16015625f };
 	emissionColor *= 20.0f;
 	m_nestRender->SetEmissionColor(emissionColor);
-	m_nestRender->SetScale({ 3.0f, 3.0f, 3.0f });
+	m_nestRender->SetScale({ 4.0f, 4.0f, 4.0f });
 	GameSettings::SetGoalPosition(pos);
 }
 

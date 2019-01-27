@@ -27,7 +27,7 @@ private:
 	float m_degreey = 0.0f;
 	float m_sdegreexz = 0.0f;
 	float m_sdegreey = 0.0f;
-	const float m_r = 100.0f;
+	const float m_r = 140.0f;
 	float m_radianx;
 	float m_radiany;
 	CVector3 m_target=CVector3::Zero;

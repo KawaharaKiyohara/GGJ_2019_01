@@ -2,6 +2,7 @@
 #include "tkEngine/physics/tkPhysicsGhostObject.h"
 class GameCamera;
 class Feed;
+class Fade;
 class Bird : public IGameObject
 {
 public:
@@ -15,6 +16,7 @@ public:
 	void Move();
 	void Animation();
 	void Sound();
+	void GameOver();
 	//プレイヤーの座標を設定
 	void SetPosition(const CVector3& pos)
 	{
@@ -24,6 +26,10 @@ public:
 	CVector3 GetPosition() const
 	{
 		return m_position;
+	}
+	CQuaternion GetRotation() const
+	{
+		return m_rotation;
 	}
 	//プレイヤーを停止させる
 	void SetStop()
@@ -53,7 +59,7 @@ public:
 	//ダメージ
 	void Damage()
 	{
-		if (m_state == enState_Damage) {
+		if (m_state == enState_Damage || m_adult) {
 			return;
 		}
 		m_state = enState_Damage;
@@ -62,6 +68,9 @@ public:
 	//即死
 	void Death()
 	{
+		if (m_adult) {
+			return;
+		}
 		m_gameover = true;
 	}
 	//ゲームオーバーかどうか
@@ -80,6 +89,7 @@ private:
 	CVector3 m_player_heikou;
 	CVector3 m_birdright;
 	CVector3 m_birdback;
+	CVector3 m_rot;
 	CCharacterController m_charaCon;
 	//アニメーション
 	enum EnAnimationClip {
@@ -102,7 +112,7 @@ private:
 	float m_degree = 180.0f;
 	float m_radian = 0;
 	bool m_stop = false;
-	float m_multiply = 220.0f;
+	float m_multiply = BIRD_MOVE_SPEED;
 	float m_damagetimer = 0.0f;
 	float m_blinktimer = 0.0f;
 	float m_eattime = 40.0f;
@@ -111,7 +121,7 @@ private:
 	bool m_eat = false;
 	bool m_eating = false;
 	bool m_adult = false;
-	int m_adultcondions = 5;
+	int m_adultcondions = GROWUP_FEED_COUNT;
 	int m_feedcount = 0;
 	bool m_large = false;
 	float m_largetimer = 0.0f;
@@ -119,10 +129,17 @@ private:
 	float m_soundtimer = 0.0f;
 	float m_walktime = 30.0f;
 	float m_eatingtime = 20.0f;
+	float m_waittimer = 0.0f;
+	float m_waittime = 100.0f;
+	float m_degreegameover = 0.0f;
 	int m_life = 5;
 	bool m_gameover = false;
 	GameCamera* m_gamecamera = nullptr;
 	Feed* m_feed=nullptr;
-
+	prefab::CFontRender* m_stageFontRender = nullptr;
+	std::unique_ptr<DirectX::SpriteFont > m_stageNoFont;
+	bool m_isWaitFadeout = false;
+	Fade* m_fade = nullptr;
+	bool m_gameoversound = false;
 };
 

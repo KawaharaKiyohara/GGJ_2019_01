@@ -14,7 +14,7 @@ public:
 	/// <summary>               
 	/// 大人の鳥のcmoファイルのパス。
 	/// </summary>
-	static constexpr wchar_t* BIRD = L"modelData/bird/NfyBird.cmo";
+	static constexpr wchar_t* BIRD = L"modelData/bird/NfryBird.cmo";
 	/// <summary>
 	/// 大量生産の木のモデル
 	/// </summary>

@@ -21,7 +21,7 @@ bool GameStartCut::Start()
 		0.0f
 	);
 	//ゲーム開始座標をランダムで決定する。
-	auto halfMapSize = GameSettings::GetMapSize() * 0.5f;
+	auto halfMapSize = GameSettings::GetMapSize() * 0.4f;
 	m_startPosition.x = CMath::Lerp(Random().GetRandDouble(), -halfMapSize, halfMapSize);
 	m_startPosition.y = 200.0f;
 	m_startPosition.z = CMath::Lerp(Random().GetRandDouble(), -halfMapSize, halfMapSize);
