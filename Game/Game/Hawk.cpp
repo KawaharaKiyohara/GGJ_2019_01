@@ -28,7 +28,7 @@ bool Hawk::Start()
 void Hawk::Update()
 {
 	kierucount++;
-	if (kierucount < 40) {
+	if (kierucount < 30) {
 		m_PlayerPos = m_bird->GetPosition();
 		m_PlayerPos.y += 50.0f;
 

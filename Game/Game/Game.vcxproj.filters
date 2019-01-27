@@ -153,6 +153,7 @@
     </ImageContentTask>
     <ImageContentTask Include="Assets\modelData\bg\bgSpec.png" />
     <ImageContentTask Include="Assets\sprite\title.png" />
+    <ImageContentTask Include="Assets\modelData\bg\Grass_Normals.tga" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bird\torikariB.FBX">
@@ -212,16 +213,13 @@
     <MeshContentTask Include="Assets\modelData\bird\NfryBird.fbx">
       <Filter>Assets\modelData\bird</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\bird\hiyoko.FBX">
-      <Filter>Assets\modelData\bird</Filter>
-    </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\tree\kinoko.FBX">
-      <Filter>Assets\modelData\tree</Filter>
+    <MeshContentTask Include="Assets\modelData\bg\ground2.fbx">
+      <Filter>Assets\modelData\bg</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\tree\kiki.FBX">
       <Filter>Assets\modelData\tree</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\tree\dokukinoko.FBX">
+    <MeshContentTask Include="Assets\modelData\tree\kinoko.FBX">
       <Filter>Assets\modelData\tree</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\tree\kurisutaru.FBX">
@@ -230,10 +228,11 @@
     <MeshContentTask Include="Assets\modelData\tree\kurisutaru2.FBX">
       <Filter>Assets\modelData\tree</Filter>
     </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\modelData\tree\kurisuaru2.png">
+    <MeshContentTask Include="Assets\modelData\tree\dokukinoko.FBX">
       <Filter>Assets\modelData\tree</Filter>
-    </Image>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\bird\hiyoko.FBX">
+      <Filter>Assets\modelData\bird</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>
