@@ -36,52 +36,94 @@ bool Snake::Start()
 void Snake::Move() {
 	//モンスターがプレイヤーに近づく
 	kyori = bird->GetPosition() - m_pos;
+<<<<<<< HEAD
+	len = kyori.Length();
+=======
 	float len = kyori.LengthSq();
+>>>>>>> 4779197d2c267c8df9f1dbd0190ed30f903eb0d2
 	kyori.Normalize();
 	kyori.y = 0.0f;
 	kyori = kyori * 5;
-	//pos += kyori2;0
-	s_Speed = kyori * 40;
+	//pos += kyori2;
+	s_Speed = kyori * 35;
 	
 	kyori2 = syokipos - m_pos;
 	float len2 = kyori2.LengthSq();
 
+<<<<<<< HEAD
+	if (!m_attack) {
+		s_Speed = CVector3::Zero;
+		m_timer += 30.0f*GameTime().GetFrameDeltaTime();
+		if (m_timer >= m_cooltime) {
+			m_timer = 0.0f;
+			m_attack = true;
+		}
+	}
+	else {
+		m_rot = s_Speed;
+	}
+	if (len2 > 700.0f) {
+		m_return = true;
+	}
+	if (m_return) {
+=======
 
 	if (len < 500.0f * 500.0f) {
 		
 		m_pos = m_charaCon.Execute(s_Speed,GameTime().GetFrameDeltaTime());
 	}
 	else if (len2 > 400.0f * 400.0f) {
+>>>>>>> 4779197d2c267c8df9f1dbd0190ed30f903eb0d2
 		kyori2.Normalize();
 		kyori2.y = 0.0f;
 		kyori2 = kyori2 * 5;
-		s_Speed = kyori2 * 800;
+		s_Speed = kyori2 * 80;
+		m_pos = m_charaCon.Execute(s_Speed, GameTime().GetFrameDeltaTime());
+		m_rot = s_Speed;
+		if (len2 <= 100.0f) {
+			m_return = false;
+			m_heit = false;
+		}
 	}
+	else if (len <= 700.0f) {
+		m_heit = true;
+		
+		if (frg_attck1 == false
+			&&len <= 200.0f) {
+			s_Speed *= 4.0f;
+			if (len <=60.0f) {
+				s_Speed =s_Speed * 0.0f;
+				bird->Damage();
+				frg_attck1 = true;
+				m_attack = false;
+			}
+		}
+		if (len <=300) {
+			frg_attck1 = false;
+		}
+	
+		m_pos = m_charaCon.Execute(s_Speed, GameTime().GetFrameDeltaTime());
+	}
+
 	m_skinModelRender->SetPosition(m_pos);
+}
+
+void Snake::Attack() {
+
+	
 }
 void Snake::Rotation() {
 
-	if (s_Speed.x<0
-		&& s_Speed.x>s_Speed.z) {
-		rotation.SetRotationDeg(CVector3::AxisY, 180.0f);
+	if (m_heit
+		//&&frg_attck1 == true
+		) {
+		rotation.SetRotation(CVector3::AxisY, atan2(m_rot.x, m_rot.z));
 	}
-	if (s_Speed.x > 0
-		&& s_Speed.x > s_Speed.z) {
-		rotation.SetRotationDeg(CVector3::AxisY, 90.0f);
-	}
-	if (s_Speed.z < 0
-		&& s_Speed.x < s_Speed.z) {
-		rotation.SetRotationDeg(CVector3::AxisY, -90.0f);
-	}
-	if (s_Speed.z > 0
-		&& s_Speed.x < s_Speed.z) {
-		rotation.SetRotationDeg(CVector3::AxisY, 0.0f);
-	}
-
 	m_skinModelRender->SetRotation(rotation);
 }
 void Snake::Update()
 {
 	Move();
+	
 	Rotation();
 }
