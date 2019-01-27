@@ -36,7 +36,7 @@ bool Snake::Start()
 void Snake::Move() {
 	//モンスターがプレイヤーに近づく
 	kyori = bird->GetPosition() - m_pos;
-	float len = kyori.Length();
+	len = kyori.Length();
 	kyori.Normalize();
 	kyori.y = 0.0f;
 	kyori = kyori * 5;
@@ -46,7 +46,18 @@ void Snake::Move() {
 	kyori2 = syokipos - m_pos;
 	float len2 = kyori2.Length();
 
-	if (len2 > 600.0f) {
+	if (!m_attack) {
+		s_Speed = CVector3::Zero;
+		m_timer += 30.0f*GameTime().GetFrameDeltaTime();
+		if (m_timer >= m_cooltime) {
+			m_timer = 0.0f;
+			m_attack = true;
+		}
+	}
+	else {
+		m_rot = s_Speed;
+	}
+	if (len2 > 700.0f) {
 		m_return = true;
 	}
 	if (m_return) {
@@ -55,27 +66,51 @@ void Snake::Move() {
 		kyori2 = kyori2 * 5;
 		s_Speed = kyori2 * 80;
 		m_pos = m_charaCon.Execute(s_Speed, GameTime().GetFrameDeltaTime());
+		m_rot = s_Speed;
 		if (len2 <= 100.0f) {
 			m_return = false;
 			m_heit = false;
 		}
 	}
-	else if (len < 700.0f) {
+	else if (len <= 700.0f) {
 		m_heit = true;
-		m_pos = m_charaCon.Execute(s_Speed,GameTime().GetFrameDeltaTime());
+		
+		if (frg_attck1 == false
+			&&len <= 200.0f) {
+			s_Speed *= 4.0f;
+			if (len <=60.0f) {
+				s_Speed =s_Speed * 0.0f;
+				bird->Damage();
+				frg_attck1 = true;
+				m_attack = false;
+			}
+		}
+		if (len <=300) {
+			frg_attck1 = false;
+		}
+	
+		m_pos = m_charaCon.Execute(s_Speed, GameTime().GetFrameDeltaTime());
 	}
 
 	m_skinModelRender->SetPosition(m_pos);
 }
+
+void Snake::Attack() {
+
+	
+}
 void Snake::Rotation() {
 
-	if (m_heit) {
-		rotation.SetRotation(CVector3::AxisY, atan2(s_Speed.x, s_Speed.z));
+	if (m_heit
+		//&&frg_attck1 == true
+		) {
+		rotation.SetRotation(CVector3::AxisY, atan2(m_rot.x, m_rot.z));
 	}
 	m_skinModelRender->SetRotation(rotation);
 }
 void Snake::Update()
 {
 	Move();
+	
 	Rotation();
 }
