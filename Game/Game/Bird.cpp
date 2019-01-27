@@ -180,7 +180,7 @@ void Bird::Sound()
 		ss->Play(false);
 		m_eating = false;
 	}
-	else if (m_state == enState_Walk) {
+	else if (m_state == enState_Walk && !m_adult) {
 		if (m_soundtimer >= m_walktime) {
 			prefab::CSoundSource* ss;
 			ss = NewGO<prefab::CSoundSource>(0);
