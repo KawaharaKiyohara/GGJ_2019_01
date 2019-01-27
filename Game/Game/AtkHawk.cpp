@@ -56,7 +56,7 @@ void AtkHawk::Update()
 		if (m_HawkPos.y < m_oldbirdpos.y) {
 			prefab::CSoundSource* ss;
 			ss = NewGO<prefab::CSoundSource>(0);
-			ss->Init(L"sound/sword-gesture2.wav");
+			ss->Init(L"sound/hawk.wav");
 			ss->Play(false);
 			
 			m_state = enState_Atk;

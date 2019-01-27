@@ -47,6 +47,7 @@ void Snake::Move() {
 		if (m_timer >= m_cooltime) {
 			m_timer = 0.0f;
 			m_attack = true;
+			frg_attck2 = false;
 		}
 	}
 	else {
@@ -76,7 +77,14 @@ void Snake::Move() {
 			if (len <=60.0f) {
 				s_Speed =s_Speed * 0.0f;
 				bird->Damage();
-				frg_attck1 = true;
+				if (frg_attck2 == false) {
+					prefab::CSoundSource* ss;
+					ss = NewGO<prefab::CSoundSource>(0);
+					ss->Init(L"sound/poyo.wav");
+					ss->Play(false);
+					frg_attck2 = true;
+				}
+				
 				m_attack = false;
 			}
 		}

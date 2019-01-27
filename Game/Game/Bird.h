@@ -55,7 +55,7 @@ public:
 	//ダメージ
 	void Damage()
 	{
-		if (m_state == enState_Damage) {
+		if (m_state == enState_Damage || m_adult) {
 			return;
 		}
 		m_state = enState_Damage;
@@ -64,6 +64,9 @@ public:
 	//即死
 	void Death()
 	{
+		if (m_adult) {
+			return;
+		}
 		m_gameover = true;
 	}
 	//ゲームオーバーかどうか
