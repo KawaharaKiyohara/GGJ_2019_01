@@ -130,7 +130,7 @@ void Bird::Update()
 void Bird::Move()
 {
 	if (m_adult) {
-		m_movespeed = MainCamera().GetForward() * m_multiply * 80.0f * GameTime().GetFrameDeltaTime();
+		m_movespeed = MainCamera().GetForward() * BIRD_FLY_MOVE_SPEED * GameTime().GetFrameDeltaTime();
 	}
 	else {
 		//左スティックの入力量を取得
