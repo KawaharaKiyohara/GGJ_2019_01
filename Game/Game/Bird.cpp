@@ -275,6 +275,7 @@ void Bird::Sound()
 
 void Bird::Animation()
 {
+#if BUILD_LEVEL != BUILD_LEVEL_MASTER
 	if (Pad(0).IsTrigger(enButtonX)) {
 		m_state = enState_Damage;
 	}
@@ -289,6 +290,7 @@ void Bird::Animation()
 			m_adult = true;
 		}
 	}
+#endif
 	if (m_feedcount == m_adultcondions) {
 		m_adult = true;
 		/*DeleteGO(m_skinModelRender);
